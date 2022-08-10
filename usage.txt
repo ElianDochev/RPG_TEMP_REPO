@@ -1,0 +1,6 @@
+Project my_rpg
+USAGE
+    ./my_rpg
+
+OPTIONS
+    -h print the usage and quit.
