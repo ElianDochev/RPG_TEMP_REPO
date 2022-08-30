@@ -134,7 +134,7 @@ sfVector2u get_center_xy(sfRenderWindow *window, int offset_x, int offset_y);
 /*###########################################################################
 ######################BEGINING OF CURSOR SEGMENT#############################
 #############################################################################*/
-typedef sprite_t cursor_t;
+typedef sprite_t_old cursor_t;
 //sets up the cursor object
 cursor_t *set_up_cursor(char *cursor_path);
 //moves the cursor object to the position of the mouse and prints it

@@ -8,6 +8,7 @@
 #include "main.h"
 #include "start_menu.h"
 #include "buttons.h"
+#include <stdio.h>
 
 static void destroy_things(text_t *title, button_text_t **menu,
 cursor_t *cursor, sfFont *font)

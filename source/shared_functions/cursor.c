@@ -10,7 +10,7 @@
 
 cursor_t *set_up_cursor(char *cursor_path)
 {
-    textures_t *texture = init_texture(cursor_path, NULL);
+    textures_t_old *texture = init_texture(cursor_path, NULL);
     cursor_t *cursor = set_sprite(texture);
 
     sfSprite_setScale(cursor->sprite, create_fvector(1.2, 1.2));

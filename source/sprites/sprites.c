@@ -7,9 +7,9 @@
 
 #include "sprites.h"
 
-sprite_t *set_sprite(textures_t *texture)
+sprite_t_old *set_sprite(textures_t_old *texture)
 {
-    sprite_t *sprite = malloc(sizeof(sprite_t));
+    sprite_t_old *sprite = malloc(sizeof(sprite_t_old));
     sfVector2u v = sfTexture_getSize(texture->texture);
     sfVector2f vf = texture->sp_sheet_entities != NULL ?
     create_fvector((float) v.x / texture->sp_sheet_entities->x, (float) v.y /
@@ -23,9 +23,9 @@ sprite_t *set_sprite(textures_t *texture)
     return sprite;
 }
 
-sprite_t **set_sprites_same(int number_of_sprites, textures_t *texture)
+sprite_t_old **set_sprites_same(int number_of_sprites, textures_t_old *texture)
 {
-    sprite_t **sprites = malloc((number_of_sprites + 1)  * sizeof(void *));
+    sprite_t_old **sprites = malloc((number_of_sprites + 1)  * sizeof(void *));
 
     for (int i = 0; i < number_of_sprites; ++i)
         sprites[i] = set_sprite(texture);
@@ -33,7 +33,7 @@ sprite_t **set_sprites_same(int number_of_sprites, textures_t *texture)
     return sprites;
 }
 
-void set_position(sprite_t *sprite, int row, int colon)
+void set_position(sprite_t_old *sprite, int row, int colon)
 {
     sfVector2u vector = sfTexture_getSize(sprite->texture->texture);
 
@@ -44,14 +44,14 @@ void set_position(sprite_t *sprite, int row, int colon)
     vector.y, vector.x));
 }
 
-void destroy_sprite(sprite_t *sprite)
+void destroy_sprite(sprite_t_old *sprite)
 {
     sfSprite_destroy(sprite->sprite);
     sprite->texture = NULL;
     xfree((void **) &sprite);
 }
 
-void destroy_array_sprites(sprite_t **sprites)
+void destroy_array_sprites(sprite_t_old **sprites)
 {
     for (int i = 0; sprites[i] != NULL; ++i)
         destroy_sprite(*sprites);
