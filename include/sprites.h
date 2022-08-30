@@ -22,7 +22,8 @@ typedef struct sprite
     sfTexture *texture;
     sfIntRect *rect;
 } sprite_t;
-
+    #define DESTOY_TEXTURE 1 << 0 // if set, destroy texture
+    #define DESTOY_RECT 1 << 1   // if set, destroy rect
 ////////////////////////////////////////////////////////////
 /// \brief Creates a sprite object
 ///
@@ -37,6 +38,18 @@ typedef struct sprite
 ///////////////////////////////////////////////////////////
 sprite_t *set_sprite(sfTexture *texture, char *path, sfIntRect *rect,
 sfVector2f *scale_vector);
+////////////////////////////////////////////////////////////
+/// \brief Destroys a sprite object
+///
+/// \param sprite   pointer to the sprite object to destroy
+/// \param flags    flags to destroy the sprite,
+/// put DESTOY_TEXTURE to destroy the texture in the sprite object,
+/// put DESTOY_RECT to destroy the rect in the sprite object,
+/// put DESTOY_TEXTURE | DESTOY_RECT to destroy both,
+/// put 0 to destroy nothing else than the object and the sprite
+///
+///////////////////////////////////////////////////////////
+void destroy_sprite(sprite_t *sprite, char flags);
 /*###########################################################################
 #######################END OF SPRITES SEGEMENT###############################
 -----------------------------------------------------------------------------*/

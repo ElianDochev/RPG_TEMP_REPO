@@ -24,3 +24,13 @@ sfVector2f *scale_vector)
     sfTexture_setSmooth(sprite->texture, sfTrue);
     return sprite;
 }
+
+void destroy_sprite(sprite_t *sprite, char flags)
+{
+    if (CHK_FLAG(flags, DESTOY_TEXTURE))
+        sfTexture_destroy(sprite->texture);
+    if (CHK_FLAG(flags, DESTOY_RECT))
+        free(sprite->rect);
+    sfSprite_destroy(sprite->sprite);
+    free(sprite);
+}

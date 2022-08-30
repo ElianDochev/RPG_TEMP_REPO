@@ -9,11 +9,11 @@
 #include "game_over.h"
 
 static void destroy_stuff(sfFont *font, text_t *msg,
-button_text_t **menu)//,cursor_t *cursor)
+button_text_t **menu,cursor_t *cursor)
 {
     destroy_text(msg);
     destroy_menu_bntext(menu);
-    //destroy_cursor(cursor);
+    destroy_cursor(cursor);
     sfFont_destroy(font);
 }
 
@@ -27,15 +27,15 @@ global_t *global, config_t *conf)
     void (*action[])(void *) = {&start_over, &quit};
     button_text_t **menu = set_up_menu_bntext(font, create_fvector
     (vect.x - 100, vect.y + 200), gm_over_menu, action);
-   // cursor_t *cursor = set_up_cursor(conf->paths[cursor_path]);
+   cursor_t *cursor = set_up_cursor(conf->paths[cursor_path]);
 
     while (sfRenderWindow_isOpen(window) && *game_state == gm_over) {
         sfRenderWindow_clear(window, sfBlack);
         ev_loop_gm_over(window, game_state, menu);
         sfRenderWindow_drawText(window, msg->text, NULL);
         draw_menu_bntext(menu, window, 300, 0);
-        //set_cursor_to_mouse(cursor, window);
+        set_cursor_to_mouse(cursor, window);
         sfRenderWindow_display(window);
     }
-    destroy_stuff(font, msg, menu);//, cursor);
+    destroy_stuff(font, msg, menu, cursor);
 }
