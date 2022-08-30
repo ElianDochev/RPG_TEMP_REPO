@@ -27,13 +27,15 @@ SRC	=	source/tests/button.c					\
 		source/shared_functions/menu_bntext.c	\
 		source/shared_functions/action_state.c	\
 		source/shared_functions/loop_menu.c		\
-		source/shared_functions/not_impemented.c
+		source/shared_functions/not_impemented.c\
+		source/get.c							\
+		source/create_map.c
 
-CPPFLAGS = -I./include
+CPPFLAGS = -I./include -I./m_lib/my
 
 OBJ			=	$(SRC:.c=.o)
 
-DIR = -L./lib/
+DIR = -L./lib/ -L./m_lib/
 
 LIB 		=	-lcsfml-system -lcsfml-graphics -lcsfml-audio -lcsfml-window -lmy
 
@@ -41,7 +43,8 @@ all: compil
 
 compil : $(OBJ)
 	$(MAKE) -C ./lib/my
-	gcc -o $(NAME) $(OBJ) $(DIR) $(LIB)
+	$(MAKE) -C ./m_lib/my
+	gcc -o $(NAME) $(OBJ) $(DIR) $(LIB) m_lib/libmy.a
 
 debug:	CFLAGS += -g3 -Wall -Wextra
 debug:	re
@@ -49,10 +52,12 @@ debug:	re
 clean:
 	rm -f $(OBJ)
 	$(MAKE) clean -C ./lib/my
+	$(MAKE) clean -C ./m_lib/my
 
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) fclean -C ./lib/my
+	$(MAKE) fclean -C ./m_lib/my
 
 re: fclean all
 

@@ -7,6 +7,7 @@
 
 #include "main.h"
 #include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 static void print_help(void)
@@ -27,7 +28,7 @@ static void print_help(void)
 static void print_bad_args(int ac)
 {
     ac += '0' - 1;
-    write(2, "./my_rpg: bad arguments:", 29);
+    write(2, "./my_rpg: bad arguments:", 25);
     write(2, &ac, 1);
     write(2, "given but 0 is required\nretry with -h\n", 38);
 }
