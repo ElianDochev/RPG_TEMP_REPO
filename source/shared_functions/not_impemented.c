@@ -30,11 +30,11 @@ static void go_back(void *ptr)
 }
 
 static void destroy_things(text_t *title, button_text_t **menu,
-cursor_t *cursor, sfFont *font)
+sfFont *font)
 {
     destroy_text(title);
     destroy_menu_bntext(menu);
-    destroy_cursor(cursor);
+    //destroy_cursor(cursor);
     sfFont_destroy(font);
 }
 
@@ -48,15 +48,15 @@ void not_imp(void *ptr)
     void (*action[])(void *) = {&go_back};
     button_text_t **menu = set_up_menu_bntext(font,
     create_fvector(vect.x, vect.y + 150), n_imp_button, action);
-    cursor_t *cursor = set_up_cursor(N_IMP_PATH_CURSOR);
+    //cursor_t *cursor = set_up_cursor(N_IMP_PATH_CURSOR);
 
     while (sfRenderWindow_isOpen(window) && running) {
         local_ev_loop(window, menu, &running);
         sfRenderWindow_clear(window, sfBlack);
         sfRenderWindow_drawText(window, title->text, NULL);
         draw_menu_bntext(menu, window, 0, 0);
-        set_cursor_to_mouse(cursor, window);
+        //set_cursor_to_mouse(cursor, window);
         sfRenderWindow_display(window);
     }
-    destroy_things(title, menu, cursor, font);
+    destroy_things(title, menu, font);
 }

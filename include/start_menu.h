@@ -11,7 +11,7 @@
     #include "sprites.h"
     #include "buttons.h"
 
-typedef sprite_t_old cursor_t;
+// typedef sprite_t_old cursor_t;
 static char *options_msg[] = {"START", "HOW TO PLAY", "OPTION", "QUIT", NULL};
     #define FONT_STMENU "./resources/fonts/orange juice 2.0.ttf"
 //sets up the start menu array of objects (later will be buttons)
@@ -27,6 +27,6 @@ typedef struct {
     sfVector2f vect;
     text_t *title;
     button_text_t **menu;
-    cursor_t *cursor;
+    // cursor_t *cursor;
 } start_menu_elements_t;
 #endif

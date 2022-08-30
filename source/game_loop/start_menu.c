@@ -11,11 +11,11 @@
 #include <stdio.h>
 
 static void destroy_things(text_t *title, button_text_t **menu,
-cursor_t *cursor, sfFont *font)
+sfFont *font)
 {
     destroy_text(title);
     destroy_menu_bntext(menu);
-    destroy_cursor(cursor);
+    //destroy_cursor(cursor);
     sfFont_destroy(font);
 }
 
@@ -28,7 +28,7 @@ global_t *global, config_t *conf)
     void (*action[])(void *) = {&start, &not_imp, &not_imp, &quit};
     button_text_t **menu = set_up_menu_bntext(font,
     create_fvector(vect.x, vect.y + 100), options_msg, action);
-    cursor_t *cursor = set_up_cursor(conf->paths[cursor_path]);
+    //cursor_t *cursor = set_up_cursor(conf->paths[cursor_path]);
 
     sfText_setColor(title->text, sfBlue);
     reset_global(global, conf->confs[conf_lives]);
@@ -37,8 +37,8 @@ global_t *global, config_t *conf)
         sfRenderWindow_clear(window, sfBlack);
         sfRenderWindow_drawText(window, title->text, NULL);
         draw_menu_bntext(menu, window, 0, 100);
-        set_cursor_to_mouse(cursor, window);
+        //set_cursor_to_mouse(cursor, window);
         sfRenderWindow_display(window);
     }
-    destroy_things(title, menu, cursor, font);
+    destroy_things(title, menu, font);
 }
