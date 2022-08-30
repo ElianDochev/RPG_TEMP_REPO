@@ -12,6 +12,36 @@
     #include <stdlib.h>
 
 /*###########################################################################
+#######################BEGINING OF SPRITES SEGMENT###########################
+#############################################################################*/
+
+//object for sprites
+typedef struct sprite
+{
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfIntRect *rect;
+} sprite_t;
+
+////////////////////////////////////////////////////////////
+/// \brief Creates a sprite object
+///
+/// \param texture    takes a pointer to a texture or NULL
+/// \param path       if texture is NULL, takes the path to the texture
+/// \param rect       pointer to an intrect or NULL
+/// \param scale_vector     pointer to a vector or NULL
+///(use maroan's func to create the vector)
+///
+/// \return  pointer to the sprite object
+///
+///////////////////////////////////////////////////////////
+sprite_t *set_sprite(sfTexture *texture, char *path, sfIntRect *rect,
+sfVector2f *scale_vector);
+/*###########################################################################
+#######################END OF SPRITES SEGEMENT###############################
+-----------------------------------------------------------------------------*/
+
+/*###########################################################################
 #######################BEGINING OF TEXT######################################
 #############################################################################*/
 //struct for text object

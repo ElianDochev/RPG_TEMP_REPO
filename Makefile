@@ -21,6 +21,7 @@ SRC	=	source/tests/button.c					\
 		source/window/window.c					\
 		source/window/get_center_window.c		\
 		source/sprites/text.c					\
+		source/sprites/sprite.c					\
 		source/shared_functions/cursor.c		\
 		source/shared_functions/button_text.c	\
 		source/shared_functions/menu_bntext.c	\
