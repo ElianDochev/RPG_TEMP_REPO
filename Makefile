@@ -29,7 +29,8 @@ SRC	=	source/tests/button.c					\
 		source/shared_functions/loop_menu.c		\
 		source/shared_functions/not_impemented.c\
 		source/get.c							\
-		source/create_map.c
+		source/create_map.c						\
+		source/map_mana.c
 
 CPPFLAGS = -I./include -I./m_lib/my
 

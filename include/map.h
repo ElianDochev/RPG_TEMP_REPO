@@ -5,8 +5,8 @@
 ** button test .h
 */
 
-#ifndef BUTTONS_H_
-    #define BUTTONS_H_
+#ifndef MAP_H_
+    #define MAP_H_
 
     #include "sprites.h"
     #define MAX_Y 10
@@ -21,5 +21,7 @@ typedef struct map
     sfTexture **textures;
     sprite_t ***sprites;
 } map_t;
+
+map_t *create_map(char *path);
 
 #endif

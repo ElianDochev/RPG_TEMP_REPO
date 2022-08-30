@@ -10,9 +10,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char *get_map(char *path)
+static char *get_map(char *path)
 {
-    char *buffer = malloc(sizeof(char) * (MAX_X + 1) * MAX_Y);
+    char *buffer = malloc(sizeof(char) * (MAX_X + 1) * MAX_Y + 1);
     int fd = 0;
 
     if (buffer == NULL)
@@ -26,14 +26,14 @@ char *get_map(char *path)
     return buffer;
 }
 
-sprite_t *choose_sprite(int y, int x, map_t *map)
+static sprite_t *choose_sprite(int y, int x, map_t *map)
 {
     if (map->map[y][x] == GRASS)
         return set_sprite(map->textures[GRASS_TEXT], NULL, NULL, NULL);
     return NULL;
 }
 
-sprite_t ***create_array_of_sprites(map_t *map)
+static sprite_t ***create_array_of_sprites(map_t *map)
 {
     sprite_t ***sprites = malloc(sizeof(sprite_t **) * MAX_Y);
 
@@ -45,7 +45,7 @@ sprite_t ***create_array_of_sprites(map_t *map)
     return sprites;
 }
 
-sfTexture **init_map_textures(void)
+static sfTexture **init_map_textures(void)
 {
     sfTexture **textures = malloc(sizeof(sfTexture *) * TEXTURES_NB);
 

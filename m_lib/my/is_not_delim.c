@@ -9,7 +9,7 @@
 
 bool is_not_delim(char c)
 {
-    if (c == ' ' || c == '\t')
+    if (c == '\n')
         return false;
     return true;
 }
