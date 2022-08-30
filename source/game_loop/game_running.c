@@ -13,6 +13,7 @@ global_t *global, config_t *conf)
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         ev_loop_running(window, game_state);
         sfRenderWindow_clear(window, sfBlue);
+        draw_map(window, global->map);
         sfRenderWindow_display(window);
     }
 }

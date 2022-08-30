@@ -62,6 +62,7 @@ typedef struct {
     sfFont *font;
     sfText *text;
 } text_t;
+sfIntRect *get_int_rect(int top, int height, int width, int left);
 //set a postion for the text
 void set_text_pos(text_t *text, sfVector2f pos);
 //inits a text (pass a 0 to font for default font and NULL for default pos)

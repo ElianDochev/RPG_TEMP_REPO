@@ -10,6 +10,7 @@
 
     #include "utilities.h"
     #include "sprites.h"
+    #include "map.h"
 
 /*###########################################################################
 #######################BEGINING OF STATE FUNC SEGMENT########################
@@ -78,6 +79,7 @@ typedef struct {
     int score;
     sfBool win;
     int lives;
+    map_t *map;
 } global_t;
 // inits the global variable
 global_t *set_up_global(int lives);
@@ -155,6 +157,8 @@ void destroy_cursor(cursor_t *cursor);
 static char const *n_imp_button[] = {"Go back", NULL};
 //call when you have an inimplemented feature take the window obj as a void ptr
 void not_imp(void *ptr);
+// draws map on screen with sfrenderwindow
+void draw_map(sfRenderWindow *window,map_t *map);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/
