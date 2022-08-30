@@ -9,6 +9,7 @@
     #define UTIL_H
 
     #include <SFML/Graphics.h>
+    #include <SFML/Audio.h>
 
     #define EXIT_ERR_EPI 84
 /*###########################################################################
