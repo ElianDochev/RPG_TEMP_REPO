@@ -16,9 +16,9 @@ void draw_map(sfRenderWindow *window, map_t *map)
         for (int x = 0; x < MAX_X; x++) {
             sfSprite_setPosition(map->sprites[y][x]->sprite, pos);
             sfRenderWindow_drawSprite(window, map->sprites[y][x]->sprite, NULL);
-            pos.x += 16;
+            pos.x += 64;
         }
         pos.x = 0;
-        pos.y += 16;
+        pos.y += 64;
     }
 }

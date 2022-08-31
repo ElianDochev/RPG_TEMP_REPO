@@ -29,7 +29,26 @@ static char *get_map(char *path)
 static sprite_t *choose_sprite(int y, int x, map_t *map)
 {
     if (map->map[y][x] == GRASS)
-        return set_sprite(map->textures[GRASS_TEXT], NULL, NULL, NULL);
+        return set_sprite(map->textures[GRASS_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+    if (map->map[y][x] == WALL_LEFT)
+        return set_sprite(map->textures[WALL_LEFT_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+    if (map->map[y][x] == WALL_RIGHT)
+        return set_sprite(map->textures[WALL_RIGHT_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+    if (map->map[y][x] == WALL_UP)
+        return set_sprite(map->textures[WALL_UP_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+    if (map->map[y][x] == WALL_NO)
+        return set_sprite(map->textures[WALL_NO_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+    if (map->map[y][x] == WALL_DOWN)
+        return set_sprite(map->textures[WALL_DOWN_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+   if (map->map[y][x] == WALL_NE)
+        return set_sprite(map->textures[WALL_NE_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
     return NULL;
 }
 
@@ -51,6 +70,23 @@ static sfTexture **init_map_textures(void)
 
     textures[GRASS_TEXT] = sfTexture_createFromFile("tile_sets/grass_tile.png",
     get_int_rect(0, 16, 16, 0));
+    textures[WALL_LEFT_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(16, 16, 16, 0));
+    textures[WALL_DOWN_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(32, 16, 16, 16));
+    textures[WALL_RIGHT_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(16, 16, 16, 32));
+    textures[WALL_UP_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(0, 16, 16, 16));
+    textures[WALL_NO_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(0, 16, 16, 0));
+    textures[WALL_NE_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(0, 16, 16, 32));
+    textures[WALL_SE_TEXT] = NULL;
+    textures[WALL_SO_TEXT] = NULL;
+    for (int i = 0; i < TEXTURES_NB; i++)
+        if (textures[i] != NULL)
+        sfTexture_setSmooth(textures[i], sfTrue);
     return textures;
 }
 

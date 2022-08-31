@@ -17,3 +17,12 @@ sfIntRect *get_int_rect(int top, int height, int width, int left)
     rect->top = top;
     return rect;
 }
+
+sfVector2f *get_sfvector2f(int y, int x)
+{
+    sfVector2f *vector = malloc(sizeof(sfVector2f));
+
+    vector->y = y;
+    vector->x = x;
+    return vector;
+}
