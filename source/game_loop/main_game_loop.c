@@ -29,12 +29,13 @@ void reset_global(global_t *global, int lives)
 void check_game_state(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
+    void (*control_blocks[]) (sfRenderWindow *, states *, global_t *,
+    config_t *) = {&start_menu, &game_paused, &game_running, &game_over};
+
     if (*game_state == gm_quit) {
         sfRenderWindow_close(window);
         return;
     }
-    void (*control_blocks[]) (sfRenderWindow *, states *, global_t *,
-    config_t *) = {&start_menu, &game_paused, &game_running, &game_over};
     control_blocks[*game_state](window, game_state, global, conf);
 }
 
