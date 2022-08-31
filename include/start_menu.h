@@ -36,6 +36,4 @@ typedef struct {
 //initializes the elements of the start menu
 start_menu_elements_t *init_start_elements(sfRenderWindow *window,
 config_t *conf);
-//destroys the elements of the start menu
-void destroy_element(start_menu_elements_t *elements);
 #endif

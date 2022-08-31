@@ -2,17 +2,15 @@
 ** EPITECH PROJECT, 2022
 ** my_rpg
 ** File description:
-** init and delete elements for start menu
+** init and destroy funcs for the game_over scene
 */
 
-#include "start_menu.h"
-#include "buttons.h"
-#include "main.h"
+#include "game_over.h"
 
 //intis the music element for the start menu and plays it
 static sfMusic *init_music(config_t *conf)
 {
-    sfMusic *music = sfMusic_createFromFile(conf->paths[start_music]);
+    sfMusic *music = sfMusic_createFromFile(conf->paths[gm_over_music]);
     if (!music)
         return (NULL);
     sfMusic_setLoop(music, sfTrue);
@@ -21,22 +19,21 @@ static sfMusic *init_music(config_t *conf)
     return (music);
 }
 
-start_menu_elements_t *init_start_elements(sfRenderWindow *window,
+game_over_elements_t *init_gm_over_elements(sfRenderWindow *window,
 config_t *conf)
 {
-    start_menu_elements_t *elements = malloc(sizeof(start_menu_elements_t));
+    game_over_elements_t *elements = malloc(sizeof(game_over_elements_t));
     sfVector2f bg_size;
 
-    elements->main_font = sfFont_createFromFile(conf->paths[start_font]);
-    elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05f, -0.3f));
-    elements->title = init_text("my_rpg", elements->main_font, 50,
-    &(elements->vect));
-    elements->menu = set_up_menu_bntext(elements->main_font,
-    create_fvector(elements->vect.x, elements->vect.y + 100),
-    options_msg, action_start_menu);
+    elements->main_font = sfFont_createFromFile(conf->paths[gm_over_font]);
+    elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05 , -0.2));
+    elements->msg = init_text(gm_over_msg, elements->main_font, 50,
+    &elements->vect);
+    elements->menu = set_up_menu_bntext(elements->main_font, create_fvector
+    (elements->vect.x - 100, elements->vect.y + 200), gm_over_menu, action);
     elements->cursor = set_up_cursor(conf->paths[cursor_path]);
     elements->music = init_music(conf);
-    elements->background = set_sprite(NULL, conf->paths[start_background],
+    elements->background = set_sprite(NULL, conf->paths[gm_over_bg],
     NULL, NULL);
     bg_size.x = (float) sfRenderWindow_getSize(window).x /
     (float) sfSprite_getTextureRect(elements->background->sprite).width;
@@ -45,3 +42,5 @@ config_t *conf)
     sfSprite_setScale(elements->background->sprite, bg_size);
     return elements;
 }
+
+

@@ -29,6 +29,7 @@ SRC	=	source/tests/button.c						\
 		source/shared_functions/loop_menu.c			\
 		source/shared_functions/not_impemented.c	\
 		source/start_menu/support_func.c			\
+		source/game_over/support_function.c			\
 		source/get.c								\
 		source/create_map.c							\
 		source/map_mana.c

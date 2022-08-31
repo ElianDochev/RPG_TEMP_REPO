@@ -52,12 +52,13 @@ static const char *needed_unsigned[] = {"Refresh_rate=", "Height=", "Width=",
 "Bpp=", "Frame_rate=", "Music_volume=", "Sound_volume=",
 "Fullscrene=", "Lives=", NULL};
 static const char *needed_paths[] = {"Cursor_path=" , "Font_start=", "Start_bg=",
-"Start_music=", NULL};
+"Start_music=", "Font_gm_over=", "Gm_over_bg=", "Gm_over_music=", NULL};
 //used for a loop in config init
 typedef enum {refresh_rate_cf, height_cf, width_cf, bpp_cf,
 frame_rate_cf, music_vol_cf, sound_vol_cf, fullscreen_cf,
 conf_lives, confs_count} confs;
-typedef enum {cursor_path, start_font, start_background, start_music, path_count} path_enum;
+typedef enum {cursor_path, start_font, start_background, start_music,
+gm_over_font, gm_over_bg, gm_over_music, path_count} path_enum;
 //read from file contains all the window and clock params;
 typedef struct {
     unsigned int confs[confs_count];
