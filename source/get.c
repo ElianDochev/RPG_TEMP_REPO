@@ -11,10 +11,10 @@ sfIntRect *get_int_rect(int top, int height, int width, int left)
 {
     sfIntRect *rect = malloc(sizeof(sfIntRect));
 
-    rect->height = height;
-    rect->left = left;
-    rect->width = width;
     rect->top = top;
+    rect->height = height;
+    rect->width = width;
+    rect->left = left;
     return rect;
 }
 

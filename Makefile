@@ -33,7 +33,6 @@ SRC	=	source/tests/button.c						\
 		source/get.c								\
 		source/create_map.c							\
 		source/map_mana.c							\
-		source/textures_mana/walls.c
 
 CPPFLAGS = -I./include -I./m_lib/my
 

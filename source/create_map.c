@@ -28,19 +28,10 @@ static char *get_map(char *path)
 
 static sprite_t *choose_sprite(int y, int x, map_t *map)
 {
-    sprite_t *tampon = NULL;
-
-    if (map->map[y][x] == GROUND)
-        return set_sprite(map->textures[GROUND_TEXT], NULL, NULL,
-        get_sfvector2f(4, 4));
-    if (map->map[y][x] == BUSH)
-        return set_sprite(map->textures[BUSH_TEXT], NULL, NULL,
-        get_sfvector2f(4, 4));
-    if (map->map[y][x] == GRASS)
-        return set_sprite(map->textures[GRASS_TEXT], NULL, NULL,
-        get_sfvector2f(4, 4));
-    if ((tampon = choose_wall_texture(y, x, map)) != NULL)
-        return tampon;
+    for (int i = 0; i < TEXTURES_NB; i++)
+        if (map->map[y][x] == TEXT_CHARS[i])
+            return set_sprite(map->textures[i], NULL, NULL,
+            get_sfvector2f(4, 4));
     return NULL;
 }
 
@@ -60,13 +51,9 @@ static sfTexture **init_map_textures(void)
 {
     sfTexture **textures = malloc(sizeof(sfTexture *) * TEXTURES_NB);
 
-    textures[GROUND_TEXT] = sfTexture_createFromFile("tile_sets/ground_tile.png",
-    get_int_rect(0, 16, 16, 0));
-    walls_textures_mana(textures);
-    textures[BUSH_TEXT] = sfTexture_createFromFile("tile_sets/bush_tile.png",
-    get_int_rect(0, 16, 16, 0));
-    textures[GRASS_TEXT] = sfTexture_createFromFile("tile_sets/grass_tile.png",
-    get_int_rect(0, 16, 16, 0));
+    for (int i = 0; i < TEXTURES_NB; i++)
+        textures[i] = sfTexture_createFromFile(PATHS_NAME[i],
+        get_int_rect(RECT[i][0], RECT[i][1], RECT[i][2], RECT[i][3]));
     for (int i = 0; i < TEXTURES_NB; i++)
         if (textures[i] != NULL)
             sfTexture_setSmooth(textures[i], sfTrue);
