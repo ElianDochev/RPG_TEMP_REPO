@@ -8,7 +8,18 @@
 #include "main.h"
 #include "start_menu.h"
 #include "buttons.h"
-#include <stdio.h>
+
+//destroys the elements of the start menu
+static void destroy_element(start_menu_elements_t *elements)
+{
+    destroy_text(elements->title);
+    destroy_menu_bntext(elements->menu);
+    destroy_cursor(elements->cursor);
+    sfFont_destroy(elements->main_font);
+    sfMusic_destroy(elements->music);
+    destroy_sprite(elements->background, DESTOY_TEXTURE);
+    free(elements);
+}
 
 void start_menu(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
