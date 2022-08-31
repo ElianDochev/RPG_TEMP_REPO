@@ -20,6 +20,7 @@ void destroy_element(start_menu_elements_t *elements)
     free(elements);
 }
 
+//intis the music element for the start menu and plays it
 static sfMusic *init_music(config_t *conf)
 {
     sfMusic *music = sfMusic_createFromFile(conf->paths[start_music]);
@@ -35,8 +36,7 @@ start_menu_elements_t *init_start_elements(sfRenderWindow *window,
 config_t *conf)
 {
     start_menu_elements_t *elements = malloc(sizeof(start_menu_elements_t));
-    float x;
-    float y;
+    sfVector2f bg_size;
 
     elements->main_font = sfFont_createFromFile(conf->paths[start_font]);
     elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05f, -0.3f));
@@ -47,14 +47,10 @@ config_t *conf)
     elements->cursor = set_up_cursor(conf->paths[cursor_path]);
     elements->music = init_music(conf);
     elements->background = set_sprite(NULL, conf->paths[start_background], NULL, NULL);
-    x = (float) sfSprite_getTextureRect(elements->background->sprite).width /
-    (float) sfRenderWindow_getSize(window).x;
-    y = (float) sfSprite_getTextureRect(elements->background->sprite).height /
-    (float) sfRenderWindow_getSize(window).y;
-    x = (sfSprite_getTextureRect(elements->background->sprite).width / x) /
+    bg_size.x = (float) sfRenderWindow_getSize(window).x /
     (float) sfSprite_getTextureRect(elements->background->sprite).width;
-    y = (sfSprite_getTextureRect(elements->background->sprite).height / y) /
+    bg_size.y = (float) sfRenderWindow_getSize(window).y /
     (float) sfSprite_getTextureRect(elements->background->sprite).height;
-    sfSprite_setScale(elements->background->sprite, create_fvector(x, y));
+    sfSprite_setScale(elements->background->sprite, bg_size);
     return elements;
 }
