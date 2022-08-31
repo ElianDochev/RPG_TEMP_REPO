@@ -49,6 +49,12 @@ static sprite_t *choose_sprite(int y, int x, map_t *map)
    if (map->map[y][x] == WALL_NE)
         return set_sprite(map->textures[WALL_NE_TEXT], NULL, NULL,
         get_sfvector2f(4, 4));
+   if (map->map[y][x] == WALL_SO)
+        return set_sprite(map->textures[WALL_SO_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
+   if (map->map[y][x] == WALL_SE)
+        return set_sprite(map->textures[WALL_SE_TEXT], NULL, NULL,
+        get_sfvector2f(4, 4));
     return NULL;
 }
 
@@ -82,11 +88,13 @@ static sfTexture **init_map_textures(void)
     get_int_rect(0, 16, 16, 0));
     textures[WALL_NE_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
     get_int_rect(0, 16, 16, 32));
-    textures[WALL_SE_TEXT] = NULL;
-    textures[WALL_SO_TEXT] = NULL;
+    textures[WALL_SE_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(32, 16, 16, 32));
+    textures[WALL_SO_TEXT] = sfTexture_createFromFile("tile_sets/wall_tiles.png",
+    get_int_rect(32, 16, 16, 0));
     for (int i = 0; i < TEXTURES_NB; i++)
         if (textures[i] != NULL)
-        sfTexture_setSmooth(textures[i], sfTrue);
+            sfTexture_setSmooth(textures[i], sfTrue);
     return textures;
 }
 

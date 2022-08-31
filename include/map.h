@@ -9,7 +9,7 @@
     #define MAP_H_
 
     #include "sprites.h"
-    #define MAX_Y 17
+    #define MAX_Y 16
     #define MAX_X 30
     #define GRASS ' '
     #define GRASS_TEXT 0
@@ -18,8 +18,8 @@
     #define WALL_DOWN '_'
     #define WALL_RIGHT ')'
     #define WALL_NO '/'
-    #define WALL_SO 'l'
-    #define WALL_SE 'r'
+    #define WALL_SO 'o'
+    #define WALL_SE 'e'
     #define WALL_NE '\\'
     #define WALL_UP_TEXT 1
     #define WALL_LEFT_TEXT 2
