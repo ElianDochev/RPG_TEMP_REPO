@@ -6,6 +6,7 @@
 */
 
 #include "map.h"
+#include "main.h"
 
 sfIntRect *get_int_rect(int top, int height, int width, int left)
 {
@@ -25,4 +26,13 @@ sfVector2f *get_sfvector2f(int y, int x)
     vector->y = y;
     vector->x = x;
     return vector;
+}
+
+time_mana_t *get_clock(void)
+{
+    time_mana_t *clock = malloc(sizeof(time_mana_t));
+
+    clock->clock = sfClock_create();
+    clock->millisec = 0;
+    return clock;
 }

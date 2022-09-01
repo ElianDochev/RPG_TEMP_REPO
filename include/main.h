@@ -93,6 +93,8 @@ typedef struct {
 global_t *set_up_global(int lives);
 //resets the global variable uses lives form the config object
 void reset_global(global_t *global, int lives);
+//function to create and initialize a new clock
+time_mana_t *get_clock(void);
 /*###########################################################################
 #######################END OF GLOBAL OBJECT SEGEMENT#########################
 -----------------------------------------------------------------------------*/
