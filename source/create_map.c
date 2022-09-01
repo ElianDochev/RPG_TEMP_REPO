@@ -26,24 +26,13 @@ static char *get_map(char *path)
     return buffer;
 }
 
-static sprite_t *choose_sprite(int y, int x, map_t *map)
+static sprite_t **create_array_of_sprites(map_t *map)
 {
+    sprite_t **sprites = malloc(sizeof(sprite_t *) * TEXTURES_NB);
+
     for (int i = 0; i < TEXTURES_NB; i++)
-        if (map->map[y][x] == TEXT_CHARS[i])
-            return set_sprite(map->textures[i], NULL, NULL,
-            get_sfvector2f(4, 4));
-    return NULL;
-}
-
-static sprite_t ***create_array_of_sprites(map_t *map)
-{
-    sprite_t ***sprites = malloc(sizeof(sprite_t **) * MAX_Y);
-
-    for (int y = 0; y < MAX_Y; y++) {
-        sprites[y] = malloc(sizeof(sprite_t *) * MAX_X);
-        for (int x = 0; x < MAX_X; x++)
-            sprites[y][x] = choose_sprite(y, x, map);
-    }
+        sprites[i] = set_sprite(map->textures[i], NULL, NULL,
+        get_sfvector2f(4, 4));
     return sprites;
 }
 

@@ -75,12 +75,19 @@ config_t *set_up_config(void);
 /*###########################################################################
 #######################BEGINING OF GLOBAL OBJECT SEGMENT#####################
 #############################################################################*/
+typedef struct time_management
+{
+    sfClock *clock;
+    sfTime time;
+    float millisec;
+} time_mana_t;
 //global object struct
 typedef struct {
     int score;
     sfBool win;
     int lives;
     map_t *map;
+    time_mana_t clock;
 } global_t;
 // inits the global variable
 global_t *set_up_global(int lives);
@@ -160,6 +167,7 @@ static char const *n_imp_button[] = {"Go back", NULL};
 void not_imp(void *ptr);
 // draws map on screen with sfrenderwindow
 void draw_map(sfRenderWindow *window,map_t *map);
+void anim_flowers(map_t *map, int *i);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/
