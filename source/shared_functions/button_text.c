@@ -21,25 +21,27 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window)
     return 0;
 }
 
-button_text_t *init_button_text(sfVector2f position, void(*ptr)(void *),
+button_text_t *init_button_text(button_text_info_t *info, void(*ptr)(void *),
 sfFont *font, char *msg)
 {
     button_text_t *button = malloc(sizeof(button_text_t));
 
-    button->location = position;
-    button->text = init_text(msg, font, START_MENU_SIZE, &position);
+    button->location = info->location;
+    button->text = init_text(msg, font, info->font_size, &(button->location));
     button->ptr = ptr;
-    button->bn_color[idle_bn]  = *(sfColor *) bn_states_color[idle_bn];
-    button->bn_color[on_click] = *(sfColor *) bn_states_color[on_click];
-    button->bn_color[on_hover] = *(sfColor *) bn_states_color[on_hover];
+    button->bn_color[idle_bn]  = *(sfColor *) info->bn_color[idle_bn];
+    button->bn_color[on_click] = *(sfColor *) info->bn_color[on_click];
+    button->bn_color[on_hover] = *(sfColor *) info->bn_color[on_hover];
     button->hitbox = sfText_getGlobalBounds(button->text->text);
-    sfText_setColor(button->text->text, button->bn_color[idle_bn]);
+    sfText_setFillColor(button->text->text, button->bn_color[idle_bn]);
+    if (info->is_for_single_use == 1)
+        xfree((void **) &info);
     return button;
 }
 
 void change_bntxt_color(button_text_t *button, button_state state)
 {
-    sfText_setColor(button->text->text, button->bn_color[state]);
+    sfText_setFillColor(button->text->text, button->bn_color[state]);
 }
 
 int is_click_or_hover_bntxt(button_text_t *button, sfEvent event)

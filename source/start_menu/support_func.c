@@ -21,27 +21,37 @@ static sfMusic *init_music(config_t *conf)
     return (music);
 }
 
+static sprite_t *do_background(char *path, sfRenderWindow *window)
+{
+    sfVector2f bg_size;
+    sprite_t *bg = set_sprite(NULL, path, NULL, NULL);
+
+    bg_size.x = (float) sfRenderWindow_getSize(window).x /
+    (float) sfSprite_getTextureRect(bg->sprite).width;
+    bg_size.y = (float) sfRenderWindow_getSize(window).y /
+    (float) sfSprite_getTextureRect(bg->sprite).height;
+    sfSprite_setScale(bg->sprite, bg_size);
+    return (bg);
+}
+
 start_menu_elements_t *init_start_elements(sfRenderWindow *window,
 config_t *conf)
 {
     start_menu_elements_t *elements = malloc(sizeof(start_menu_elements_t));
-    sfVector2f bg_size;
+    void *bn_color[] = {&sfYellow, &sfBlue, &sfRed};
 
     elements->main_font = sfFont_createFromFile(conf->paths[start_font]);
     elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05f, -0.3f));
-    elements->title = init_text("my_rpg", elements->main_font, 50,
+    elements->title = init_text("My_rpg", elements->main_font, 50,
     &(elements->vect));
     elements->menu = set_up_menu_bntext(elements->main_font,
-    create_fvector(elements->vect.x, elements->vect.y + 100),
+    init_button_text_info(create_fvector(elements->vect.x,
+    elements->vect.y + 150), bn_color, create_fvector(0, 100), 50),
     options_msg, action_start_menu);
     elements->cursor = set_up_cursor(conf->paths[cursor_path]);
     elements->music = init_music(conf);
-    elements->background = set_sprite(NULL, conf->paths[start_background],
-    NULL, NULL);
-    bg_size.x = (float) sfRenderWindow_getSize(window).x /
-    (float) sfSprite_getTextureRect(elements->background->sprite).width;
-    bg_size.y = (float) sfRenderWindow_getSize(window).y /
-    (float) sfSprite_getTextureRect(elements->background->sprite).height;
-    sfSprite_setScale(elements->background->sprite, bg_size);
+    elements->background = do_background(conf->paths[start_background],
+    window);
+    sfText_setColor(elements->title->text, TITLE_COLOR);
     return elements;
 }
