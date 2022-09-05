@@ -61,7 +61,7 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 button_text_t *init_button_text(button_text_info_t *info, void(*ptr)(void *),
 sfFont *font, char *msg);
 //destroys a text button
-void destroy_button_text(button_text_t *button);
+void destroy_button_text(button_text_t *button, int mask);
 //changes the color of a text botton
 void change_bntxt_color(button_text_t *button, button_state state);
 ////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ char **msg_arr, void (*ptr[])(void *));
 ///////////////////////////////////////////////////////////
 void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window);
 //destroys a menu from text bottons
-void destroy_menu_bntext(button_text_t **menu);
+void destroy_menu_bntext(button_text_t **menu, int mask);
 //returns 1 if its clicked and 2 if it hovered
 int is_click_or_hover_bntxt(button_text_t *button, sfEvent event);
 //returns 1 if the mouse is on the botton and 0 if it not

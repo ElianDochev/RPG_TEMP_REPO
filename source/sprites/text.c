@@ -21,9 +21,10 @@ sfVector2f const *pos)
     return text;
 }
 
-void destroy_text(text_t *text)
+void destroy_text(text_t *text, int mask)
 {
     sfText_destroy(text->text);
-    text->font = NULL;
+    if (CHK_FLAG(mask, DESTOY_FONT))
+        sfFont_destroy(text->font);
     xfree((void **) &text);
 }

@@ -55,9 +55,9 @@ int is_click_or_hover_bntxt(button_text_t *button, sfEvent event)
     }
 }
 
-void destroy_button_text(button_text_t *button)
+void destroy_button_text(button_text_t *button, int mask)
 {
-    destroy_text(button->text);
+    destroy_text(button->text, mask);
 
     xfree((void **) &button);
 }

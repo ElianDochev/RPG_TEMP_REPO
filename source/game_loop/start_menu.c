@@ -13,8 +13,8 @@
 static void destroy_element(start_menu_elements_t *elements,
 time_mana_t *clock)
 {
-    destroy_text(elements->title);
-    destroy_menu_bntext(elements->menu);
+    destroy_text(elements->title, 0);
+    destroy_menu_bntext(elements->menu, 0);
     destroy_cursor(elements->cursor);
     sfFont_destroy(elements->main_font);
     sfMusic_destroy(elements->music);

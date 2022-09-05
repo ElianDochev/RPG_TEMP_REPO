@@ -12,8 +12,8 @@
 static void destroy_element(game_over_elements_t *elements,
 time_mana_t *clock)
 {
-    destroy_text(elements->msg);
-    destroy_menu_bntext(elements->menu);
+    destroy_text(elements->msg, 0);
+    destroy_menu_bntext(elements->menu, 0);
     destroy_cursor(elements->cursor);
     sfFont_destroy(elements->main_font);
     sfMusic_destroy(elements->music);

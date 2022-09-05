@@ -62,6 +62,7 @@ typedef struct {
     sfFont *font;
     sfText *text;
 } text_t;
+    #define DESTOY_FONT 1 << 0 // if set, destroy font
 //get a pointer to an intrect
 sfIntRect *get_int_rect(int top, int height, int width, int left);
 //get a pointer to a vector2f
@@ -72,7 +73,7 @@ void set_text_pos(text_t *text, sfVector2f pos);
 text_t *init_text(char const *str, sfFont *font, unsigned int font_size,
 sfVector2f const *pos);
 //destroys a text object
-void destroy_text(text_t *text);
+void destroy_text(text_t *text, int mask);
 /*###########################################################################
 #########################END OF TEXT#########################################
 -----------------------------------------------------------------------------*/

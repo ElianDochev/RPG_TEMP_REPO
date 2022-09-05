@@ -32,8 +32,8 @@ static void go_back(void *ptr)
 static void destroy_things(text_t *title, button_text_t **menu,
 sfFont *font, cursor_t *cursor)
 {
-    destroy_text(title);
-    destroy_menu_bntext(menu);
+    destroy_text(title, 0);
+    destroy_menu_bntext(menu, 0);
     destroy_cursor(cursor);
     sfFont_destroy(font);
 }
