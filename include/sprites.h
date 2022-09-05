@@ -65,7 +65,7 @@ typedef struct {
 //get a pointer to an intrect
 sfIntRect *get_int_rect(int top, int height, int width, int left);
 //get a pointer to a vector2f
-sfVector2f *get_sfvector2f(int y, int x);
+sfVector2f *get_sfvector2f(float y, float x);
 //set a postion for the text
 void set_text_pos(text_t *text, sfVector2f pos);
 //inits a text (pass a 0 to font for default font and NULL for default pos)

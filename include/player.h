@@ -32,5 +32,7 @@ typedef struct player {
 
 player_t *set_up_player(void);
 char *get_map(char *path);
+void draw_player(sfRenderWindow *window, player_t *player);
+void anim_player(player_t *player, int *j);
 
 #endif

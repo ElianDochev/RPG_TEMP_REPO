@@ -14,7 +14,7 @@
     #define TEXTURES_NB 23
 
 enum {OUT_HOUSE, FIRST_PATH, BATTLE_PATH};
-static const char *MAP_PATHS[] = {"maps/out_house_.front",
+static const char *MAP_PATHS[] = {"maps/out_house.front",
 "maps/first_path.front", "maps/battle_path.front"};
 enum {GROUND, WALL_UP, WALL_LEFT, WALL_DOWN, WALL_RIGHT, WALL_NO, WALL_SO,
 WALL_SE, WALL_NE, BUSH, CUT_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,

@@ -11,12 +11,12 @@
 
 global_t *set_up_global(int lives)
 {
-    global_t *global = malloc (sizeof(global_t));
+    global_t *global = malloc(sizeof(global_t));
 
     global->score = 0;
     global->win = sfFalse;
     global->lives = lives;
-    global->map = create_map(MAP_PATHS[BATTLE_PATH]);
+    global->map = create_map(MAP_PATHS[OUT_HOUSE]);
     global->player = set_up_player();
     return global;
 }
