@@ -34,7 +34,7 @@ global_t *global, config_t *conf)
     while (sfRenderWindow_isOpen(window) && *game_state == not_started) {
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = sfTime_asMilliseconds(clock->time);
-        ev_loop_start(window, game_state, elements->menu);
+        ev_loop_start(game_state, elements);
         if (clock->millisec > conf->confs[refresh_rate_ov_st]) {
             sfRenderWindow_drawSprite(window, elements->background->sprite, NULL);
             sfRenderWindow_drawText(window, elements->title->text, NULL);

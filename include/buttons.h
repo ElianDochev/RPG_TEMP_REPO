@@ -110,6 +110,19 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 //loops thoug a menu and passes the state obj to the func pointer
 // void loop_menu(button_text_t *botton, states *state, sfEvent event,
 // sfRenderWindow *window);
+////////////////////////////////////////////////////////////
+/// \brief func used in a loop for the menu dispay in a evevent loop
+///
+/// \param button     the button to be operated on
+/// \param element    thing that will be passed to the button func
+///                   typecast must be done in the func itself
+/// \param event      the event to be checked to see if the button is clicked
+/// \param window     the window to be passed to the button func
+///
+///
+///////////////////////////////////////////////////////////
+void loop_menu(button_text_t *botton, void *element, sfEvent event,
+sfRenderWindow *window);
 /*###########################################################################
 #######################END OF TEXT BOTTONS SEGMENT###########################
 -----------------------------------------------------------------------------*/

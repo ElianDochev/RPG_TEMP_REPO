@@ -53,5 +53,7 @@ config_t *conf)
     elements->background = do_background(conf->paths[start_background],
     window);
     sfText_setColor(elements->title->text, TITLE_COLOR);
+    elements->window = window;
+    elements->conf = conf;
     return elements;
 }
