@@ -26,7 +26,7 @@ global_t *global, config_t *conf)
 {
     start_menu_elements_t *elements = init_start_elements(window, conf);
 
-    sfText_setColor(elements->title->text, sfBlue);
+    sfText_setColor(elements->title->text, sfGreen);
     reset_global(global, conf->confs[conf_lives]);
     while (sfRenderWindow_isOpen(window) && *game_state == not_started) {
         ev_loop_start(window, game_state, elements->menu);

@@ -15,6 +15,7 @@
 typedef sprite_t cursor_t;
 static char *options_msg[] = {"START", "HOW TO PLAY", "OPTION", "QUIT", NULL};
     #define FONT_STMENU "./resources/fonts/orange juice 2.0.ttf"
+    #define TITLE_COLOR sfGreen
 //draws the menu on the screen
 void draw_menu(text_t **menu , sfRenderWindow *window);
 //event loop for start menu

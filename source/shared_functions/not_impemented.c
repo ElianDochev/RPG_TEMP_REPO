@@ -52,7 +52,7 @@ void not_imp(void *ptr)
 {
     sfFont *font = sfFont_createFromFile(MSG_FONT_HELP);
     int running = 1;
-    void *color[] = {&sfRed, &sfBlue, &sfGreen};
+    void *color[] = {&sfWhite, &sfBlue, &sfGreen};
     sfRenderWindow *window = ( sfRenderWindow *) ptr;
     sfVector2f vect = con_vu_to_vf(get_center_xy_pcn(window, -0.08f, -0.05f));
     text_t *title = init_text(N_IMP_MSG, font, 30 , &vect);
@@ -62,6 +62,7 @@ void not_imp(void *ptr)
     create_fvector(0, 0), 40), n_imp_button, action);
     cursor_t *cursor = set_up_cursor(N_IMP_PATH_CURSOR);
 
+    sfText_setFillColor(title->text, sfRed);
     while (sfRenderWindow_isOpen(window) && running) {
         local_ev_loop(window, menu, &running);
         display_things(window, title, menu, cursor);

@@ -18,6 +18,7 @@ void const  **color, sfVector2f offset, int font_size)
     for (int i = 0; i < on_hover + 1; i++)
         info->bn_color[i] = color[i];
     info->font_size = font_size;
+    info->is_for_single_use = 1;
     return (info);
 }
 
@@ -27,6 +28,7 @@ char **msg_arr, void (*ptr[])(void *))
     int len = get_len_two_d(msg_arr);
     button_text_t **menu = malloc(sizeof(button_text_t *) * (len + 1));
 
+    info->is_for_single_use = 0;
     for (int i = 0; i < len; ++i) {
         menu[i] = init_button_text(info, ptr[i], font, msg_arr[i]);
         info->location.y += info->offset.y;

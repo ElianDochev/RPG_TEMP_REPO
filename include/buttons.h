@@ -40,6 +40,7 @@ typedef struct {
     void *bn_color[on_hover + 1];
     sfVector2f offset;
     int font_size;
+    char is_for_single_use;
 } button_text_info_t;
     #define START_MENU_SIZE 30
 //0 - on_idle color, 1 - on_clikc, 2 - on_hover color
