@@ -42,15 +42,6 @@ typedef struct {
     int font_size;
     char is_for_single_use;
 } button_text_info_t;
-    #define START_MENU_SIZE 30
-//0 - on_idle color, 1 - on_clikc, 2 - on_hover color
-static const void *bn_states_color[] = {&sfYellow, &sfBlue, &sfRed};
-
-/* this is an altarnitive for custom colors
-static const sfColor bn_states_color[] = {
- {.a = , .b = , .g = , .r = },//idle
- {.a = , .b = , .g = , .r = },//on_click
- {.a = , .b = , .g = , .r = }};//on_hover */
 
 //checks if the mouse is on the text button location
 int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);

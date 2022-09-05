@@ -32,8 +32,8 @@ sfFont *font, char *msg)
     button->bn_color[idle_bn]  = *(sfColor *) info->bn_color[idle_bn];
     button->bn_color[on_click] = *(sfColor *) info->bn_color[on_click];
     button->bn_color[on_hover] = *(sfColor *) info->bn_color[on_hover];
-    button->hitbox = sfText_getGlobalBounds(button->text->text);
     sfText_setFillColor(button->text->text, button->bn_color[idle_bn]);
+    button->hitbox = sfText_getGlobalBounds(button->text->text);
     if (info->is_for_single_use == 1)
         xfree((void **) &info);
     return button;

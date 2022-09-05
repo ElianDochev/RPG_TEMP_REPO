@@ -48,13 +48,13 @@ static const char *conf_err_msg_two =
 "Width\nBpp\nFrame_rate\nMusic_volume\nSound_volume\nFullscrene\n"
 "Cursor_path\nFont_start\nLives\nStart_bg\nStart_music\n!!! CASE SENSITIVE\n";
 //the required attrubutes
-static const char *needed_unsigned[] = {"Refresh_rate=", "Height=", "Width=",
-"Bpp=", "Frame_rate=", "Music_volume=", "Sound_volume=",
+static const char *needed_unsigned[] = {"Refresh_rate_over_start=",
+"Height=", "Width=", "Bpp=", "Frame_rate=", "Music_volume=", "Sound_volume=",
 "Fullscrene=", "Lives=", NULL};
 static const char *needed_paths[] = {"Cursor_path=" , "Font_start=", "Start_bg=",
 "Start_music=", "Font_gm_over=", "Gm_over_bg=", "Gm_over_music=", NULL};
 //used for a loop in config init
-typedef enum {refresh_rate_cf, height_cf, width_cf, bpp_cf,
+typedef enum {refresh_rate_ov_st, height_cf, width_cf, bpp_cf,
 frame_rate_cf, music_vol_cf, sound_vol_cf, fullscreen_cf,
 conf_lives, confs_count} confs;
 typedef enum {cursor_path, start_font, start_background, start_music,

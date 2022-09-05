@@ -39,12 +39,17 @@ global_t *global, config_t *conf)
     control_blocks[*game_state](window, game_state, global, conf);
 }
 
+void destroy_global(global_t *global)
+{
+    //destroy_map(global->map);
+    free(global);
+}
+
 void main_game_loop(int *error)
 {
     config_t *config = set_up_config();
     sfRenderWindow *window = config != NULL ? create_window(config) : NULL;
     states game_state = gm_over;
-    sfClock *clock = sfClock_create();
     global_t *global = set_up_global(config->confs[conf_lives]);
 
     if (window == NULL) {
@@ -56,6 +61,6 @@ void main_game_loop(int *error)
         check_game_state(window, &game_state, global, config);
     }
     xfree((void **) &config);
-    sfClock_destroy(clock);
+    destroy_global(global);
     sfRenderWindow_destroy(window);
 }
