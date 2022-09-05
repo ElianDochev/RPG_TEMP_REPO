@@ -13,11 +13,14 @@
     #define MAX_X 30
     #define TEXTURES_NB 23
 
+enum {OUT_HOUSE, FIRST_PATH, BATTLE_PATH};
+static const char *MAP_PATHS[] = {"maps/out_house_.front",
+"maps/first_path.front", "maps/battle_path.front"};
 enum {GROUND, WALL_UP, WALL_LEFT, WALL_DOWN, WALL_RIGHT, WALL_NO, WALL_SO,
-WALL_SE, WALL_NE, BUSH, CUTED_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,
+WALL_SE, WALL_NE, BUSH, CUT_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,
 PATH, CHEST, OPEN_CHEST, HOUSE, HOUSE_TILE, MOVABLE_ROCK};
 static const char TEXT_CHARS[] = " -(_)/oe\\xbgtrSfp=cCHhR";
-static const char *PATHS_NAME[] = {"tile_sets/ground_tile.png",
+static const char *TILES_PATHS[] = {"tile_sets/ground_tile.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",

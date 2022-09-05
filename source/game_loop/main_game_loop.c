@@ -15,7 +15,7 @@ global_t *set_up_global(int lives)
     global->score = 0;
     global->win = sfFalse;
     global->lives = lives;
-    global->map = create_map("maps/out_house.front");
+    global->map = create_map(MAP_PATHS[BATTLE_PATH]);
     return global;
 }
 

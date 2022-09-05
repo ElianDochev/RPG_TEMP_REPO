@@ -19,7 +19,7 @@ global_t *global, config_t *conf)
         clock->millisec = sfTime_asMilliseconds(clock->time);
         ev_loop_running(window, game_state);
         sfRenderWindow_clear(window, sfBlack);
-        if (clock->millisec > 300) {
+        if (clock->millisec > 350) {
             anim_flowers(global->map, &i);
             sfClock_restart(clock->clock);
         }
