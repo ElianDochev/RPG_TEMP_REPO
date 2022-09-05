@@ -11,28 +11,29 @@
     #include "sprites.h"
     #define MAX_Y 16
     #define MAX_X 30
-    #define TEXTURES_NB 21
+    #define TEXTURES_NB 23
 
 enum {GROUND, WALL_UP, WALL_LEFT, WALL_DOWN, WALL_RIGHT, WALL_NO, WALL_SO,
-WALL_SE, WALL_NE, BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT, PATH, CHEST,
-OPEN_CHEST, HOUSE, HOUSE_TILE};
-static const char TEXT_CHARS[] = " -(_)/oe\\xgtrSfp=cCHh";
+WALL_SE, WALL_NE, BUSH, CUTED_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,
+PATH, CHEST, OPEN_CHEST, HOUSE, HOUSE_TILE, MOVABLE_ROCK};
+static const char TEXT_CHARS[] = " -(_)/oe\\xbgtrSfp=cCHhR";
 static const char *PATHS_NAME[] = {"tile_sets/ground_tile.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
-"tile_sets/bush_tile.png", "tile_sets/grass_tile.png",
-"tile_sets/tree.png", "tile_sets/rock_tile.png", "tile_sets/sign.png",
-"tile_sets/flower.png", "tile_sets/plant.png", "tile_sets/path_tile.png",
-"tile_sets/Chest.png", "tile_sets/open_chest.png", "tile_sets/house.png",
-"tile_sets/house_tile.png"};
+"tile_sets/bush_tile.png", "tile_sets/bush_tile.png",
+"tile_sets/grass_tile.png", "tile_sets/tree.png", "tile_sets/rock_tile.png",
+"tile_sets/sign.png", "tile_sets/flower.png", "tile_sets/plant.png",
+"tile_sets/path_tile.png", "tile_sets/chest.png", "tile_sets/chest.png",
+"tile_sets/house.png", "tile_sets/house_tile.png",
+"tile_sets/movable_rock.png"};
 static const int RECT[][4] = {{0, 16, 16, 0}, {0, 16, 16, 16}, {16, 16, 16, 0},
 {32, 16, 16, 16}, {16, 16, 16, 32}, {0, 16, 16, 0}, {32, 16, 16, 0},
-{32, 16, 16, 32}, {0, 16, 16, 32}, {0, 16, 16, 0}, {0, 16, 16, 0},
-{0, 80, 64, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 0},
-{0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 16}, {0, 96, 96, 0},
-{0, 16, 16, 0}};
+{32, 16, 16, 32}, {0, 16, 16, 32}, {0, 16, 16, 0}, {0, 16, 16, 16},
+{0, 16, 16, 0}, {0, 80, 64, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 0},
+{0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 16}, {0, 96, 96, 0},
+{0, 16, 16, 0}, {0, 16, 16, 0}};
 
 typedef struct map
 {
