@@ -10,7 +10,7 @@
 
 void anim_flowers(map_t *map, int *i)
 {
-    map->textures[FLOWER] = sfTexture_createFromFile(PATHS_NAME[FLOWER],
+    map->textures[FLOWER] = sfTexture_createFromFile(TILES_PATHS[FLOWER],
     get_int_rect(RECT[FLOWER][0], RECT[FLOWER][1], RECT[FLOWER][2],
     RECT[FLOWER][3] + (RECT[FLOWER][2] * *i)));
     map->sprites[FLOWER] = set_sprite(map->textures[FLOWER], NULL, NULL,

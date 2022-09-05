@@ -8,6 +8,7 @@
 #include "map.h"
 #include "m_my.h"
 #include <fcntl.h>
+#include <stdio.h>
 #include <unistd.h>
 
 static char *get_map(char *path)
@@ -41,7 +42,7 @@ static sfTexture **init_map_textures(void)
     sfTexture **textures = malloc(sizeof(sfTexture *) * TEXTURES_NB);
 
     for (int i = 0; i < TEXTURES_NB; i++)
-        textures[i] = sfTexture_createFromFile(PATHS_NAME[i],
+        textures[i] = sfTexture_createFromFile(TILES_PATHS[i],
         get_int_rect(RECT[i][0], RECT[i][1], RECT[i][2], RECT[i][3]));
     for (int i = 0; i < TEXTURES_NB; i++)
         if (textures[i] != NULL)
@@ -56,8 +57,10 @@ map_t *create_map(char *path)
 
     if (map == NULL)
         return NULL;
-    if (buffer == NULL)
-        return NULL;
+    if (buffer == NULL) {
+        fprintf(stderr, "INVALID MAP\n");
+        exit(84);
+    }
     map->textures = init_map_textures();
     map->map = my_str_to_word_array(buffer);
     map->sprites = create_array_of_sprites(map);
