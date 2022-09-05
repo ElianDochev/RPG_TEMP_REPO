@@ -3,3 +3,6 @@
 vgcore*
 .vscode/*
 my_rpg
+html/*
+*.out
+latex/*

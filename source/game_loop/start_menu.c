@@ -32,7 +32,7 @@ global_t *global, config_t *conf)
         ev_loop_start(window, game_state, elements->menu);
         sfRenderWindow_drawSprite(window, elements->background->sprite, NULL);
         sfRenderWindow_drawText(window, elements->title->text, NULL);
-        draw_menu_bntext(elements->menu, window, 0, 100);
+        draw_menu_bntext(elements->menu, window);
         set_cursor_to_mouse(elements->cursor, window);
         sfRenderWindow_display(window);
     }

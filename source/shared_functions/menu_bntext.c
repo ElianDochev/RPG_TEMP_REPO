@@ -8,26 +8,40 @@
 #include "buttons.h"
 #include "main.h"
 
-button_text_t **set_up_menu_bntext(sfFont *font, sfVector2f vect,
+button_text_info_t *init_button_text_info(sfVector2f location,
+void const  **color, sfVector2f offset, int font_size)
+{
+    button_text_info_t *info = malloc(sizeof(button_text_info_t));
+
+    info->location = location;
+    info->offset = offset;
+    for (int i = 0; i < on_hover + 1; i++)
+        info->bn_color[i] = color[i];
+    info->font_size = font_size;
+    return (info);
+}
+
+button_text_t **set_up_menu_bntext(sfFont *font, button_text_info_t *info,
 char **msg_arr, void (*ptr[])(void *))
 {
     int len = get_len_two_d(msg_arr);
     button_text_t **menu = malloc(sizeof(button_text_t *) * (len + 1));
 
-    for (int i = 0; i < len; ++i)
-        menu[i] = init_button_text(vect, ptr[i], font, msg_arr[i]);
+    for (int i = 0; i < len; ++i) {
+        menu[i] = init_button_text(info, ptr[i], font, msg_arr[i]);
+        info->location.y += info->offset.y;
+        info->location.x += info->offset.x;
+    }
     menu[len] = NULL;
+    xfree((void **) &info);
     return menu;
 }
 
-void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window,
-float offset_x, float offset_y)
+void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window)
 {
     sfVector2f vect = sfText_getPosition(menu[0]->text->text);
 
     for (int i = 0; menu[i] ; ++i) {
-        sfText_setPosition(menu[i]->text->text,
-        create_fvector(vect.x + i * offset_x, vect.y + i * offset_y));
         sfRenderWindow_drawText(window, menu[i]->text->text, NULL);
     }
 }

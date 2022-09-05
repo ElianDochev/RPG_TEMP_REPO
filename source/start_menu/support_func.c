@@ -26,13 +26,15 @@ config_t *conf)
 {
     start_menu_elements_t *elements = malloc(sizeof(start_menu_elements_t));
     sfVector2f bg_size;
+    void *bn_color[] = {&sfYellow, &sfBlue, &sfRed};
 
     elements->main_font = sfFont_createFromFile(conf->paths[start_font]);
     elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05f, -0.3f));
     elements->title = init_text("my_rpg", elements->main_font, 50,
     &(elements->vect));
     elements->menu = set_up_menu_bntext(elements->main_font,
-    create_fvector(elements->vect.x, elements->vect.y + 100),
+    init_button_text_info(create_fvector(elements->vect.x,
+    elements->vect.y + 100), bn_color, create_fvector(0, 100), 50),
     options_msg, action_start_menu);
     elements->cursor = set_up_cursor(conf->paths[cursor_path]);
     elements->music = init_music(conf);

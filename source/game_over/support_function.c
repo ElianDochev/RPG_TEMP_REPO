@@ -24,13 +24,16 @@ config_t *conf)
 {
     game_over_elements_t *elements = malloc(sizeof(game_over_elements_t));
     sfVector2f bg_size;
+    void *bn_color[] = {&sfYellow, &sfBlue, &sfRed};
 
     elements->main_font = sfFont_createFromFile(conf->paths[gm_over_font]);
-    elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05 , -0.2));
+    elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.09f , 0));
     elements->msg = init_text(gm_over_msg, elements->main_font, 50,
     &elements->vect);
-    elements->menu = set_up_menu_bntext(elements->main_font, create_fvector
-    (elements->vect.x - 100, elements->vect.y + 200), gm_over_menu, action);
+    elements->menu = set_up_menu_bntext(elements->main_font,
+    init_button_text_info(create_fvector(elements->vect.x - 150,
+    elements->vect.y + 300), bn_color, create_fvector(500, 0), 45),
+    gm_over_menu, action);
     elements->cursor = set_up_cursor(conf->paths[cursor_path]);
     elements->music = init_music(conf);
     elements->background = set_sprite(NULL, conf->paths[gm_over_bg],
