@@ -7,6 +7,7 @@
 
 #include "main.h"
 #include "sprites.h"
+#include "player.h"
 
 global_t *set_up_global(int lives)
 {
@@ -16,6 +17,7 @@ global_t *set_up_global(int lives)
     global->win = sfFalse;
     global->lives = lives;
     global->map = create_map(MAP_PATHS[BATTLE_PATH]);
+    global->player = set_up_player();
     return global;
 }
 

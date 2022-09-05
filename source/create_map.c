@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static char *get_map(char *path)
+char *get_map(char *path)
 {
     char *buffer = malloc(sizeof(char) * (MAX_X + 1) * MAX_Y + 1);
     int fd = 0;
