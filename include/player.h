@@ -13,6 +13,8 @@
     #define MAX_X 30
     #define PLAYER_TEXTURE_NB 9
 
+static const char *PLAYER_MAP_PATHS[] = {"maps/out_house.back",
+"maps/first_path.back", "maps/battle_path.back"};
 enum {WLEFT, WRIGHT, WUP, WDOWN, HLEFT, HRIGHT, HUP, HDOWN, BOMB};
 static const char PLAYER_TEXT_CHARS[] = "B";
 static const char *PLAYER_PATHS_NAME[] = {"tile_sets/player_walk_left.png",
@@ -34,7 +36,7 @@ typedef struct player {
     int move;
 } player_t;
 
-player_t *set_up_player(void);
+player_t *set_up_player(char *path);
 char *get_map(char *path);
 void draw_player(sfRenderWindow *window, player_t *player);
 void anim_player(player_t *player, int *j);
