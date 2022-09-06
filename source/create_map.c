@@ -57,10 +57,8 @@ map_t *create_map(char *path)
 
     if (map == NULL)
         return NULL;
-    if (buffer == NULL) {
-        fprintf(stderr, "INVALID MAP\n");
-        exit(84);
-    }
+    if (buffer == NULL)
+        return NULL;
     map->textures = init_map_textures();
     map->map = my_str_to_word_array(buffer);
     map->sprites = create_array_of_sprites(map);
