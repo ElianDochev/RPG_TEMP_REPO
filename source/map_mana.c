@@ -40,6 +40,11 @@ sfRenderWindow *window)
         sfSprite_setPosition(map->sprites[TREE]->sprite, *pos);
         sfRenderWindow_drawSprite(window, map->sprites[TREE]->sprite, NULL);
     }
+    if (c == TEXT_CHARS[HOUSE_INTERIOR]) {
+        sfSprite_setPosition(map->sprites[HOUSE_INTERIOR]->sprite, *pos);
+        sfRenderWindow_drawSprite(window, map->sprites[HOUSE_INTERIOR]->sprite,
+        NULL);
+    }
 }
 
 void draw_map(sfRenderWindow *window, map_t *map)

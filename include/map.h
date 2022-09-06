@@ -11,15 +11,15 @@
     #include "sprites.h"
     #define MAX_Y 16
     #define MAX_X 30
-    #define TEXTURES_NB 23
+    #define TEXTURES_NB 24
 
-enum {OUT_HOUSE, FIRST_PATH, BATTLE_PATH};
+enum {OUT_HOUSE, FIRST_PATH, BATTLE_PATH, HOUSE_INTERIOR_MAP};
 static const char *MAP_PATHS[] = {"maps/out_house.front",
-"maps/first_path.front", "maps/battle_path.front"};
+"maps/first_path.front", "maps/battle_path.front", "maps/house_interior.front"};
 enum {GROUND, WALL_UP, WALL_LEFT, WALL_DOWN, WALL_RIGHT, WALL_NO, WALL_SO,
 WALL_SE, WALL_NE, BUSH, CUT_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,
-PATH, CHEST, OPEN_CHEST, HOUSE, HOUSE_TILE, MOVABLE_ROCK};
-static const char TEXT_CHARS[] = " -(_)/oe\\xbgtrSfp=cCHhR";
+PATH, CHEST, OPEN_CHEST, HOUSE, HOUSE_INTERIOR, MOVABLE_ROCK, NEUTRAL_TILE};
+static const char TEXT_CHARS[] = " -(_)/oe\\xbgtrSfp=cCHhRn";
 static const char *TILES_PATHS[] = {"tile_sets/ground_tile.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
 "tile_sets/wall_tiles.png", "tile_sets/wall_tiles.png",
@@ -29,14 +29,14 @@ static const char *TILES_PATHS[] = {"tile_sets/ground_tile.png",
 "tile_sets/grass_tile.png", "tile_sets/tree.png", "tile_sets/rock_tile.png",
 "tile_sets/sign.png", "tile_sets/flower.png", "tile_sets/plant.png",
 "tile_sets/path_tile.png", "tile_sets/chest.png", "tile_sets/chest.png",
-"tile_sets/house.png", "tile_sets/house_tile.png",
-"tile_sets/movable_rock.png"};
+"tile_sets/house.png", "tile_sets/house_interior.png",
+"tile_sets/movable_rock.png", "tile_sets/house_unseen.png"};
 static const int RECT[][4] = {{0, 16, 16, 0}, {0, 16, 16, 16}, {16, 16, 16, 0},
 {32, 16, 16, 16}, {16, 16, 16, 32}, {0, 16, 16, 0}, {32, 16, 16, 0},
 {32, 16, 16, 32}, {0, 16, 16, 32}, {0, 16, 16, 0}, {0, 16, 16, 16},
 {0, 16, 16, 0}, {0, 80, 64, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 0},
 {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}, {0, 16, 16, 16}, {0, 96, 96, 0},
-{0, 16, 16, 0}, {0, 16, 16, 0}};
+{0, 160, 208, 0}, {0, 16, 16, 0}, {0, 16, 16, 0}};
 
 typedef struct map
 {
