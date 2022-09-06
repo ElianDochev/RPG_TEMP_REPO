@@ -84,8 +84,6 @@ typedef struct time_management
 } time_mana_t;
 //global object struct
 typedef struct {
-    int score;
-    sfBool win;
     int lives;
     map_t *map;
     player_t *player;

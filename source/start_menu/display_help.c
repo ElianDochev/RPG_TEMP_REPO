@@ -52,7 +52,6 @@ button_text_t **menu, text_t *text, time_mana_t *clock)
         }
     }
     sfClock_destroy(clock->clock);
-    free(clock);
 }
 
 void display_help(void *element)
@@ -76,4 +75,5 @@ void display_help(void *element)
     second_part(ele, menu, text, clock);
     destroy_menu_bntext(menu, 0);
     destroy_text(text, DESTOY_FONT);
+    free(clock);
 }
