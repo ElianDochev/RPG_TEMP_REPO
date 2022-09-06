@@ -28,6 +28,8 @@ SRC	=	source/tests/button.c						\
 		source/shared_functions/action_state.c		\
 		source/shared_functions/loop_menu.c			\
 		source/shared_functions/not_impemented.c	\
+		source/shared_functions/slider.c			\
+		source/shared_functions/slider_move.c		\
 		source/start_menu/support_func.c			\
 		source/start_menu/event_loop.c				\
 		source/start_menu/display_help.c			\
@@ -46,7 +48,7 @@ OBJ			=	$(SRC:.c=.o)
 
 DIR = -L./lib/ -L./m_lib/
 
-LIB 		=	-lcsfml-system -lcsfml-graphics -lcsfml-audio -lcsfml-window -lmy
+LIB 		=	-lcsfml-system -lcsfml-graphics -lcsfml-audio -lcsfml-window -lmy -lm
 
 all: compil
 
