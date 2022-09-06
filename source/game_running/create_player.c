@@ -34,17 +34,18 @@ static sfTexture **init_player_textures(void)
     return textures;
 }
 
-player_t *set_up_player(void)
+player_t *set_up_player(char *path)
 {
     player_t *player = malloc(sizeof(player_t));
 
     if (player == NULL)
         return NULL;
-    player->map =  my_str_to_word_array(get_map("maps/out_house.back"));
+    player->map =  my_str_to_word_array(get_map(path));
     player->textures = init_player_textures();
     player->sprites = init_player_sprites(player);
     player->direction = 0;
     player->attack = 0;
     player->move = 0;
+    player->bomb = 0;
     return player;
 }
