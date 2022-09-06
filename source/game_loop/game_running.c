@@ -22,7 +22,7 @@ void attack(player_t *player, time_mana_t *hit, sfRenderWindow *window)
     player->textures[player->direction + 4] = sfTexture_createFromFile(
     PLAYER_PATHS_NAME[player->direction + 4], NULL);
     player->sprites[player->direction + 4] = set_sprite(player->textures[
-    player->direction + 4], NULL, rect, get_sfvector2f(1.5, 1.5));
+    player->direction + 4], NULL, rect, get_sfvector2f(2, 2));
     sfSprite_setPosition(player->sprites[player->direction + 4]->sprite, pos);
     sfRenderWindow_drawSprite(window, player->
     sprites[player->direction + 4]->sprite, NULL);
