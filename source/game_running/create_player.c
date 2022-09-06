@@ -46,5 +46,6 @@ player_t *set_up_player(void)
     player->direction = 0;
     player->attack = 0;
     player->move = 0;
+    player->bomb = 0;
     return player;
 }
