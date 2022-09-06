@@ -11,6 +11,7 @@
     #include "utilities.h"
     #include "sprites.h"
     #include "map.h"
+    #include "player.h"
 
 /*###########################################################################
 #######################BEGINING OF STATE FUNC SEGMENT########################
@@ -87,6 +88,7 @@ typedef struct {
     sfBool win;
     int lives;
     map_t *map;
+    player_t *player;
     time_mana_t clock;
 } global_t;
 // inits the global variable
@@ -170,6 +172,7 @@ void not_imp(void *ptr);
 // draws map on screen with sfrenderwindow
 void draw_map(sfRenderWindow *window,map_t *map);
 void anim_flowers(map_t *map, int *i);
+int move_player(player_t *player, time_mana_t *mo);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/

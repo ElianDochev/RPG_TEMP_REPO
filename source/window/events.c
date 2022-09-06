@@ -27,7 +27,21 @@ void ev_loop_paused(sfRenderWindow *window, states *state)
     }
 }
 
-void ev_loop_running(sfRenderWindow *window, states *state)
+void event_move_player(global_t *global, sfEvent event)
+{
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyLeft)
+        global->player->direction = 0;
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyRight)
+        global->player->direction = 1;
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyUp)
+        global->player->direction = 2;
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyDown)
+        global->player->direction = 3;
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
+        global->player->attack = 1;
+}
+
+void ev_loop_running(sfRenderWindow *window, states *state, global_t *global)
 {
     sfEvent event;
 
@@ -42,6 +56,14 @@ void ev_loop_running(sfRenderWindow *window, states *state)
             *state == running ? *state = paused :
             *state == paused ? *state = running : 0;
         }
+        if ((event.type == sfEvtKeyPressed && event.key.code == sfKeyLeft) ||
+        (event.type == sfEvtKeyPressed && event.key.code == sfKeyRight) ||
+        (event.type == sfEvtKeyPressed && event.key.code == sfKeyUp) ||
+        (event.type == sfEvtKeyPressed && event.key.code == sfKeyDown))
+            global->player->move = 1;
+        else
+            global->player->move = 0;
+        event_move_player(global, event);
     }
 }
 
