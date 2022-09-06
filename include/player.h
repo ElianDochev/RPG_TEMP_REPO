@@ -11,15 +11,15 @@
     #include "sprites.h"
     #define MAX_Y 16
     #define MAX_X 30
-    #define PLAYER_TEXTURE_NB 4
+    #define PLAYER_TEXTURE_NB 5
 
-enum {WLEFT, WRIGHT, WUP, WDOWN};
+enum {WLEFT, WRIGHT, WUP, WDOWN, HRIGHT};
 static const char PLAYER_TEXT_CHARS[] = "B";
 static const char *PLAYER_PATHS_NAME[] = {"tile_sets/player_walk_left.png",
 "tile_sets/player_walk_right.png", "tile_sets/player_walk_up.png",
-"tile_sets/player_walk_down.png"};
-static const int PLAYER_RECT[][4] = {{0, 48, 48, 0}, {0, 48, 48, 0},
-{0, 48, 48, 0}, {0, 48, 48, 0}};
+"tile_sets/player_walk_down.png", "tile_sets/player_hit_right.png"};
+static const int PLAYER_RECT[][5] = {{0, 48, 48, 0}, {0, 48, 48, 0},
+{0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0}};
 
 typedef struct player {
     char **map;

@@ -37,6 +37,8 @@ void event_move_player(global_t *global, sfEvent event)
         global->player->direction = 2;
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyDown)
         global->player->direction = 3;
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
+        global->player->attack = 1;
 }
 
 void ev_loop_running(sfRenderWindow *window, states *state, global_t *global)
