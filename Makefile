@@ -40,7 +40,7 @@ SRC	=	source/tests/button.c						\
 		source/game_running/create_player.c 		\
 		source/game_running/player_manage.c 		\
 
-CPPFLAGS = -I./include -I./m_lib/my
+CPPFLAGS = -I./include -I./m_lib/my -g3
 
 OBJ			=	$(SRC:.c=.o)
 

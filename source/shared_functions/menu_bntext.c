@@ -51,11 +51,10 @@ void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window)
 void destroy_menu_bntext(button_text_t **menu, int mask)
 {
     for (int i = 0; menu[i]; ++i) {
-        if (CHK_FLAG(mask, DESTOY_FONT)) {
+        if (CHK_FLAG(mask, DESTOY_FONT) == 1) {
             sfFont_destroy(menu[i]->text->font);
             UNSET_FLAG(mask, DESTOY_FONT);
         }
-            xfree((void **) &menu[i]);
         destroy_button_text(menu[i], 0);
     }
     xfree((void **) &menu);

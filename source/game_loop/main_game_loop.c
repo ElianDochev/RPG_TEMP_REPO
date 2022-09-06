@@ -51,7 +51,7 @@ void main_game_loop(int *error)
 {
     config_t *config = set_up_config();
     sfRenderWindow *window = config != NULL ? create_window(config) : NULL;
-    states game_state = not_started;
+    states game_state = gm_over;
     global_t *global = set_up_global(config->confs[conf_lives]);
 
     if (window == NULL) {
