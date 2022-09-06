@@ -35,15 +35,24 @@ button_text_t **menu, text_t *text, time_mana_t *clock)
     int running = 1;
     sfRenderWindow *window = element->window;
     config_t *config = element->conf;
+    sfVector2f vect = con_vu_to_vf(get_center_xy_pcn(window, -0.43f, -0.4f));
 
+    sfText_setPosition(text->text, vect);
     while (sfRenderWindow_isOpen(window) && running) {
         local_event_loop(window, &running, menu);
-        sfRenderWindow_drawSprite(window, element->background->sprite, NULL);
-        sfRenderWindow_drawText(window, text->text, NULL);
-        draw_menu_bntext(menu, window);
-        set_cursor_to_mouse(element->cursor, window);
-        sfRenderWindow_display(window);
+        clock->time = sfClock_getElapsedTime(clock->clock);
+        clock->millisec = clock->time.microseconds;
+        if (clock->millisec > config->confs[refresh_rate_ov_st]) {
+            sfRenderWindow_drawSprite(window, element->background->sprite, NULL);
+            sfRenderWindow_drawText(window, text->text, NULL);
+            draw_menu_bntext(menu, window);
+            set_cursor_to_mouse(element->cursor, window);
+            sfRenderWindow_display(window);
+            sfClock_restart(clock->clock);
+        }
     }
+    sfClock_destroy(clock->clock);
+    free(clock);
 }
 
 void display_help(void *element)
@@ -53,18 +62,18 @@ void display_help(void *element)
     void (*fptr[1])(void *) = {exit_help};
     void *color[3] = {&sfWhite, &sfBlack, &sfYellow};
     button_text_t **menu =
-    set_up_menu_bntext(sfFont_createFromFile(ele->conf->paths[gm_over_font]),
-    init_button_text_info(con_vu_to_vf(get_center_xy_pcn(ele->window
-    , 0.f, 0.5f)), color, (sfVector2f) {0, 0}, 40),
-    (char *[]) {"Go back", NULL}, fptr);
+    set_up_menu_bntext(ele->main_font,init_button_text_info(con_vu_to_vf
+    (get_center_xy_pcn(ele->window, -0.05f, 0.1f)), color,
+    (sfVector2f) {0, 0}, 40), (char *[]) {"Go back", NULL}, fptr);
     text_t *text = NULL;
     time_mana_t *clock = get_clock();
 
     if (buff == NULL)
         return;
-    text = init_text(buff, ele->main_font, FONT_SIZE_HELP, NULL);
+    text = init_text(buff,sfFont_createFromFile
+    ("resources/fonts/orange_juice_2.0.ttf"), FONT_SIZE_HELP, NULL);
     sfText_setFillColor(text->text, FONT_COLOR_HELP);
     second_part(ele, menu, text, clock);
-    destroy_menu_bntext(menu, DESTOY_FONT);
-    destroy_text(text, 0);
+    destroy_menu_bntext(menu, 0);
+    destroy_text(text, DESTOY_FONT);
 }

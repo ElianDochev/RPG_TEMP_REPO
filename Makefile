@@ -38,7 +38,7 @@ SRC	=	source/tests/button.c						\
 		source/create_map.c							\
 		source/map_mana.c							\
 
-CPPFLAGS = -I./include -I./m_lib/my
+CPPFLAGS = -I./include -I./m_lib/my -g3
 
 OBJ			=	$(SRC:.c=.o)
 
