@@ -59,7 +59,15 @@ config_t *conf);
 /*###########################################################################
 #######################BEGINING OF HELP SEGMENT##############################
 #############################################################################*/
-
+//colors used for sliders in option menu in start menu
+static const void *option_colors[] = {&sfWhite, &sfBlue, NULL, &sfBlack};
+//the thinness of outline of the sliders in option menu in start menu
+// bar =0 , circle = 2
+static const sfVector2f option_thinkness = {0, 2};
+//callback for the volume slider in option menu in start menu
+void change_volume(void *arg, float percent);
+//callback for the sound slider in option menu in start menu
+void change_sound(void *arg, float percent);
 
 /*###########################################################################
 #######################END OF HELP SEGEMENT##################################

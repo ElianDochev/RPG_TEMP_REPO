@@ -24,12 +24,20 @@ time_mana_t *clock)
     free(elements);
 }
 
+void set_values(sfVector2f vect, config_t *conf, start_menu_elements_t *elements)
+{
+    if (vect.x != 0)
+        conf->confs[sound_vol_cf] = vect.x;
+    conf->confs[music_vol_cf] = (int) sfMusic_getVolume(elements->music);
+}
+
 void start_menu(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
     start_menu_elements_t *elements = init_start_elements(window, conf);
     time_mana_t *clock = get_clock();
 
+    elements->vect = (sfVector2f) {0, 0};
     reset_global(global, conf->confs[conf_lives]);
     while (sfRenderWindow_isOpen(window) && *game_state == not_started) {
         clock->time = sfClock_getElapsedTime(clock->clock);
@@ -44,6 +52,6 @@ global_t *global, config_t *conf)
             sfClock_restart(clock->clock);
         }
     }
-    conf->confs[music_vol_cf] = (int) sfMusic_getVolume(elements->music);
+    set_values(elements->vect, conf, elements);
     destroy_element(elements, clock);
 }

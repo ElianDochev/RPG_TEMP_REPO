@@ -34,6 +34,7 @@ SRC	=	source/tests/button.c						\
 		source/start_menu/event_loop.c				\
 		source/start_menu/display_help.c			\
 		source/start_menu/options_function.c		\
+		source/start_menu/option_function_callbacks.c \
 		source/game_over/support_function.c			\
 		source/game_over/event_loop.c				\
 		source/get.c								\
