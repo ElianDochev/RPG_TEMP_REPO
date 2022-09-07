@@ -44,5 +44,6 @@ global_t *global, config_t *conf)
             sfClock_restart(clock->clock);
         }
     }
+    conf->confs[music_vol_cf] = (int) sfMusic_getVolume(elements->music);
     destroy_element(elements, clock);
 }
