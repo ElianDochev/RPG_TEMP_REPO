@@ -34,22 +34,12 @@ button_text_t *button)
     }
 }
 
-void option(void *elements)
+static void second_part(start_menu_elements_t *element,
+button_text_t *button, slider_t *slider, time_mana_t *clock)
 {
-    start_menu_elements_t *element = (start_menu_elements_t *) elements;
-    sfRenderWindow *window = element->window;
-    config_t *config = element->conf;
-    void *colors[] = {&sfWhite, &sfBlack, NULL, NULL};
-    void *btn_color[]= {&sfWhite, &sfBlack, &sfBlue};
-    slider_t *slider = init_slider(set_up_slider_text(sfWhite, 30,
-    element->main_font, "Music_Volume"), set_up_slider_slide(colors,
-    (sfVector2f){300, 10}, (sfVector2f){100, 16}, (sfVector2f){0, 0}),
-    &test, con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0)));
-    button_text_t *button = init_button_text(init_button_text_info(
-    con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0.2)), btn_color,
-    (sfVector2f) {0, 0}, 30), &exit_option, element->main_font, "Go back");
     int running = 1;
-    time_mana_t *clock = get_clock();
+    config_t *config = element->conf;
+    sfRenderWindow *window = element->window;
 
     while (sfRenderWindow_isOpen(window) && running) {
         local_event_loop(window, &running, button);
@@ -57,13 +47,34 @@ void option(void *elements)
         clock->millisec = clock->time.microseconds;
         if (clock->millisec > config->confs[refresh_rate_ov_st]) {
             sfRenderWindow_drawSprite(window, element->background->sprite, NULL);
-            draw_slider(window, slider, elements);
+            draw_slider(window, slider, (void *) element);
             sfRenderWindow_drawText(window, button->text->text, NULL);
             set_cursor_to_mouse(element->cursor, window);
             sfRenderWindow_display(window);
             sfClock_restart(clock->clock);
         }
     }
+}
+
+void option(void *elements)
+{
+    start_menu_elements_t *element = (start_menu_elements_t *) elements;
+    sfRenderWindow *window = element->window;
+    void *colors[] = {&sfWhite, &sfBlue, NULL, &sfBlack};
+    void *btn_color[]= {&sfWhite, &sfBlack, &sfBlue};
+    slider_t *slider = init_slider(set_up_slider_text(sfWhite, 30,
+    element->main_font, "Music_Volume"), set_up_slider_slide(colors,
+    (sfVector2f){300, 10}, (sfVector2f){100, 16}, (sfVector2f){0, 2}),
+    &test, con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0)));
+    button_text_t *button = init_button_text(init_button_text_info(
+    con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0.2)), btn_color,
+    (sfVector2f) {0, 0}, 30), &exit_option, element->main_font, "Go back");
+    int running = 1;
+    time_mana_t *clock = get_clock();
+
+    second_part(element, button, slider, clock);
+    destroy_button_text(button, 0);
     sfClock_destroy(clock->clock);
+    free(clock);
     destroy_slider(slider, 0);
 }

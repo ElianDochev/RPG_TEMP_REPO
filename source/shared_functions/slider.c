@@ -44,7 +44,7 @@ slider_info_slide_t slide_info, slider_t *slider, sfVector2f slider_loc)
     slider->knob = sfCircleShape_create();
     sfCircleShape_setRadius(slider->knob, slide_info.size.y / 2);
     sfCircleShape_setPosition(slider->knob, (sfVector2f) {slider_loc.x +
-    slide_info.size.x, slider_loc.y});
+    slide_info.size.x - 10, slider_loc.y});
     sfCircleShape_setFillColor(slider->knob, *(sfColor *) slide_info.colors[1]);
     slide_info.colors[3] != NULL ? sfCircleShape_setOutlineColor(slider->knob,
     *(sfColor *) slide_info.colors[3]) : 0;

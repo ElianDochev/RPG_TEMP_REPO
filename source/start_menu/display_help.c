@@ -58,7 +58,7 @@ void display_help(void *element)
 {
     start_menu_elements_t *ele = (start_menu_elements_t *)  element;
     char *buff = fopen_file("how_to_play.txt", "help file not found");
-    void (*fptr[1])(void *) = {exit};
+    void (*fptr[1])(void *) = {&exit_option};
     void *color[3] = {&sfWhite, &sfBlack, &sfYellow};
     button_text_t **menu =
     set_up_menu_bntext(ele->main_font,init_button_text_info(con_vu_to_vf
