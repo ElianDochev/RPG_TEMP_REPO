@@ -39,7 +39,7 @@ global_t *global, config_t *conf)
 
 void destroy_global(global_t *global)
 {
-    //destroy_map(global->map);
+    destroy_map(global->map);
     free(global);
 }
 

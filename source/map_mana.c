@@ -8,6 +8,15 @@
 #include "map.h"
 #include "m_my.h"
 
+void destroy_map(map_t *map)
+{
+    for (int y = 0; y < MAX_Y; y++)
+        free(map->map[y]);
+    free(map->sprites);
+    free(map->textures);
+    free(map->map);
+}
+
 void anim_flowers(map_t *map, int *i)
 {
     map->textures[FLOWER] = sfTexture_createFromFile(TILES_PATHS[FLOWER],

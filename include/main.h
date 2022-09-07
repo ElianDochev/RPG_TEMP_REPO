@@ -169,6 +169,10 @@ static char const *n_imp_button[] = {"Go back", NULL};
 void not_imp(void *ptr);
 // draws map on screen with sfrenderwindow
 void draw_map(sfRenderWindow *window,map_t *map);
+//destroys the map, textures and sprites
+void destroy_map(map_t *map);
+//changes the map
+void change_map(map_t *map, char *path);
 void anim_flowers(map_t *map, int *i);
 int move_player(player_t *player, time_mana_t *mo);
 /*###########################################################################

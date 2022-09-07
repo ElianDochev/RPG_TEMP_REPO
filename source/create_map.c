@@ -62,5 +62,21 @@ map_t *create_map(char *path)
     map->textures = init_map_textures();
     map->map = my_str_to_word_array(buffer);
     map->sprites = create_array_of_sprites(map);
+    free(buffer);
+    return map;
+}
+
+void change_map(map_t *map, char *path)
+{
+    char *buffer = get_map(path);
+    char **board = NULL;
+
+    if (buffer == NULL)
+        return NULL;
+    board = my_str_to_word_array(buffer);
+    for (int y = 0; y < MAX_Y; y++)
+        for (int x = 0; x < MAX_X; x++)
+            map->map[y][x] = board[y][x];
+    free_board(board);
     return map;
 }
