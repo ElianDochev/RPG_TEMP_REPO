@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-char *get_map(char *path)
+char *get_map(const char *path)
 {
     char *buffer = malloc(sizeof(char) * (MAX_X + 1) * MAX_Y + 1);
     int fd = 0;
@@ -50,7 +50,7 @@ static sfTexture **init_map_textures(void)
     return textures;
 }
 
-map_t *create_map(char *path)
+map_t *create_map(const char *path)
 {
     map_t *map = malloc(sizeof(map_t));
     char *buffer = get_map(path);
@@ -66,7 +66,7 @@ map_t *create_map(char *path)
     return map;
 }
 
-void change_map(map_t *map, char *path)
+void change_map(map_t *map, const char *path)
 {
     char *buffer = get_map(path);
 
@@ -76,5 +76,4 @@ void change_map(map_t *map, char *path)
     }
     free_board(map->map);
     map->map = my_str_to_word_array(buffer);
-    return map;
 }

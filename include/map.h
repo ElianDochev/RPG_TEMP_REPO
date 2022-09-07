@@ -56,7 +56,7 @@ typedef struct map
     sprite_t **sprites;
 } map_t;
 
-map_t *create_map(char *path);
+map_t *create_map(const char *path);
 void walls_textures_mana(sfTexture **textures);
 sprite_t *choose_wall_texture(int y, int x, map_t *map);
 
