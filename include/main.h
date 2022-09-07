@@ -172,7 +172,7 @@ void draw_map(sfRenderWindow *window,map_t *map);
 //destroys the map, textures and sprites
 void destroy_map(map_t *map);
 //changes the map
-void change_map(map_t *map, char *path);
+void change_map(map_t *map, const char *path);
 void anim_flowers(map_t *map, int *i);
 int move_player(player_t *player, time_mana_t *mo);
 /*###########################################################################

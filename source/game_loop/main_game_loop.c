@@ -14,7 +14,7 @@ global_t *set_up_global(int lives)
     global_t *global = malloc(sizeof(global_t));
 
     global->lives = lives;
-    global->map = create_map(MAP_PATHS[SANCTUARY_ENTRY]);
+    global->map = create_map(MAP_PATHS[SHOP_INTERIOR_MAP]);
     global->player = set_up_player(PLAYER_MAP_PATHS[OUT_HOUSE]);
     return global;
 }
