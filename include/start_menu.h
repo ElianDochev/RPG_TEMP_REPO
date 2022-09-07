@@ -44,6 +44,8 @@ struct start_menu_elements {
     sfRenderWindow *window;
     config_t *conf;
 };
+//callback for a button to end the running of the current option
+void exit_option(void *running);
 //initializes the elements of the start menu
 start_menu_elements_t *init_start_elements(sfRenderWindow *window,
 config_t *conf);

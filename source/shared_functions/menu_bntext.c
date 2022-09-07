@@ -41,8 +41,6 @@ char **msg_arr, void (*ptr[])(void *))
 
 void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window)
 {
-    sfVector2f vect = sfText_getPosition(menu[0]->text->text);
-
     for (int i = 0; menu[i] ; ++i) {
         sfRenderWindow_drawText(window, menu[i]->text->text, NULL);
     }
