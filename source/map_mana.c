@@ -29,7 +29,8 @@ void anim_flowers(map_t *map, int *i)
         *i = 0;
 }
 
-void draw_sprite(map_t *map, char c, sfVector2f *pos, sfRenderWindow *window)
+static void draw_sprite(map_t *map, char c, sfVector2f *pos,
+sfRenderWindow *window)
 {
     for (int i = 0; i < TEXTURES_NB; i++)
         if (c == TEXT_CHARS[i]) {
@@ -38,21 +39,22 @@ void draw_sprite(map_t *map, char c, sfVector2f *pos, sfRenderWindow *window)
         }
 }
 
-void draw_object_sprite(map_t *map, char c, sfVector2f *pos,
+static bool is_in_special(int nb)
+{
+    for (int i = 0; i < SPECIALS__NB; i++)
+        if (SPECIALS[i] == nb)
+            return true;
+    return false;
+}
+
+static void draw_special_sprite(map_t *map, char c, sfVector2f *pos,
 sfRenderWindow *window)
 {
-    if (c == TEXT_CHARS[HOUSE]) {
-        sfSprite_setPosition(map->sprites[HOUSE]->sprite, *pos);
-        sfRenderWindow_drawSprite(window, map->sprites[HOUSE]->sprite, NULL);
-    }
-    if (c == TEXT_CHARS[TREE]) {
-        sfSprite_setPosition(map->sprites[TREE]->sprite, *pos);
-        sfRenderWindow_drawSprite(window, map->sprites[TREE]->sprite, NULL);
-    }
-    if (c == TEXT_CHARS[HOUSE_INTERIOR]) {
-        sfSprite_setPosition(map->sprites[HOUSE_INTERIOR]->sprite, *pos);
-        sfRenderWindow_drawSprite(window, map->sprites[HOUSE_INTERIOR]->sprite,
-        NULL);
+    for (int i = 0; i < TEXTURES_NB; i++) {
+        if (c == TEXT_CHARS[i] && is_in_special(i)) {
+            sfSprite_setPosition(map->sprites[i]->sprite, *pos);
+            sfRenderWindow_drawSprite(window, map->sprites[i]->sprite, NULL);
+        }
     }
 }
 
@@ -71,7 +73,7 @@ void draw_map(sfRenderWindow *window, map_t *map)
     pos.y = 0;
     for (int y = 0; y < MAX_Y; y++) {
         for (int x = 0; x < MAX_X; x++) {
-            draw_object_sprite(map, map->map[y][x], &pos, window);
+            draw_special_sprite(map, map->map[y][x], &pos, window);
             pos.x += 64;
         }
         pos.x = 0;

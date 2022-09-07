@@ -69,14 +69,12 @@ map_t *create_map(char *path)
 void change_map(map_t *map, char *path)
 {
     char *buffer = get_map(path);
-    char **board = NULL;
 
-    if (buffer == NULL)
-        return NULL;
-    board = my_str_to_word_array(buffer);
-    for (int y = 0; y < MAX_Y; y++)
-        for (int x = 0; x < MAX_X; x++)
-            map->map[y][x] = board[y][x];
-    free_board(board);
+    if (buffer == NULL) {
+        write(STDERR_FILENO, "Invalid path or map can't change map\n", 38);
+        return;
+    }
+    free_board(map->map);
+    map->map = my_str_to_word_array(buffer);
     return map;
 }

@@ -59,7 +59,7 @@ void ev_loop_running(sfRenderWindow *window, states *state, global_t *global)
             *state == paused ? *state = running : 0;
         }
         if (event.type == sfEvtKeyPressed && sfKeyboard_isKeyPressed(sfKeyC))
-            change_map(global->map, MAP_PATHS[OUT_HOUSE]);
+            change_map(global->map, MAP_PATHS[BATTLE_PATH]);
         if ((event.type == sfEvtKeyPressed && event.key.code == sfKeyLeft) ||
         (event.type == sfEvtKeyPressed && event.key.code == sfKeyRight) ||
         (event.type == sfEvtKeyPressed && event.key.code == sfKeyUp) ||
