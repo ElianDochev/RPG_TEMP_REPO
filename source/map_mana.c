@@ -39,14 +39,6 @@ sfRenderWindow *window)
         }
 }
 
-static bool is_in_special(int nb)
-{
-    for (int i = 0; i < SPECIALS__NB; i++)
-        if (SPECIALS[i] == nb)
-            return true;
-    return false;
-}
-
 static void draw_special_sprite(map_t *map, char c, sfVector2f *pos,
 sfRenderWindow *window)
 {

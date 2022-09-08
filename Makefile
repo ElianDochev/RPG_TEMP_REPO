@@ -42,6 +42,7 @@ SRC	=	source/tests/button.c						\
 		source/map_mana.c							\
 		source/game_running/create_player.c 		\
 		source/game_running/player_manage.c 		\
+		source/is.c
 
 CPPFLAGS = -I./include -I./m_lib/my -g3
 
@@ -49,7 +50,8 @@ OBJ			=	$(SRC:.c=.o)
 
 DIR = -L./lib/ -L./m_lib/
 
-LIB 		=	-lcsfml-system -lcsfml-graphics -lcsfml-audio -lcsfml-window -lmy -lm
+LIB 		=	-lcsfml-system -lcsfml-graphics -lcsfml-audio -lcsfml-window \
+				-lmy -lm
 
 all: compil
 

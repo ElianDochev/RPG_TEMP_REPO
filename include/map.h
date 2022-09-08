@@ -8,6 +8,7 @@
 #ifndef MAP_H_
     #define MAP_H_
 
+    #include <stdbool.h>
     #include "sprites.h"
     #define MAX_Y 16
     #define MAX_X 30
@@ -59,5 +60,7 @@ typedef struct map
 map_t *create_map(const char *path);
 void walls_textures_mana(sfTexture **textures);
 sprite_t *choose_wall_texture(int y, int x, map_t *map);
+//returns true if nb is in the array SPECIALS[]
+bool is_in_special(int nb);
 
 #endif
