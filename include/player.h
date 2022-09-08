@@ -34,6 +34,7 @@ typedef struct player {
     int attack;
     int bomb;
     int move;
+    int nbr_map;
 } player_t;
 
 player_t *set_up_player(char *path);

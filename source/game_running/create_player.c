@@ -47,5 +47,6 @@ player_t *set_up_player(char *path)
     player->attack = 0;
     player->move = 0;
     player->bomb = 0;
+    player->nbr_map = 0;
     return player;
 }

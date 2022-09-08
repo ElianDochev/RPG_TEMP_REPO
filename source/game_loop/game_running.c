@@ -64,6 +64,62 @@ void bomb(player_t *player, time_mana_t *bom, sfRenderWindow *window)
     }
 }
 
+int choose_map(player_t *player, int y, int x)
+{
+    if (player->map[y][x + 1] >= '0' && player->map[y][x + 1] <= '9')
+        return player->map[y][x + 1] - '0';
+    if (player->map[y][x - 1] >= '0' && player->map[y][x - 1] <= '9')
+        return player->map[y][x - 1] - '0';
+    if (player->map[y + 1][x] >= '0' && player->map[y + 1][x] <= '9')
+        return player->map[y + 1][x] - '0';
+    if (player->map[y - 1][x] >= '0' && player->map[y - 1][x] <= '9')
+        return player->map[y - 1][x] - '0';
+    return -1;
+}
+
+void change_map_back(player_t *player, const char *path)
+{
+    char *buffer = get_map(path);
+
+    if (buffer == NULL) {
+        write(2, "Invalid path or map can't change map\n", 38);
+        return;
+    }
+    free_board(player->map);
+    player->map = my_str_to_word_array(buffer);
+}
+
+void put_player_map(player_t *player, int intmap)
+{
+    if (intmap == OUT_HOUSE && player->nbr_map == FIRST_PATH) {
+        player->map[7][13] = ' ';
+        player->map[11][27] = 'B';
+    }
+    if (intmap == FIRST_PATH && player->nbr_map == BATTLE_PATH) {
+        player->map[12][2] = ' ';
+        player->map[2][16] = 'B';
+    }
+}
+
+void which_map(sfRenderWindow *window, player_t *player, map_t *map)
+{
+    int intmap = 0;
+
+    for (int y = 0; y < MAX_Y; ++y) {
+        for (int x = 0; x < MAX_X; ++x) {
+            if (player->map[y][x] == 'B') {
+                if ((intmap = choose_map(player, y, x)) != -1) {
+                    change_map(map, MAP_PATHS[intmap]);
+                    change_map_back(player, PLAYER_MAP_PATHS[intmap]);
+                    put_player_map(player, intmap);
+                    player->nbr_map = intmap;
+                    return;
+                }
+            }
+        }
+    }
+}
+
 void game_running(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
@@ -74,12 +130,12 @@ global_t *global, config_t *conf)
     time_mana_t *bom = get_clock();
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
-        ev_loop_running(window, game_state, global);
         sfRenderWindow_clear(window, sfBlack);
+        ev_loop_running(window, game_state, global);
+        draw_map(window, global->map);
         anim_flowers(global->map, fl);
         if (global->player->move == 1 && global->player->attack != 1)
             anim_player(global->player, pl);
-        draw_map(window, global->map);
         if (global->player->bomb == 1)
             bomb(global->player, bom, window);
         if (global->player->attack == 1 && global->player->move != 1)
@@ -89,6 +145,7 @@ global_t *global, config_t *conf)
         if (move_player(global->player, mo) == 1)
             sfClock_restart(mo->clock);
         draw_ennemi(window, global);
+        which_map(window, global->player, global->map);
         sfRenderWindow_display(window);
     }
 }
