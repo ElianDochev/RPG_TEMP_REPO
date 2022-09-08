@@ -78,19 +78,14 @@ global_t *global, config_t *conf)
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = sfTime_asMilliseconds(clock->time);
-        pl->time = sfClock_getElapsedTime(pl->clock);
-        pl->millisec = sfTime_asMilliseconds(pl->time);
         ev_loop_running(window, game_state, global);
         sfRenderWindow_clear(window, sfBlack);
         if (clock->millisec > 350) {
             anim_flowers(global->map, &i);
             sfClock_restart(clock->clock);
         }
-        if (pl->millisec > 30) {
-            if (global->player->move == 1)
-                anim_player(global->player, &j);
-            sfClock_restart(pl->clock);
-        }
+        if (global->player->move == 1)
+            anim_player(global->player, pl);
         draw_map(window, global->map);
         if (global->player->bomb == 1)
             bomb(global->player, bom, window);
