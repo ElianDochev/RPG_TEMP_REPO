@@ -42,7 +42,8 @@ SRC	=	source/tests/button.c						\
 		source/map_mana.c							\
 		source/game_running/create_player.c 		\
 		source/game_running/player_manage.c 		\
-		source/is.c
+		source/is.c									\
+		source/game_running/create_ennemi.c 		\
 
 CPPFLAGS = -I./include -I./m_lib/my -g3
 

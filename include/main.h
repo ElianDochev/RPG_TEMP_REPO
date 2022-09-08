@@ -12,6 +12,7 @@
     #include "sprites.h"
     #include "map.h"
     #include "player.h"
+    #include "ennemi.h"
 
 /*###########################################################################
 #######################BEGINING OF STATE FUNC SEGMENT########################
@@ -87,6 +88,7 @@ typedef struct {
     int lives;
     map_t *map;
     player_t *player;
+    ennemi_t *ennemi;
     time_mana_t clock;
 } global_t;
 // inits the global variable
