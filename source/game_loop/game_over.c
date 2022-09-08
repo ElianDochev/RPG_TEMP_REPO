@@ -35,7 +35,8 @@ global_t *global, config_t *conf)
         clock->millisec = sfTime_asMilliseconds(clock->time);
         ev_loop_gm_over(window, game_state, elements->menu);
         if (clock->millisec > conf->confs[refresh_rate_ov_st]) {
-            sfRenderWindow_drawSprite(window, elements->background->sprite, NULL);
+            sfRenderWindow_drawSprite(window, elements->background->sprite,
+            NULL);
             sfRenderWindow_drawText(window, elements->msg->text, NULL);
             draw_menu_bntext(elements->menu, window);
             set_cursor_to_mouse(elements->cursor, window);

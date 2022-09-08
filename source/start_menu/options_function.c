@@ -35,7 +35,8 @@ button_text_t *button, slider_t **slider, time_mana_t *clock)
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = clock->time.microseconds;
         if (clock->millisec > config->confs[refresh_rate_ov_st]) {
-            sfRenderWindow_drawSprite(window, element->background->sprite, NULL);
+            sfRenderWindow_drawSprite(window,
+            element->background->sprite, NULL);
             draw_slider(window, slider[0], (void *) element);
             draw_slider(window, slider[1], (void *) element);
             sfRenderWindow_drawText(window, button->text->text, NULL);
@@ -46,14 +47,15 @@ button_text_t *button, slider_t **slider, time_mana_t *clock)
     }
 }
 
-static slider_t **set_options(sfRenderWindow *window, start_menu_elements_t *element)
+static slider_t **set_options(sfRenderWindow *window,
+start_menu_elements_t *element)
 {
     slider_t **slider_arr = malloc(sizeof(slider_t *) * 2);
-
     slider_info_text_t text_info = set_up_slider_text(sfWhite, 30,
     element->main_font, "Music_Volume");
     slider_info_slide_t slide_info = set_up_slider_slide(option_colors,
     (sfVector2f){300, 10}, (sfVector2f){100, 16}, option_thinkness);
+
     slider_arr[0] = init_slider(text_info, slide_info , &change_volume,
     con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0)));
     text_info.msg = "Sound_Volume";
