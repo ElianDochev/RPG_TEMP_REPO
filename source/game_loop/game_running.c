@@ -82,7 +82,7 @@ global_t *global, config_t *conf)
         draw_map(window, global->map);
         if (global->player->bomb == 1)
             bomb(global->player, bom, window);
-        if (global->player->attack == 1)
+        if (global->player->attack == 1 && global->player->move != 1)
             attack(global->player, hit, window);
         else
             draw_player(window, global->player);
