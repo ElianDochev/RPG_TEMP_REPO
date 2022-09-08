@@ -31,13 +31,13 @@ coo_t find_coo(player_t *entity, char symbol)
 
 void move_ennemies(player_t *player, player_t *enemy)
 {
-    coo_t coo_player = find_coo(player, "B");
-    coo_t coo_enemy = find_coo(enemy, "E");
+    coo_t coo_p = find_coo(player, "B");
+    coo_t coo_e = find_coo(enemy, "E");
 
-    if (abs(coo_player.i - coo_enemy.i) > 3 || abs(coo_player.j - coo_enemy.j) > 5)
+    if (abs(coo_p.i - coo_e.i) > 3 || abs(coo_p.j - coo_e.j) > 5)
         return;
-    if (abs(coo_player.i - coo_enemy.i) > abs(coo_player.j - coo_enemy.j)) {
-        if (abs(coo_player.i - (coo_enemy.i + 1)) < abs(coo_player.i - (coo_enemy.i)))
+    if (abs(coo_p.i - coo_e.i) > abs(coo_p.j - coo_e.j)) {
+        if (abs(coo_p.i - (coo_e.i + 1)) < abs(coo_p.i - (coo_e.i)))
             //move enemy down
             return;
         else
