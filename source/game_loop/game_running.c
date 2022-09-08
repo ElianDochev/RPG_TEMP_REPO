@@ -8,31 +8,30 @@
 #include "main.h"
 #include <stdio.h>
 
-void attack(player_t *player, time_mana_t *hit, sfRenderWindow *window)
+void attack(player_t *p, time_mana_t *hit, sfRenderWindow *window)
 {
     static int i = 0;
-    sfVector2f pos = sfSprite_getPosition(player->
-    sprites[player->direction]->sprite);
-    sfIntRect *rect = get_int_rect(PLAYER_RECT[player->direction + 4][0],
-    PLAYER_RECT[player->direction + 4][1], PLAYER_RECT[player->
-    direction + 4][2], PLAYER_RECT[player->direction + 4][2] * i);
+    sfVector2f pos = sfSprite_getPosition(p->sprites[p->direction]->sprite);
+    sfIntRect *rect = get_int_rect(PLAYER_RECT[p->direction + 4][0],
+    PLAYER_RECT[p->direction + 4][1], PLAYER_RECT[p->direction + 4][2],
+    PLAYER_RECT[p->direction + 4][2] * i);
 
     hit->time = sfClock_getElapsedTime(hit->clock);
     hit->millisec = sfTime_asMilliseconds(hit->time);
-    player->textures[player->direction + 4] = sfTexture_createFromFile(
-    PLAYER_PATHS_NAME[player->direction + 4], NULL);
-    player->sprites[player->direction + 4] = set_sprite(player->textures[
-    player->direction + 4], NULL, rect, get_sfvector2f(2, 2));
-    sfSprite_setPosition(player->sprites[player->direction + 4]->sprite, pos);
-    sfRenderWindow_drawSprite(window, player->
-    sprites[player->direction + 4]->sprite, NULL);
+    p->textures[p->direction + 4] = sfTexture_createFromFile(
+    PLAYER_PATHS_NAME[p->direction + 4], NULL);
+    p->sprites[p->direction + 4] = set_sprite(p->textures[p->direction + 4],
+    NULL, rect, get_sfvector2f(2, 2));
+    sfSprite_setPosition(p->sprites[p->direction + 4]->sprite, pos);
+    sfRenderWindow_drawSprite(window, p->sprites[p->direction + 4]->sprite,
+    NULL);
     if (hit->millisec >= 40) {
         ++i;
         sfClock_restart(hit->clock);
     }
     if (i >= 5) {
         i = 0;
-        player->attack = 0;
+        p->attack = 0;
     }
 }
 
@@ -55,7 +54,7 @@ void bomb(player_t *player, time_mana_t *bom, sfRenderWindow *window)
     NULL, rect, get_sfvector2f(2, 2));
     sfSprite_setPosition(player->sprites[BOMB]->sprite, pos);
     sfRenderWindow_drawSprite(window, player->sprites[BOMB]->sprite, NULL);
-    if (bom->millisec >= 80) {
+    if (bom->millisec >= 90) {
         ++i;
         sfClock_restart(bom->clock);
     }

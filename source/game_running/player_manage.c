@@ -56,21 +56,25 @@ int move_player(player_t *player, time_mana_t *mo)
 
 void anim_player(player_t *player, int *j)
 {
-    player->textures[player->direction] = sfTexture_createFromFile(PLAYER_PATHS_NAME[player->direction],
-    get_int_rect(PLAYER_RECT[player->direction][0], PLAYER_RECT[player->direction][1], PLAYER_RECT[player->direction][2],
-    PLAYER_RECT[player->direction][3] + (PLAYER_RECT[player->direction][2] * *j)));
-    player->sprites[player->direction] = set_sprite(player->textures[player->direction], NULL, NULL,
-    get_sfvector2f(1.5, 1.5));
+    player->textures[player->direction] = sfTexture_createFromFile(
+    PLAYER_PATHS_NAME[player->direction], get_int_rect(
+    PLAYER_RECT[player->direction][0], PLAYER_RECT[player->direction][1],
+    PLAYER_RECT[player->direction][2], PLAYER_RECT[player->direction][3] +
+    (PLAYER_RECT[player->direction][2] * *j)));
+    player->sprites[player->direction] = set_sprite(
+    player->textures[player->direction], NULL, NULL, get_sfvector2f(1.5, 1.5));
     ++*j;
     if (*j >= 8)
         *j = 0;
 }
 
-void draw_sprite_player(player_t *player, char c, sfVector2f *pos, sfRenderWindow *window)
+void draw_sprite_player(player_t *player, char c, sfVector2f *pos,
+sfRenderWindow *window)
 {
     if (c == PLAYER_TEXT_CHARS[0]) {
         sfSprite_setPosition(player->sprites[player->direction]->sprite, *pos);
-        sfRenderWindow_drawSprite(window, player->sprites[player->direction]->sprite, NULL);
+        sfRenderWindow_drawSprite(window,
+        player->sprites[player->direction]->sprite, NULL);
     }
 }
 

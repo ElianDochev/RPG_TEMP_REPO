@@ -33,21 +33,21 @@ static void second_part(start_menu_elements_t *element,
 button_text_t **menu, text_t *text, time_mana_t *clock)
 {
     int running = 1;
-    sfRenderWindow *window = element->window;
+    sfRenderWindow *w = element->window;
     config_t *config = element->conf;
-    sfVector2f vect = con_vu_to_vf(get_center_xy_pcn(window, -0.43f, -0.4f));
+    sfVector2f vect = con_vu_to_vf(get_center_xy_pcn(w, -0.43f, -0.4f));
 
     sfText_setPosition(text->text, vect);
-    while (sfRenderWindow_isOpen(window) && running) {
-        local_event_loop(window, &running, menu);
+    while (sfRenderWindow_isOpen(w) && running) {
+        local_event_loop(w, &running, menu);
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = clock->time.microseconds;
         if (clock->millisec > config->confs[refresh_rate_ov_st]) {
-            sfRenderWindow_drawSprite(window, element->background->sprite, NULL);
-            sfRenderWindow_drawText(window, text->text, NULL);
-            draw_menu_bntext(menu, window);
-            set_cursor_to_mouse(element->cursor, window);
-            sfRenderWindow_display(window);
+            sfRenderWindow_drawSprite(w, element->background->sprite, NULL);
+            sfRenderWindow_drawText(w, text->text, NULL);
+            draw_menu_bntext(menu, w);
+            set_cursor_to_mouse(element->cursor, w);
+            sfRenderWindow_display(w);
             sfClock_restart(clock->clock);
         }
     }
