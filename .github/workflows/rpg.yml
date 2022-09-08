@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
 
-env:
-  EXECUTABLES: "my_rpg"
-
 jobs:
   check_program_compilation:
     name: Check program compilation
@@ -19,8 +16,3 @@ jobs:
         run: make
       - name: Make clean
         run: make clean
-      - name: Verify that all files are here
-        run: |
-            for FILE in $EXECUTABLES; do
-              ./$FILE && echo "$FILE exists"
-            done
