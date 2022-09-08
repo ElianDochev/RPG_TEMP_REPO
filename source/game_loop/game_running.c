@@ -74,9 +74,6 @@ global_t *global, config_t *conf)
     time_mana_t *bom = get_clock();
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
-        //sfSprite_setPosition(global->ennemi->sprites[EWDOWN]->sprite, *get_sfvector2f(100, 100));
-        //sfRenderWindow_drawSprite(window, global->ennemi->sprites[EWDOWN]->sprite, NULL);
-        //printf("oui\n");
         ev_loop_running(window, game_state, global);
         sfRenderWindow_clear(window, sfBlack);
         anim_flowers(global->map, fl);
