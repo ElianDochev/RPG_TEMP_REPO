@@ -51,7 +51,7 @@ void bomb(player_t *player, time_mana_t *bom, sfRenderWindow *window)
     player->textures[BOMB] = sfTexture_createFromFile(PLAYER_PATHS_NAME[BOMB],
     NULL);
     player->sprites[BOMB] = set_sprite(player->textures[BOMB],
-    NULL, rect, get_sfvector2f(2, 2));
+    NULL, rect, get_sfvector2f(2.5, 2.5));
     sfSprite_setPosition(player->sprites[BOMB]->sprite, pos);
     sfRenderWindow_drawSprite(window, player->sprites[BOMB]->sprite, NULL);
     if (bom->millisec >= 90) {
@@ -77,17 +77,18 @@ global_t *global, config_t *conf)
         ev_loop_running(window, game_state, global);
         sfRenderWindow_clear(window, sfBlack);
         anim_flowers(global->map, fl);
-        if (global->player->move == 1)
+        if (global->player->move == 1 && global->player->attack != 1)
             anim_player(global->player, pl);
         draw_map(window, global->map);
         if (global->player->bomb == 1)
             bomb(global->player, bom, window);
-        if (global->player->attack == 1)
+        if (global->player->attack == 1 && global->player->move != 1)
             attack(global->player, hit, window);
         else
             draw_player(window, global->player);
         if (move_player(global->player, mo) == 1)
             sfClock_restart(mo->clock);
+        draw_ennemi(window, global);
         sfRenderWindow_display(window);
     }
 }

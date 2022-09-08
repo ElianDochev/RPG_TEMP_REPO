@@ -18,8 +18,8 @@ static const char ENNEMI_TEXT_CHARS[] = "E";
 static const char *ENNEMI_PATHS_NAME[] = {"resources/ennemi/ennemi_walk_left.png",
 "resources/ennemi/ennemi_walk_right.png", "resources/ennemi/ennemi_walk_up.png",
 "resources/ennemi/ennemi_walk_down.png"};
-static const int ENNEMI_RECT[][5] = {{0, 48, 48, 0}, {0, 48, 48, 0},
-{0, 48, 48, 0}, {0, 48, 48, 0}};
+static const int ENNEMI_RECT[][5] = {{0, 64, 40, 0}, {0, 64, 40, 0},
+{0, 64, 40, 0}, {0, 64, 40, 0}};
 
 typedef struct ennemi {
     sfTexture **textures;
