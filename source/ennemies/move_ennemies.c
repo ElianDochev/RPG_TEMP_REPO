@@ -44,7 +44,7 @@ void move_ennemies(player_t *player, player_t *enemy)
             //move enemy up
             return;
     } else {
-        if (abs(coo_player.j - (coo_enemy.j + 1)) < abs(coo_player.j - (coo_enemy.j)))
+        if (abs(coo_p.j - (coo_e.j + 1)) < abs(coo_p.j - (coo_e.j)))
             // move enemy right
             return;
         else
