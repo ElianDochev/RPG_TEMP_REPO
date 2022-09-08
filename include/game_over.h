@@ -17,8 +17,7 @@ static char *gm_over_msg = "GAME OVER\n";
 static char *gm_over_menu[] = {"START OVER", "QUIT", NULL};
     #define GM_OVER_COLOR sfColor_fromRGB(0x43, 0x72, 0x9c)
 //event loop for game over state
-void ev_loop_gm_over(sfRenderWindow *window, states *state,
-button_text_t **menu);
+void ev_loop_gm_over(sfRenderWindow *window, states *state);
 //button functions for game over state
 static const void (*action[])(void *) = {&start_over, &quit};
 //all the elements needed for game over

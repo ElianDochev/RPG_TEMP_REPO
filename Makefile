@@ -26,7 +26,6 @@ SRC	=	source/tests/button.c						\
 		source/shared_functions/button_text.c		\
 		source/shared_functions/menu_bntext.c		\
 		source/shared_functions/action_state.c		\
-		source/shared_functions/loop_menu.c			\
 		source/shared_functions/not_impemented.c	\
 		source/shared_functions/slider.c			\
 		source/shared_functions/slider_move.c		\

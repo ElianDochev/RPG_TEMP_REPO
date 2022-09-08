@@ -98,13 +98,14 @@ char **msg_arr, void (*ptr[])(void *));
 ///
 /// \param menu     pointer to the menu object already innited DO NOT PASS NULL
 /// \param window   Render window object
-///
+/// \param arg    the parameter that will be passed to the function
+///  for the first and the last button
+/// \param arg_two  the parameter that will be passed to the function
+///  for the second and the second to last button
 ///////////////////////////////////////////////////////////
-void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window);
-//destroys a menu from text bottons
+void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window,
+void *arg, void *arg_two);
 void destroy_menu_bntext(button_text_t **menu, int mask);
-//returns 1 if its clicked and 2 if it hovered
-int is_click_or_hover_bntxt(button_text_t *button, sfEvent event);
 //returns 1 if the mouse is on the botton and 0 if it not
 int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 //loops thoug a menu and passes the state obj to the func pointer
@@ -116,12 +117,11 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 /// \param button     the button to be operated on
 /// \param element    thing that will be passed to the button func
 ///                   typecast must be done in the func itself
-/// \param event      the event to be checked to see if the button is clicked
 /// \param window     the window to be passed to the button func
 ///
 ///
 ///////////////////////////////////////////////////////////
-void loop_menu(button_text_t *botton, void *element, sfEvent event,
+void loop_menu(button_text_t *botton, void *element,
 sfRenderWindow *window);
 /*###########################################################################
 #######################END OF TEXT BOTTONS SEGMENT###########################

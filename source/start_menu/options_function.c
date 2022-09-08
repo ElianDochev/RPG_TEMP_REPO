@@ -8,8 +8,7 @@
 #include "start_menu.h"
 #include "buttons.h"
 #include <math.h>
-static void local_event_loop(sfRenderWindow *window, int *running,
-button_text_t *button)
+static void local_event_loop(sfRenderWindow *window, int *running)
 {
     sfEvent event;
 
@@ -19,19 +18,18 @@ button_text_t *button)
         if (event.type == sfEvtKeyPressed &&
         sfKeyboard_isKeyPressed(sfKeyEscape))
             sfRenderWindow_close(window);
-        loop_menu(button, running, event, window);
     }
 }
 
 static void second_part(start_menu_elements_t *element,
-button_text_t *button, slider_t **slider, time_mana_t *clock)
+button_text_t **button, slider_t **slider, time_mana_t *clock)
 {
     int running = 1;
     config_t *config = element->conf;
     sfRenderWindow *window = element->window;
 
     while (sfRenderWindow_isOpen(window) && running) {
-        local_event_loop(window, &running, button);
+        local_event_loop(window, &running);
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = clock->time.microseconds;
         if (clock->millisec > config->confs[refresh_rate_ov_st]) {
@@ -39,7 +37,7 @@ button_text_t *button, slider_t **slider, time_mana_t *clock)
             element->background->sprite, NULL);
             draw_slider(window, slider[0], (void *) element);
             draw_slider(window, slider[1], (void *) element);
-            sfRenderWindow_drawText(window, button->text->text, NULL);
+            draw_menu_bntext(button, window, &running, NULL);
             set_cursor_to_mouse(element->cursor, window);
             sfRenderWindow_display(window);
             sfClock_restart(clock->clock);
@@ -76,7 +74,7 @@ void option(void *elements)
     int running = 1;
     time_mana_t *clock = get_clock();
 
-    second_part(element, button, slider, clock);
+    second_part(element, (button_text_t *[]) {button, NULL}, slider, clock);
     destroy_button_text(button, 0);
     sfClock_destroy(clock->clock);
     free(clock);

@@ -46,7 +46,7 @@ global_t *global, config_t *conf)
         if (clock->millisec > conf->confs[refresh_rate_ov_st]) {
             sfRenderWindow_drawSprite(window, elements->background->sprite, NULL);
             sfRenderWindow_drawText(window, elements->title->text, NULL);
-            draw_menu_bntext(elements->menu, window);
+            draw_menu_bntext(elements->menu, window, game_state, elements);
             set_cursor_to_mouse(elements->cursor, window);
             sfRenderWindow_display(window);
             sfClock_restart(clock->clock);

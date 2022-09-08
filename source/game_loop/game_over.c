@@ -32,12 +32,12 @@ global_t *global, config_t *conf)
     while (sfRenderWindow_isOpen(window) && *game_state == gm_over) {
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = sfTime_asMilliseconds(clock->time);
-        ev_loop_gm_over(window, game_state, elements->menu);
+        ev_loop_gm_over(window, game_state);
         if (clock->millisec > conf->confs[refresh_rate_ov_st]) {
             sfRenderWindow_drawSprite(window, elements->background->sprite,
             NULL);
             sfRenderWindow_drawText(window, elements->msg->text, NULL);
-            draw_menu_bntext(elements->menu, window);
+            draw_menu_bntext(elements->menu, window, game_state, NULL);
             set_cursor_to_mouse(elements->cursor, window);
             sfRenderWindow_display(window);
             sfClock_restart(clock->clock);

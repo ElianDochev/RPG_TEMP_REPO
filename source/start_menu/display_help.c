@@ -12,8 +12,7 @@ void exit_option(void *running)
     *(int *) running = 0;
 }
 
-static void local_event_loop(sfRenderWindow *window, int *running,
-button_text_t **menu)
+static void local_event_loop(sfRenderWindow *window, int *running)
 {
     sfEvent event;
 
@@ -23,9 +22,6 @@ button_text_t **menu)
         if (event.type == sfEvtKeyPressed &&
         sfKeyboard_isKeyPressed(sfKeyEscape))
             sfRenderWindow_close(window);
-        for (int i = 0; menu[i]; ++i) {
-            loop_menu(menu[i], running, event, window);
-        }
     }
 }
 
@@ -39,13 +35,13 @@ button_text_t **menu, text_t *text, time_mana_t *clock)
 
     sfText_setPosition(text->text, vect);
     while (sfRenderWindow_isOpen(w) && running) {
-        local_event_loop(w, &running, menu);
+        local_event_loop(w, &running);
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = clock->time.microseconds;
         if (clock->millisec > config->confs[refresh_rate_ov_st]) {
             sfRenderWindow_drawSprite(w, element->background->sprite, NULL);
             sfRenderWindow_drawText(w, text->text, NULL);
-            draw_menu_bntext(menu, w);
+            draw_menu_bntext(menu, w, &running, NULL);
             set_cursor_to_mouse(element->cursor, w);
             sfRenderWindow_display(w);
             sfClock_restart(clock->clock);

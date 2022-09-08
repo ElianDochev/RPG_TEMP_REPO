@@ -7,8 +7,7 @@
 
 #include "game_over.h"
 
-void ev_loop_gm_over(sfRenderWindow *window, states *state,
-button_text_t **menu)
+void ev_loop_gm_over(sfRenderWindow *window, states *state)
 {
     sfEvent event;
 
@@ -18,8 +17,5 @@ button_text_t **menu)
         if (event.type == sfEvtKeyPressed &&
         sfKeyboard_isKeyPressed(sfKeyEscape))
             sfRenderWindow_close(window);
-        for (int i = 0; menu[i]; ++i) {
-            loop_menu(menu[i], state, event, window);
-        }
     }
 }

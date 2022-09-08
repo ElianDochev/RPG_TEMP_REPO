@@ -39,9 +39,28 @@ char **msg_arr, void (*ptr[])(void *))
     return menu;
 }
 
-void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window)
+void loop_menu(button_text_t *botton, void *element,
+sfRenderWindow *window)
+{
+    int state = is_mouse_on_btext(botton, window);
+
+    if (state == 0) {
+        change_bntxt_color(botton, idle_bn);
+    } else if (state == 1) {
+        change_bntxt_color(botton, on_hover);
+    } else if (state == 2) {
+        change_bntxt_color(botton, on_click);
+        botton->ptr(element);
+    }
+}
+
+void draw_menu_bntext(button_text_t **menu , sfRenderWindow *window,
+void *arg, void *arg_two)
 {
     for (int i = 0; menu[i] ; ++i) {
+        (i == 0 || ((menu)[i + 1] == NULL)) ?
+        loop_menu(menu[i], arg, window) :
+        loop_menu(menu[i], arg_two, window);
         sfRenderWindow_drawText(window, menu[i]->text->text, NULL);
     }
 }

@@ -19,9 +19,5 @@ start_menu_elements_t *elements)
         if (event.type == sfEvtKeyPressed &&
         sfKeyboard_isKeyPressed(sfKeyEscape))
             sfRenderWindow_close(window);
-        for (int i = 0; (elements->menu)[i]; ++i)
-            (i == 0 || ((elements->menu)[i + 1] == NULL)) ?
-            loop_menu((elements->menu)[i], state, event, window) :
-            loop_menu((elements->menu[i]), elements, event, window);
     }
 }

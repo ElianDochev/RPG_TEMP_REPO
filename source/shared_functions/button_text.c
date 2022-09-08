@@ -16,8 +16,13 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window)
     con_vi_to_vf(sfMouse_getPositionRenderWindow(window));
 
     button->hitbox = sfText_getGlobalBounds(button->text->text);
-    if (sfFloatRect_contains(&button->hitbox, click_pos.x, click_pos.y))
-        return 1;
+    if (sfFloatRect_contains(&button->hitbox, click_pos.x, click_pos.y)) {
+        if (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
+            return 2;
+        }  else {
+            return 1;
+        }
+    }
     return 0;
 }
 
@@ -42,17 +47,6 @@ sfFont *font, char *msg)
 void change_bntxt_color(button_text_t *button, button_state state)
 {
     sfText_setFillColor(button->text->text, button->bn_color[state]);
-}
-
-int is_click_or_hover_bntxt(button_text_t *button, sfEvent event)
-{
-    if (event.type == sfEvtMouseButtonPressed) {
-        change_bntxt_color(button, on_click);
-        return 1;
-    } else {
-        change_bntxt_color(button, on_hover);
-        return 2;
-    }
 }
 
 void destroy_button_text(button_text_t *button, int mask)

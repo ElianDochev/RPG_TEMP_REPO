@@ -8,7 +8,7 @@
 #include "main.h"
 #include "buttons.h"
 
-static void local_ev_loop(sfRenderWindow *window, button_text_t **menu,
+static void local_ev_loop(sfRenderWindow *window,
 int *running)
 {
     sfEvent event;
@@ -19,8 +19,6 @@ int *running)
         if (event.type == sfEvtKeyPressed &&
         sfKeyboard_isKeyPressed(sfKeyEscape))
             sfRenderWindow_close(window);
-        for (int i = 0; menu[i]; ++i)
-            loop_menu(menu[i], running, event, window);
     }
 }
 
@@ -39,13 +37,11 @@ sfFont *font, cursor_t *cursor)
 }
 
 static void display_things(sfRenderWindow *window, text_t *title,
-button_text_t **menu, cursor_t *cursor)
+button_text_t **menu, int *game_running)
 {
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawText(window, title->text, NULL);
-    draw_menu_bntext(menu, window);
-    set_cursor_to_mouse(cursor, window);
-    sfRenderWindow_display(window);
+    draw_menu_bntext(menu, window, game_running, NULL);
 }
 
 void not_imp(void *ptr)
@@ -64,8 +60,10 @@ void not_imp(void *ptr)
 
     sfText_setFillColor(title->text, sfRed);
     while (sfRenderWindow_isOpen(window) && running) {
-        local_ev_loop(window, menu, &running);
+        local_ev_loop(window, menu);
         display_things(window, title, menu, cursor);
     }
-    destroy_things(title, menu, font, cursor);
+    destroy_things(title, menu, font, &running);
+    set_cursor_to_mouse(cursor, window);
+    sfRenderWindow_display(window);
 }
