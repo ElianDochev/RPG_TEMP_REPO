@@ -67,23 +67,16 @@ void bomb(player_t *player, time_mana_t *bom, sfRenderWindow *window)
 void game_running(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
-    int i = 0;
-    int j = 0;
-    time_mana_t *clock = get_clock();
+    time_mana_t *fl = get_clock();
     time_mana_t *pl = get_clock();
     time_mana_t *mo = get_clock();
     time_mana_t *hit = get_clock();
     time_mana_t *bom = get_clock();
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
-        clock->time = sfClock_getElapsedTime(clock->clock);
-        clock->millisec = sfTime_asMilliseconds(clock->time);
         ev_loop_running(window, game_state, global);
         sfRenderWindow_clear(window, sfBlack);
-        if (clock->millisec > 350) {
-            anim_flowers(global->map, &i);
-            sfClock_restart(clock->clock);
-        }
+        anim_flowers(global->map, fl);
         if (global->player->move == 1)
             anim_player(global->player, pl);
         draw_map(window, global->map);

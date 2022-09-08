@@ -175,7 +175,7 @@ void draw_map(sfRenderWindow *window,map_t *map);
 void destroy_map(map_t *map);
 //changes the map
 void change_map(map_t *map, const char *path);
-void anim_flowers(map_t *map, int *i);
+void anim_flowers(map_t *map, time_mana_t *fl);
 int move_player(player_t *player, time_mana_t *mo);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################

@@ -6,6 +6,7 @@
 */
 
 #include "map.h"
+#include "main.h"
 #include "m_my.h"
 
 void destroy_map(map_t *map)
@@ -17,16 +18,23 @@ void destroy_map(map_t *map)
     free(map->map);
 }
 
-void anim_flowers(map_t *map, int *i)
+void anim_flowers(map_t *map, time_mana_t *fl)
 {
-    map->textures[FLOWER] = sfTexture_createFromFile(TILES_PATHS[FLOWER],
-    get_int_rect(RECT[FLOWER][0], RECT[FLOWER][1], RECT[FLOWER][2],
-    RECT[FLOWER][3] + (RECT[FLOWER][2] * *i)));
-    map->sprites[FLOWER] = set_sprite(map->textures[FLOWER], NULL, NULL,
-    get_sfvector2f(4, 4));
-    ++*i;
-    if (*i > 2)
-        *i = 0;
+    static int i = 0;
+
+    fl->time = sfClock_getElapsedTime(fl->clock);
+    fl->millisec = sfTime_asMilliseconds(fl->time);
+    if (fl->millisec > 350) {
+        map->textures[FLOWER] = sfTexture_createFromFile(TILES_PATHS[FLOWER],
+        get_int_rect(RECT[FLOWER][0], RECT[FLOWER][1], RECT[FLOWER][2],
+        RECT[FLOWER][3] + (RECT[FLOWER][2] * i)));
+        map->sprites[FLOWER] = set_sprite(map->textures[FLOWER], NULL, NULL,
+        get_sfvector2f(4, 4));
+        ++i;
+        sfClock_restart(fl->clock);
+    }
+    if (i >= 3)
+        i = 0;
 }
 
 static void draw_sprite(map_t *map, char c, sfVector2f *pos,
