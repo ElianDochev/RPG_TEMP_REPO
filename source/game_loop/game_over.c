@@ -23,7 +23,6 @@ time_mana_t *clock)
     free(elements);
 }
 
-
 void game_over(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
