@@ -55,7 +55,7 @@ void bomb(player_t *player, time_mana_t *bom, sfRenderWindow *window)
     NULL, rect, get_sfvector2f(2, 2));
     sfSprite_setPosition(player->sprites[BOMB]->sprite, pos);
     sfRenderWindow_drawSprite(window, player->sprites[BOMB]->sprite, NULL);
-    if (bom->millisec >= 80) {
+    if (bom->millisec >= 90) {
         ++i;
         sfClock_restart(bom->clock);
     }

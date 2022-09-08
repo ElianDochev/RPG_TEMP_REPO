@@ -17,11 +17,11 @@ static const char *PLAYER_MAP_PATHS[] = {"maps/out_house.back",
 "maps/first_path.back", "maps/battle_path.back"};
 enum {WLEFT, WRIGHT, WUP, WDOWN, HLEFT, HRIGHT, HUP, HDOWN, BOMB};
 static const char PLAYER_TEXT_CHARS[] = "B";
-static const char *PLAYER_PATHS_NAME[] = {"tile_sets/player_walk_left.png",
-"tile_sets/player_walk_right.png", "tile_sets/player_walk_up.png",
-"tile_sets/player_walk_down.png", "tile_sets/player_hit_left.png",
-"tile_sets/player_hit_right.png", "tile_sets/player_hit_up.png",
-"tile_sets/player_hit_down.png", "tile_sets/bomb_explosion.png"};
+static const char *PLAYER_PATHS_NAME[] = {"resources/link/player_walk_left.png",
+"resources/link/player_walk_right.png", "resources/link/player_walk_up.png",
+"resources/link/player_walk_down.png", "resources/link/player_hit_left.png",
+"resources/link/player_hit_right.png", "resources/link/player_hit_up.png",
+"resources/link/player_hit_down.png", "resources/link/bomb_explosion.png"};
 static const int PLAYER_RECT[][5] = {{0, 48, 48, 0}, {0, 48, 48, 0},
 {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0},
 {0, 48, 48, 0}, {0, 48, 48, 0}};
