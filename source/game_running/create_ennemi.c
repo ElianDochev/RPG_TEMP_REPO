@@ -5,7 +5,7 @@
 ** file to create_ennemi
 */
 
-#include "ennemi.h"
+#include "main.h"
 #include "m_my.h"
 #include <fcntl.h>
 #include <unistd.h>
@@ -42,7 +42,31 @@ ennemi_t *set_up_ennemi(void)
         return NULL;
     ennemi->textures = init_ennemi_textures();
     ennemi->sprites = init_ennemi_sprites(ennemi);
-    ennemi->direction = 0;
+    ennemi->direction = 3;
     ennemi->move = 0;
     return ennemi;
+}
+
+void draw_sprite_ennemi(ennemi_t *ennemi, char c, sfVector2f *pos,
+sfRenderWindow *window)
+{
+    if (c == ENNEMI_TEXT_CHARS[0]) {
+        sfSprite_setPosition(ennemi->sprites[ennemi->direction]->sprite, *pos);
+        sfRenderWindow_drawSprite(window,
+        ennemi->sprites[ennemi->direction]->sprite, NULL);
+    }
+}
+
+void draw_ennemi(sfRenderWindow *window, global_t *global)
+{
+    sfVector2f pos = create_fvector(0, 0);
+
+    for (int y = 0; y < MAX_Y; y++) {
+        for (int x = 0; x < MAX_X; x++) {
+            draw_sprite_ennemi(global->ennemi, global->player->map[y][x], &pos, window);
+            pos.x += 64;
+        }
+        pos.x = 0;
+        pos.y += 64;
+    }
 }
