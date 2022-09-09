@@ -39,6 +39,7 @@ SRC	=	source/tests/button.c							\
 		source/game_paused/option_menu.c				\
 		source/game_paused/support_function.c			\
 		source/game_paused/inventory_option.c			\
+		source/game_paused/option_callbacks.c			\
 		source/get.c									\
 		source/create_map.c								\
 		source/map_mana.c								\

@@ -8,6 +8,7 @@
 #include "start_menu.h"
 #include "buttons.h"
 #include <math.h>
+
 static void local_event_loop(sfRenderWindow *window, int *running)
 {
     sfEvent event;

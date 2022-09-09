@@ -22,13 +22,14 @@ static sfRectangleShape *set_up_sqre_container(sfRenderWindow *window,
 sfVector2f vect)
 {
     sfRectangleShape *container = sfRectangleShape_create();
-    sfVector2f size = {(float) sfRenderWindow_getSize(window).x / 5,
+    sfVector2f size = {(float) sfRenderWindow_getSize(window).x / 4.9f,
     (float) sfRenderWindow_getSize(window).y / 2};
 
     sfRectangleShape_setPosition(container, vect);
     sfRectangleShape_setSize(container, size);
-    sfRectangleShape_setFillColor(container, sfBlue);
-    sfRectangleShape_setOutlineColor(container, sfWhite);
+    sfRectangleShape_setFillColor(container, sfColor_fromRGB(0xff, 0xaf, 0x7a));
+    sfRectangleShape_setOutlineColor(container,
+    sfColor_fromRGB(192,192,192));
     sfRectangleShape_setOutlineThickness(container, 5);
     return (container);
 }

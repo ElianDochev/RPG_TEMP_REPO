@@ -29,6 +29,8 @@ void start_over(void *state);
 //sets the state to paused which pauses
 //(takes the state obj as void *)
 void pause_game(void *state);
+//callback for a button to end the running of the current option
+void exit_option(void *running);
 /*###########################################################################
 #######################END OF STATE FUNC  SEGEMENT###########################
 -----------------------------------------------------------------------------*/
