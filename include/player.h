@@ -14,7 +14,7 @@
     #define PLAYER_TEXTURE_NB 9
 
 static const char *PLAYER_MAP_PATHS[] = {"maps/out_house.back",
-"maps/first_path.back", "maps/battle_path.back"};
+"maps/first_path.back", "maps/battle_path.back", "maps/sanctuary_entry.back"};
 enum {WLEFT, WRIGHT, WUP, WDOWN, HLEFT, HRIGHT, HUP, HDOWN, BOMB};
 static const char PLAYER_TEXT_CHARS[] = "B";
 static const char *PLAYER_PATHS_NAME[] = {"resources/link/player_walk_left.png",
