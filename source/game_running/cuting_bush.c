@@ -51,6 +51,7 @@ static int loop_player_cuting_bush(player_t *player, map_t *map, int y)
         if (player->map[y][x] == 'B' && is_aroud_player(player, y, x, 'x')
         == player->direction && player->attack == 1) {
             cut_the_bush(player, map, y, x);
+            player->money += 10;
             return 1;
         }
     }
