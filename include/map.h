@@ -14,11 +14,11 @@
     #define MAX_X 30
     #define TEXTURES_NB 30
 
-enum {OUT_HOUSE, FIRST_PATH, BATTLE_PATH, HOUSE_INTERIOR_MAP, SANCTUARY_ENTRY,
+enum {OUT_HOUSE, FIRST_PATH, BATTLE_PATH, SANCTUARY_ENTRY, HOUSE_INTERIOR_MAP,
 SHOP_INTERIOR_MAP};
 static const char *MAP_PATHS[] = {"maps/out_house.front",
-"maps/first_path.front", "maps/battle_path.front", "maps/house_interior.front",
-"maps/sanctuary_entry.front", "maps/shop_interior.front"};
+"maps/first_path.front", "maps/battle_path.front", "maps/sanctuary_entry.front",
+"maps/house_interior.front", "maps/shop_interior.front"};
 enum {GROUND, WALL_UP, WALL_LEFT, WALL_DOWN, WALL_RIGHT, WALL_NO, WALL_SO,
 WALL_SE, WALL_NE, BUSH, CUT_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,
 PATH, CHEST, OPEN_CHEST, HOUSE, HOUSE_INTERIOR, MOVABLE_ROCK, NEUTRAL_TILE,

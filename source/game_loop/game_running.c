@@ -99,6 +99,10 @@ void put_player_map(player_t *player, int intmap)
         player->map[12][2] = ' ';
         player->map[2][16] = 'B';
     }
+    if (intmap == BATTLE_PATH && player->nbr_map == SANCTUARY_ENTRY) {
+        player->map[13][15] = ' ';
+        player->map[2][15] = 'B';
+    }
 }
 
 void which_map(sfRenderWindow *window, player_t *player, map_t *map)
