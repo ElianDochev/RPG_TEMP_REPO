@@ -12,7 +12,8 @@ global_t *global, config_t *conf)
 {
     while (sfRenderWindow_isOpen(window) && *game_state == paused) {
         ev_loop_paused(window, game_state);
-        sfRenderWindow_clear(window, sfYellow);
+        draw_map(window, global->map);
+        draw_player(window, global->player);
         sfRenderWindow_display(window);
     }
 }
