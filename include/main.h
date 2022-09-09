@@ -181,7 +181,8 @@ void destroy_map(map_t *map);
 void change_map(map_t *map, const char *path);
 void anim_flowers(map_t *map, time_mana_t *fl);
 int move_player(player_t *player, time_mana_t *mo);
-void which_map(sfRenderWindow *window, player_t *player, map_t *map);
+void which_map(player_t *player, map_t *map);
+void player_cuting_bush(player_t *player, map_t *map);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/

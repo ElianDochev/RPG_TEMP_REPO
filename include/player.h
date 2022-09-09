@@ -12,6 +12,10 @@
     #define MAX_Y 16
     #define MAX_X 30
     #define PLAYER_TEXTURE_NB 9
+    #define AT_LEFT map[y][x - 1]
+    #define AT_RIGHT map[y][x + 1]
+    #define AT_UP map[y - 1][x]
+    #define AT_DOWN map[y + 1][x]
 
 static const char *PLAYER_MAP_PATHS[] = {"maps/out_house.back",
 "maps/first_path.back", "maps/battle_path.back", "maps/sanctuary_entry.back"};

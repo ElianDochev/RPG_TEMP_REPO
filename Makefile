@@ -48,6 +48,7 @@ SRC	=	source/tests/button.c							\
 		source/is.c										\
 		source/game_running/create_ennemi.c 			\
 		source/game_running/change_map.c 				\
+		source/game_running/cuting_bush.c 				\
 
 CPPFLAGS = -I./include -I./m_lib/my -g3
 

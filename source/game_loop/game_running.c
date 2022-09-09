@@ -75,6 +75,7 @@ global_t *global, config_t *conf)
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         sfRenderWindow_clear(window, sfBlack);
+        which_map(global->player, global->map);
         ev_loop_running(window, game_state, global);
         draw_map(window, global->map);
         anim_flowers(global->map, fl);
@@ -89,7 +90,7 @@ global_t *global, config_t *conf)
         if (move_player(global->player, mo) == 1)
             sfClock_restart(mo->clock);
         draw_ennemi(window, global);
-        which_map(window, global->player, global->map);
+        player_cuting_bush(global->player, global->map);
         sfRenderWindow_display(window);
     }
 }

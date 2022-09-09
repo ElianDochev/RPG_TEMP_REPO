@@ -2,32 +2,32 @@
 ** EPITECH PROJECT, 2022
 ** my_rpg
 ** File description:
-** Game_running loop
+** cange map
 */
 
 #include "main.h"
 #include <stdio.h>
 
-int choose_map(player_t *player, int y, int x)
+static int choose_map(player_t *player, int y, int x)
 {
     if (player->move == 1) {
-        if (player->map[y][x + 1] >= '0' && player->map[y][x + 1] <= '9' &&
+        if (player->AT_RIGHT >= '0' && player->AT_RIGHT <= '9' &&
         player->direction == WRIGHT)
             return player->map[y][x + 1] - '0';
-        if (player->map[y][x - 1] >= '0' && player->map[y][x - 1] <= '9' &&
+        if (player->AT_LEFT >= '0' && player->AT_LEFT <= '9' &&
         player->direction == WLEFT)
             return player->map[y][x - 1] - '0';
-        if (player->map[y + 1][x] >= '0' && player->map[y + 1][x] <= '9' &&
+        if (player->AT_DOWN >= '0' && player->AT_DOWN <= '9' &&
         player->direction == WDOWN)
             return player->map[y + 1][x] - '0';
-        if (player->map[y - 1][x] >= '0' && player->map[y - 1][x] <= '9' &&
+        if (player->AT_UP >= '0' && player->AT_UP <= '9' &&
         player->direction == WUP)
             return player->map[y - 1][x] - '0';
     }
     return -1;
 }
 
-void change_map_back(player_t *player, const char *path)
+static void change_map_back(player_t *player, const char *path)
 {
     char *buffer = get_map(path);
 
@@ -39,7 +39,7 @@ void change_map_back(player_t *player, const char *path)
     player->map = my_str_to_word_array(buffer);
 }
 
-void put_player_map(player_t *player, int intmap)
+static void put_player_map(player_t *player, int intmap)
 {
     if (intmap == OUT_HOUSE && player->nbr_map == FIRST_PATH) {
         player->map[7][13] = ' ';
@@ -55,21 +55,27 @@ void put_player_map(player_t *player, int intmap)
     }
 }
 
-void which_map(sfRenderWindow *window, player_t *player, map_t *map)
+static int loop_which_map(player_t *player, map_t *map, int intmap, int y)
+{
+    for (int x = 0; x < MAX_X; ++x) {
+        if (player->map[y][x] == 'B' && (intmap = choose_map(player, y, x))
+        != -1) {
+            change_map(map, MAP_PATHS[intmap]);
+            change_map_back(player, PLAYER_MAP_PATHS[intmap]);
+            put_player_map(player, intmap);
+            player->nbr_map = intmap;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void which_map(player_t *player, map_t *map)
 {
     int intmap = 0;
 
     for (int y = 0; y < MAX_Y; ++y) {
-        for (int x = 0; x < MAX_X; ++x) {
-            if (player->map[y][x] == 'B') {
-                if ((intmap = choose_map(player, y, x)) != -1) {
-                    change_map(map, MAP_PATHS[intmap]);
-                    change_map_back(player, PLAYER_MAP_PATHS[intmap]);
-                    put_player_map(player, intmap);
-                    player->nbr_map = intmap;
-                    return;
-                }
-            }
-        }
+        if (loop_which_map(player, map, intmap, y) == 1)
+            return;
     }
 }
