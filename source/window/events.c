@@ -30,13 +30,13 @@ void ev_loop_paused(sfRenderWindow *window, states *state)
 void event_move_player(global_t *global, sfEvent event)
 {
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyLeft)
-        global->player->direction = 0;
+        global->player->direction = WLEFT;
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyRight)
-        global->player->direction = 1;
+        global->player->direction = WRIGHT;
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyUp)
-        global->player->direction = 2;
+        global->player->direction = WUP;
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyDown)
-        global->player->direction = 3;
+        global->player->direction = WDOWN;
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
         global->player->attack = 1;
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyB)
