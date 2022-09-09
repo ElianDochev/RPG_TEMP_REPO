@@ -60,10 +60,10 @@ game_paused_elements_t *element)
     (sfVector2f){300, 10}, (sfVector2f){80, 16}, option_thinkness);
 
     slider_arr[0] = init_slider(text_info, slide_info , &change_volume_p,
-    con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0)));
+    con_vu_to_vf(get_center_xy_pcn(window, -0.1, -0.1)));
     text_info.msg = "Sound_Volume";
     slider_arr[1] = init_slider(text_info, slide_info , &change_sound_p,
-    con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0.1)));
+    con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0.0)));
     return (slider_arr);
 }
 
@@ -74,7 +74,7 @@ void open_options(void *arg, int index)
     void *btn_color[]= {&sfWhite, &sfBlack, &sfRed};
     slider_t **slider = set_options(window, element);
     button_text_t *button = init_button_text(init_button_text_info(
-    con_vu_to_vf(get_center_xy_pcn(window, -0.1, 0.2)), btn_color,
+    con_vu_to_vf(get_center_xy_pcn(window, 0, 0.15)), btn_color,
     (sfVector2f) {0, 0}, 30), &exit_option, element->main_font, "Go back");
     int running = 1;
     time_mana_t *clock = get_clock();
