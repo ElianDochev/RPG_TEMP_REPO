@@ -52,7 +52,7 @@ void not_imp(void *ptr)
     sfRenderWindow *window = ( sfRenderWindow *) ptr;
     sfVector2f vect = con_vu_to_vf(get_center_xy_pcn(window, -0.08f, -0.05f));
     text_t *title = init_text(N_IMP_MSG, font, 30 , &vect);
-    void (*action[])(void *) = {&go_back};
+    void (*action[])(void *, int) = {&go_back};
     button_text_t **menu = set_up_menu_bntext(font,
     init_button_text_info(create_fvector(vect.x, vect.y + 150), color,
     create_fvector(0, 0), 40), n_imp_button, action);

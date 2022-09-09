@@ -22,12 +22,12 @@ static sfRectangleShape *set_up_sqre_container(sfRenderWindow *window,
 sfVector2f vect)
 {
     sfRectangleShape *container = sfRectangleShape_create();
-    sfVector2f size = {sfRenderWindow_getSize(window).x / 2,
-    sfRenderWindow_getSize(window).y / 2};
+    sfVector2f size = {(float) sfRenderWindow_getSize(window).x / 5,
+    (float) sfRenderWindow_getSize(window).y / 2};
 
     sfRectangleShape_setPosition(container, vect);
     sfRectangleShape_setSize(container, size);
-    sfRectangleShape_setFillColor(container, sfBlack);
+    sfRectangleShape_setFillColor(container, sfBlue);
     sfRectangleShape_setOutlineColor(container, sfWhite);
     sfRectangleShape_setOutlineThickness(container, 5);
     return (container);
@@ -40,11 +40,11 @@ config_t *conf, global_t *global)
     void *bn_color[] = {&sfYellow, &sfBlue, &sfRed};
 
     elements->main_font = sfFont_createFromFile(conf->paths[game_paused_font]);
-    elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.05f, -0.3f));
+    elements->vect = con_vu_to_vf(get_center_xy_pcn(window, -0.1f, -0.2f));
     elements->square_container = set_up_sqre_container(window, elements->vect);
     elements->menu = set_up_menu_bntext(elements->main_font,
-    init_button_text_info(create_fvector(elements->vect.x + 50,
-    elements->vect.y + 150), bn_color, create_fvector(0, 100), 50),
+    init_button_text_info(create_fvector(elements->vect.x + 100,
+    elements->vect.y + 50), bn_color, create_fvector(0, 100), 30),
     option_menu, action_game_paused);
     elements->cursor = set_up_cursor(conf->paths[cursor_path]);
     elements->music = init_music(conf);

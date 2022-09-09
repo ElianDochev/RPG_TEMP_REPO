@@ -9,5 +9,6 @@
 
 void open_options(void *arg, int index)
 {
-    
+    game_paused_elements_t *elements = (game_paused_elements_t *) arg;
+
 }
