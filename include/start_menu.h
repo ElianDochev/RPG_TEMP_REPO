@@ -30,7 +30,7 @@ void display_help(void *element);
 //the options button function
 void option(void *element);
 //functions for start menu
-static const void (*action_start_menu[])(void *) =
+static const void (*action_start_menu[])(void *, int) =
 {&start, &display_help, &option, &quit};
 //all the elements needed for start menu
 struct start_menu_elements {

@@ -19,7 +19,8 @@ static char *gm_over_menu[] = {"START OVER", "QUIT", NULL};
 //event loop for game over state
 void ev_loop_gm_over(sfRenderWindow *window, states *state);
 //button functions for game over state
-static const void (*action[])(void *) = {&start_over, &quit};
+static const void (*action[])(void *, int
+) = {&start_over, &quit};
 //all the elements needed for game over
 typedef struct {
     sfFont *main_font;

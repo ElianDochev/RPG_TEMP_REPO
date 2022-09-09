@@ -31,7 +31,7 @@ typedef struct {
     sfFloatRect hitbox;
     sfVector2f location;
     sfColor bn_color[on_hover + 1];
-    void (*ptr)(void *value);
+    void (*ptr)(void *value, int index);
 } button_text_t;
 
 //contains the location, colors ,offset and font size of the button
@@ -52,14 +52,15 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 ///                size of the button (offset is ignored here)
 /// \param ptr     the function that will be called when the button is
 ///                clicked (parameter will be type cast in the function itself)
+///                and the index of the button will be passed as a sec parameter
 /// \param font    pointer to a font object
 /// \param msg     string that will be displayed on the button
 ///
 /// \return malloced button_text_t
 ///
 ///////////////////////////////////////////////////////////
-button_text_t *init_button_text(button_text_info_t *info, void(*ptr)(void *),
-sfFont *font, char *msg);
+button_text_t *init_button_text(button_text_info_t *info, void(*ptr)(void *,
+int), sfFont *font, char *msg);
 //destroys a text button
 void destroy_button_text(button_text_t *button, int mask);
 //changes the color of a text botton
@@ -86,12 +87,12 @@ void const  **color, sfVector2f offset, int font_size);
 /// \param info     takes a pointer to a button_text_info_t innitilized
 /// \param msg_arr  2d Array of the text for the options ending on a NULL
 /// \param ptr      an array of function pointers should be the same len
-///                 as msg array
+///                 as msg array (first args is element , second is index)
 /// \return an array of text bottons ending on a NULL
 ///
 ///////////////////////////////////////////////////////////
 button_text_t **set_up_menu_bntext(sfFont *font, button_text_info_t *info,
-char **msg_arr, void (*ptr[])(void *));
+char **msg_arr, void (*ptr[])(void *, int));
 ////////////////////////////////////////////////////////////
 /// \brief draws the menu of text buttons with a specified offset from
 /// eachohter
@@ -118,11 +119,11 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 /// \param element    thing that will be passed to the button func
 ///                   typecast must be done in the func itself
 /// \param window     the window to be passed to the button func
-///
+/// \param index      the index of the button in the menu
 ///
 ///////////////////////////////////////////////////////////
 void loop_menu(button_text_t *botton, void *element,
-sfRenderWindow *window);
+sfRenderWindow *window, int index);
 /*###########################################################################
 #######################END OF TEXT BOTTONS SEGMENT###########################
 -----------------------------------------------------------------------------*/

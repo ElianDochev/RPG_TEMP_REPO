@@ -23,7 +23,7 @@ void const  **color, sfVector2f offset, int font_size)
 }
 
 button_text_t **set_up_menu_bntext(sfFont *font, button_text_info_t *info,
-char **msg_arr, void (*ptr[])(void *))
+char **msg_arr, void (*ptr[])(void *, int))
 {
     int len = get_len_two_d(msg_arr);
     button_text_t **menu = malloc(sizeof(button_text_t *) * (len + 1));
@@ -40,7 +40,7 @@ char **msg_arr, void (*ptr[])(void *))
 }
 
 void loop_menu(button_text_t *botton, void *element,
-sfRenderWindow *window)
+sfRenderWindow *window, int index)
 {
     int state = is_mouse_on_btext(botton, window);
 
@@ -50,7 +50,7 @@ sfRenderWindow *window)
         change_bntxt_color(botton, on_hover);
     } else if (state == 2) {
         change_bntxt_color(botton, on_click);
-        botton->ptr(element);
+        botton->ptr(element, index);
     }
 }
 
@@ -59,8 +59,8 @@ void *arg, void *arg_two)
 {
     for (int i = 0; menu[i] ; ++i) {
         (i == 0 || ((menu)[i + 1] == NULL)) ?
-        loop_menu(menu[i], arg, window) :
-        loop_menu(menu[i], arg_two, window);
+        loop_menu(menu[i], arg, window, i) :
+        loop_menu(menu[i], arg_two, window, i);
         sfRenderWindow_drawText(window, menu[i]->text->text, NULL);
     }
 }
