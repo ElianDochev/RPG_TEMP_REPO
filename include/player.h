@@ -16,6 +16,7 @@
     #define AT_RIGHT map[y][x + 1]
     #define AT_UP map[y - 1][x]
     #define AT_DOWN map[y + 1][x]
+    #define KEY_TOUCH event.type == sfEvtKeyPressed && event.key.code
 
 static const char *PLAYER_MAP_PATHS[] = {"maps/out_house.back",
 "maps/first_path.back", "maps/battle_path.back", "maps/sanctuary_entry.back"};
