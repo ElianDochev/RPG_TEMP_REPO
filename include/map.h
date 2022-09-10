@@ -20,7 +20,7 @@ static const char *MAP_PATHS[] = {"maps/out_house.front",
 "maps/first_path.front", "maps/battle_path.front", "maps/house_interior.front",
 "maps/sanctuary_entry.front", "maps/shop_interior.front",
 "maps/dungeon_entry.front", "maps/sokoban_puzzle.front",
-"maps/out_house.front"};
+"maps/out_shop.front"};
 enum {GROUND, WALL_UP, WALL_LEFT, WALL_DOWN, WALL_RIGHT, WALL_NO, WALL_SO,
 WALL_SE, WALL_NE, BUSH, CUT_BUSH, GRASS, TREE, ROCK, SIGN, FLOWER, PLANT,
 PATH, CHEST, OPEN_CHEST, HOUSE, HOUSE_INTERIOR, MOVABLE_ROCK, NEUTRAL_TILE,
