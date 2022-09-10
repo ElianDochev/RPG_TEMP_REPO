@@ -98,7 +98,7 @@ global_t *global, config_t *conf)
             sfClock_restart(en->clock);
         }
         draw_ennemi(window, global);
-        player_cuting_bush(global->player, global->map);
+        player_action(global->player, global->map);
         if (global->player->ruby == 1)
             anim_ruby(global->player, ru, window);
         sfRenderWindow_display(window);

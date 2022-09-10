@@ -48,7 +48,7 @@ SRC	=	source/tests/button.c							\
 		source/is.c										\
 		source/game_running/create_ennemi.c 			\
 		source/game_running/change_map.c 				\
-		source/game_running/cuting_bush.c 				\
+		source/game_running/player_action.c				\
 		source/game_running/animation.c 				\
 		source/ennemies/ennemies_movement.c 			\
 
