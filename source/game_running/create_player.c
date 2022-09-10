@@ -63,6 +63,7 @@ player_t *set_up_player(char *path, config_t *conf)
     player->nbr_map = 0;
     player->money = 0;
     player->ruby = 0;
+    player->life = 10;
     player->stats = set_up_stats(conf);
     return player;
 }

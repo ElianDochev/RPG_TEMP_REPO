@@ -55,6 +55,7 @@ typedef struct player {
     int nbr_map;
     int money;
     int ruby;
+    int life;
     player_stats_t *stats;
 } player_t;
 ////////////////////////////////////////////////////////////

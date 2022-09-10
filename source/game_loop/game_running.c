@@ -73,9 +73,12 @@ global_t *global, config_t *conf)
     time_mana_t *hit = get_clock();
     time_mana_t *bom = get_clock();
     time_mana_t *ru = get_clock();
+    time_mana_t *en = get_clock();
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         sfRenderWindow_clear(window, sfBlack);
+        en->time = sfClock_getElapsedTime(en->clock);
+        en->millisec = sfTime_asMilliseconds(en->time);
         which_map(global->player, global->map);
         ev_loop_running(window, game_state, global);
         draw_map(window, global->map);
@@ -90,10 +93,11 @@ global_t *global, config_t *conf)
             draw_player(window, global->player);
         if (move_player(global->player, mo) == 1)
             sfClock_restart(mo->clock);
-        //move_ennemies(global->player, global->ennemi);
-        for (int i = 0; i < MAX_Y; ++i)
-            printf("%s\n", global->player->map[i]);
-        //draw_ennemi(window, global);
+        if (en->millisec > 400) {
+            move_ennemies(global->player, global->ennemi);
+            sfClock_restart(en->clock);
+        }
+        draw_ennemi(window, global);
         player_cuting_bush(global->player, global->map);
         if (global->player->ruby == 1)
             anim_ruby(global->player, ru, window);

@@ -42,7 +42,7 @@ static void change_map_back(player_t *player, const char *path)
 static void put_player_map(player_t *player, int intmap)
 {
     if (intmap == OUT_HOUSE && player->nbr_map == FIRST_PATH) {
-        player->map[7][13] = ' ';
+        player->map[7][14] = ' ';
         player->map[11][27] = 'B';
     }
     if (intmap == FIRST_PATH && player->nbr_map == BATTLE_PATH) {
@@ -52,6 +52,14 @@ static void put_player_map(player_t *player, int intmap)
     if (intmap == BATTLE_PATH && player->nbr_map == SANCTUARY_ENTRY) {
         player->map[13][15] = ' ';
         player->map[2][15] = 'B';
+    }
+    if (intmap == SANCTUARY_ENTRY && player->nbr_map == DUNGEON_ENTRY_MAP) {
+        player->map[13][15] = ' ';
+        player->map[6][14] = 'B';
+    }
+    if (intmap == DUNGEON_ENTRY_MAP && player->nbr_map == SOKOBAN_MAP) {
+        player->map[11][14] = ' ';
+        player->map[7][19] = 'B';
     }
 }
 

@@ -5,8 +5,7 @@
 ** functions that moves ennemies for my_rpg
 */
 
-#include "ennemi.h"
-#include "player.h"
+#include "main.h"
 #include "m_my.h"
 #include <fcntl.h>
 #include <unistd.h>
@@ -20,7 +19,7 @@ static coo_t find_coo(char **map, char symbol)
 
     for (int i = 0; map[i] != NULL; ++i) {
         for (int j = 0; map[i][j] != '\0'; ++j) {
-            if (map[i][j] = symbol) {
+            if (map[i][j] == symbol) {
                 coo.i = i;
                 coo.j = j;
             }
@@ -29,22 +28,66 @@ static coo_t find_coo(char **map, char symbol)
     return coo;
 }
 
-void move_ennemies(player_t *player, ennemi_t *enemy)
+void change_pos_ennemies(player_t *player, ennemi_t *ennemi, coo_t coo_e, int direction)
+{
+    if (direction == EWDOWN) {
+        if (player->map[coo_e.i + 1][coo_e.j] == 'B')
+            player->life--;
+        else {
+            ennemi->direction = 3;
+            player->map[coo_e.i][coo_e.j] = ' ';
+            player->map[coo_e.i + 1][coo_e.j] = 'E';
+        }
+    }
+    if (direction == EWUP) {
+        if (player->map[coo_e.i - 1][coo_e.j] == 'B')
+            player->life--;
+        else {
+            ennemi->direction = 2;
+            player->map[coo_e.i][coo_e.j] = ' ';
+            player->map[coo_e.i - 1][coo_e.j] = 'E';
+        }
+    }
+}
+
+void change_pos_ennemies_bis(player_t *player, ennemi_t *ennemi, coo_t coo_e, int direction)
+{
+    if (direction == EWRIGHT) {
+        if (player->map[coo_e.i][coo_e.j + 1] == 'B')
+            player->life--;
+        else {
+            ennemi->direction = 1;
+            player->map[coo_e.i][coo_e.j] = ' ';
+            player->map[coo_e.i][coo_e.j + 1] = 'E';
+        }
+    }
+    if (direction == EWLEFT) {
+        if (player->map[coo_e.i][coo_e.j - 1] == 'B')
+            player->life--;
+        else {
+            ennemi->direction = 0;
+            player->map[coo_e.i][coo_e.j] = ' ';
+            player->map[coo_e.i][coo_e.j - 1] = 'E';
+        }
+    }
+}
+
+void move_ennemies(player_t *player, ennemi_t *ennemi)
 {
     coo_t coo_p = find_coo(player->map, 'B');
     coo_t coo_e = find_coo(player->map, 'E');
 
-    if (abs(coo_p.i - coo_e.i) > 3 || abs(coo_p.j - coo_e.j) > 5)
+    if (abs(coo_p.i - coo_e.i) > 10 || abs(coo_p.j - coo_e.j) > 10)
         return;
     if (abs(coo_p.i - coo_e.i) > abs(coo_p.j - coo_e.j)) {
         if (abs(coo_p.i - (coo_e.i + 1)) < abs(coo_p.i - (coo_e.i)))
-            ;//move enemy down
+            change_pos_ennemies(player, ennemi, coo_e, EWDOWN);
         else
-            ;//move enemy up
+            change_pos_ennemies(player, ennemi, coo_e, EWUP);
     } else {
         if (abs(coo_p.j - (coo_e.j + 1)) < abs(coo_p.j - (coo_e.j)))
-            ;// move enemy right
+            change_pos_ennemies_bis(player, ennemi, coo_e, EWRIGHT);
         else
-            ;//move enemy left
+            change_pos_ennemies_bis(player, ennemi, coo_e, EWLEFT);
     }
 }
