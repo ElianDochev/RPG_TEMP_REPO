@@ -7,7 +7,6 @@
 
 #include "main.h"
 #include "sprites.h"
-#include "player.h"
 
 global_t *set_up_global(config_t *conf)
 {

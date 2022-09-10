@@ -80,7 +80,7 @@ void move_ennemies(player_t *player, ennemi_t *ennemi)
 
     if (coo_e.i == -1 || coo_e.j == -1)
         return;
-    if (abs(coo_p.i - coo_e.i) > 3 || abs(coo_p.j - coo_e.j) > 5)
+    if (abs(coo_p.i - coo_e.i) > 5 || abs(coo_p.j - coo_e.j) > 7)
         return;
     if (abs(coo_p.i - coo_e.i) > abs(coo_p.j - coo_e.j)) {
         if (abs(coo_p.i - (coo_e.i + 1)) < abs(coo_p.i - (coo_e.i)))
