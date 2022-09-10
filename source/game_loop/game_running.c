@@ -64,6 +64,16 @@ void bomb(player_t *player, time_mana_t *bom, sfRenderWindow *window)
     }
 }
 
+void ennemies(player_t *player, ennemi_t *ennemi, time_mana_t *en)
+{
+    en->time = sfClock_getElapsedTime(en->clock);
+    en->millisec = sfTime_asMilliseconds(en->time);
+    if (en->millisec > 400) {
+        move_ennemies(player, ennemi);
+        sfClock_restart(en->clock);
+    }
+}
+
 void game_running(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
@@ -77,8 +87,6 @@ global_t *global, config_t *conf)
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         sfRenderWindow_clear(window, sfBlack);
-        en->time = sfClock_getElapsedTime(en->clock);
-        en->millisec = sfTime_asMilliseconds(en->time);
         ev_loop_running(window, game_state, global);
         which_map(global->player, global->map);
         draw_map(window, global->map);
@@ -93,12 +101,9 @@ global_t *global, config_t *conf)
             attack(global->player, hit, window);
         else
             draw_player(window, global->player);
-        if (en->millisec > 400) {
-            move_ennemies(global->player, global->ennemi);
-            sfClock_restart(en->clock);
-        }
+        ennemies(global->player, global->ennemi, en);
         draw_ennemi(window, global);
-        player_action(global->player, global->map);
+        player_action(global->player, global->map, global->ennemi);
         if (global->player->ruby == 1)
             anim_ruby(global->player, ru, window);
         sfRenderWindow_display(window);

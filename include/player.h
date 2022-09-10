@@ -70,7 +70,6 @@ typedef struct player {
 player_t *set_up_player(char *path, config_t *conf);
 char *get_map(const char *path);
 void draw_player(sfRenderWindow *window, player_t *player);
-int is_aroud_player(player_t *player, int y, int x, char item);
 
 #endif
 
