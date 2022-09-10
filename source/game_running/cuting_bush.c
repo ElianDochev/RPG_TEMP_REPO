@@ -11,13 +11,13 @@
 int is_aroud_player(player_t *player, int y, int x, char item)
 {
     if (y > 0 && x > 0 && y < MAX_Y - 1 && x < MAX_X - 1) {
-        if (player->AT_LEFT == item)
+        if (player->direction == WLEFT && player->AT_LEFT == item)
             return WLEFT;
-        if (player->AT_RIGHT == item)
+        if (player->direction == WRIGHT && player->AT_RIGHT == item)
             return WRIGHT;
-        if (player->AT_UP == item)
+        if (player->direction == WUP && player->AT_UP == item)
             return WUP;
-        if (player->AT_DOWN == item)
+        if (player->direction == WDOWN && player->AT_DOWN == item)
             return WDOWN;
     }
     return -1;
