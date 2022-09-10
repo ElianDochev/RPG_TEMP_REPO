@@ -183,6 +183,7 @@ void anim_flowers(map_t *map, time_mana_t *fl);
 int move_player(player_t *player, time_mana_t *mo);
 void which_map(player_t *player, map_t *map);
 void player_cuting_bush(player_t *player, map_t *map);
+void anim_ruby(player_t *player, time_mana_t *ru, sfRenderWindow *window);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/

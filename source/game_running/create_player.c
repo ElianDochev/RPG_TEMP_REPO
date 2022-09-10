@@ -49,5 +49,6 @@ player_t *set_up_player(char *path)
     player->bomb = 0;
     player->nbr_map = 0;
     player->money = 0;
+    player->ruby = 0;
     return player;
 }

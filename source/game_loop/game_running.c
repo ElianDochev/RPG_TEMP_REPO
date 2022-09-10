@@ -72,6 +72,7 @@ global_t *global, config_t *conf)
     time_mana_t *mo = get_clock();
     time_mana_t *hit = get_clock();
     time_mana_t *bom = get_clock();
+    time_mana_t *ru = get_clock();
 
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         sfRenderWindow_clear(window, sfBlack);
@@ -91,6 +92,8 @@ global_t *global, config_t *conf)
             sfClock_restart(mo->clock);
         draw_ennemi(window, global);
         player_cuting_bush(global->player, global->map);
+        if (global->player->ruby == 1)
+            anim_ruby(global->player, ru, window);
         sfRenderWindow_display(window);
     }
 }

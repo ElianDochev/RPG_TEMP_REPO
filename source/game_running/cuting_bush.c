@@ -52,6 +52,7 @@ static int loop_player_cuting_bush(player_t *player, map_t *map, int y)
         == player->direction && player->attack == 1) {
             cut_the_bush(player, map, y, x);
             player->money += 10;
+            player->ruby = 1;
             return 1;
         }
     }
