@@ -5,7 +5,7 @@
 ** functions that moves ennemies for my_rpg
 */
 
-#include "ennemies.h"
+#include "ennemi.h"
 #include "player.h"
 #include "m_my.h"
 #include <fcntl.h>

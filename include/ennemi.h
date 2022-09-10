@@ -28,5 +28,10 @@ typedef struct ennemi {
     int move;
 } ennemi_t;
 
+typedef struct coo_s {
+    int i;
+    int j;
+}coo_t;
+
 void move_ennemies(player_t *player, player_t *enemy);
 #endif
