@@ -33,6 +33,7 @@ void open_inventory(void *arg, int index);
 static const void (*action_game_paused[])(void *, int) =
 {&start, &open_inventory, &open_options, &quit};
 struct game_paused_elements {
+    config_t *conf;
     sfFont *main_font;
     sfVector2f vect;
     button_text_t **menu;
@@ -41,6 +42,5 @@ struct game_paused_elements {
     sfRenderWindow *window;
     sfRectangleShape *square_container;
     global_t *global;
-    config_t *conf;
 };
 #endif

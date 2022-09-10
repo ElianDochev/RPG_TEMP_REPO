@@ -34,6 +34,7 @@ static const void (*action_start_menu[])(void *, int) =
 {&start, &display_help, &option, &quit};
 //all the elements needed for start menu
 struct start_menu_elements {
+    config_t *conf;
     sfFont *main_font;
     sfVector2f vect;
     text_t *title;
@@ -42,7 +43,6 @@ struct start_menu_elements {
     sprite_t *background;
     sfMusic *music;
     sfRenderWindow *window;
-    config_t *conf;
 };
 //initializes the elements of the start menu
 start_menu_elements_t *init_start_elements(sfRenderWindow *window,

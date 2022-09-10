@@ -32,6 +32,13 @@ static const int PLAYER_RECT[][5] = {{0, 48, 48, 0}, {0, 48, 48, 0},
 {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 48, 48, 0},
 {0, 48, 48, 0}, {0, 48, 48, 0}, {0, 62, 20, 0}};
 
+typedef struct {
+    int live;
+    int attack;
+    int defense;
+    node_t *inventory;
+} player_stats_t;
+
 typedef struct player {
     char **map;
     sfTexture **textures;
@@ -43,6 +50,7 @@ typedef struct player {
     int nbr_map;
     int money;
     int ruby;
+    player_stats_t *stats;
 } player_t;
 
 player_t *set_up_player(char *path);

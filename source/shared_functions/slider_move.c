@@ -6,6 +6,7 @@
 */
 
 #include "buttons.h"
+#include "main.h"
 
 
 void draw_slider(sfRenderWindow *window, slider_t *slider, void *arg)
@@ -23,6 +24,7 @@ void draw_slider(sfRenderWindow *window, slider_t *slider, void *arg)
             percent = (sfMouse_getPositionRenderWindow(window).x -
             slider->hitbox.left) / slider->hitbox.width;
             slider->func_ptr(arg, percent);
+            printf("how %p is the font pointer\n" , ((*((config_t **)arg)) + sizeof(void *)));
         }
     }
     sfRenderWindow_drawRectangleShape(window, slider->slider, NULL);

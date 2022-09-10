@@ -8,22 +8,21 @@
 #include "utilities.h"
 #include <stdlib.h>
 
-static node_t *create_note(void *value, types type)
+static node_t *create_note(void *value)
 {
     node_t *note = malloc(sizeof(node_t));
 
     note->next = NULL;
     note->value = value;
-    note->type = type;
     return note;
 }
 
-node_t *list_incert(node_t *list, void *value, types type)
+node_t *list_incert(node_t *list, void *value)
 {
     if (list == NULL)
-        return create_note(value, type);
+        return create_note(value);
     else
-        list->next = list_incert(list->next, value, type);
+        list->next = list_incert(list->next, value);
     return list;
 }
 

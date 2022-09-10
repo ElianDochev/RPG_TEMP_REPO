@@ -125,17 +125,14 @@ int comp_uvector(sfVector2u *vect_one, sfVector2u *vect_two);
 /*###########################################################################
 #########################BEGINING OF LIST####################################
 #############################################################################*/
-//types of the structs that are gonna be used in the list
-typedef enum {bg_type, player_type, score_type, obst_type} types;
 //struct for list
 typedef struct list {
     void *value;
     struct list *next;
-    types type;
-} node_t ;
+} node_t;
 /*incerts a node in the list give the pointer + the type
-the types are 0 for background, 1 for player NOTE: more will be added later*/
-node_t *list_incert(node_t *list, void *value, types type);
+the item_type are 0 for background, 1 for player NOTE: more will be added later*/
+node_t *list_incert(node_t *list, void *value);
 //starts from 0 peeks the node fron the list at the specified index
 node_t *peek_index(node_t *list, int index);
 //destroys the list but not the eles whitin it
