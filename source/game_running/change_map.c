@@ -61,6 +61,10 @@ static void put_player_map(player_t *player, int intmap)
         player->map[11][14] = ' ';
         player->map[7][19] = 'B';
     }
+    if (intmap == SANCTUARY_ENTRY && player->nbr_map == OUT_SHOP) {
+        player->map[13][15] = ' ';
+        player->map[7][1] = 'B';
+    }
 }
 
 static int loop_which_map(player_t *player, map_t *map, int intmap, int y)
