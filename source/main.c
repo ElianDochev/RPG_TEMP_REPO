@@ -30,7 +30,7 @@ static void print_bad_args(int ac)
     ac += '0' - 1;
     write(2, "./my_rpg: bad arguments:", 25);
     write(2, &ac, 1);
-    write(2, "given but 0 is required\nretry with -h\n", 38);
+    write(2, " given but 0 is required\nretry with -h\n", 39);
 }
 
 int main (int ac, char **av)

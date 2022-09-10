@@ -10,7 +10,7 @@
 
 bool is_in_special(int nb)
 {
-    for (int i = 0; i < SPECIALS__NB; i++)
+    for (int i = 0; i < SPECIALS_NB; i++)
         if (SPECIALS[i] == nb)
             return true;
     return false;
