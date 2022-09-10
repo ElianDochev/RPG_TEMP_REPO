@@ -94,10 +94,10 @@ global_t *global, config_t *conf)
         else
             draw_player(window, global->player);
         if (en->millisec > 400) {
-            //move_ennemies(global->player, global->ennemi);
+            move_ennemies(global->player, global->ennemi);
             sfClock_restart(en->clock);
         }
-        //draw_ennemi(window, global);
+        draw_ennemi(window, global);
         player_cuting_bush(global->player, global->map);
         if (global->player->ruby == 1)
             anim_ruby(global->player, ru, window);

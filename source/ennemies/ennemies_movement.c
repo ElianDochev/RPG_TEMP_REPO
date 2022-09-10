@@ -22,6 +22,7 @@ static coo_t find_coo(char **map, char symbol)
             if (map[i][j] == symbol) {
                 coo.i = i;
                 coo.j = j;
+                return coo;
             }
         }
     }
@@ -77,7 +78,9 @@ void move_ennemies(player_t *player, ennemi_t *ennemi)
     coo_t coo_p = find_coo(player->map, 'B');
     coo_t coo_e = find_coo(player->map, 'E');
 
-    if (abs(coo_p.i - coo_e.i) > 10 || abs(coo_p.j - coo_e.j) > 10)
+    if (coo_e.i == -1 || coo_e.j == -1)
+        return;
+    if (abs(coo_p.i - coo_e.i) > 3 || abs(coo_p.j - coo_e.j) > 5)
         return;
     if (abs(coo_p.i - coo_e.i) > abs(coo_p.j - coo_e.j)) {
         if (abs(coo_p.i - (coo_e.i + 1)) < abs(coo_p.i - (coo_e.i)))
