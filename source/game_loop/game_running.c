@@ -90,6 +90,9 @@ global_t *global, config_t *conf)
             draw_player(window, global->player);
         if (move_player(global->player, mo) == 1)
             sfClock_restart(mo->clock);
+        move_ennemies(global->player, global->ennemi);
+        for (int i = 0; i < MAX_Y; ++i)
+            printf("%s\n", global->player->map[i]);
         draw_ennemi(window, global);
         player_cuting_bush(global->player, global->map);
         if (global->player->ruby == 1)

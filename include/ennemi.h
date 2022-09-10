@@ -33,5 +33,4 @@ typedef struct coo_s {
     int j;
 }coo_t;
 
-void move_ennemies(player_t *player, player_t *enemy);
 #endif
