@@ -7,6 +7,8 @@
 
 #include "player.h"
 #include "m_my.h"
+#include "main.h"
+#include "items.h"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -34,7 +36,18 @@ static sfTexture **init_player_textures(void)
     return textures;
 }
 
-player_t *set_up_player(char *path)
+static player_stats_t *set_up_stats(config_t *conf)
+{
+    player_stats_t *stats = malloc(sizeof(player_stats_t));
+
+    stats->live = conf->confs[conf_lives];
+    stats->attack = conf->confs[conf_attack];
+    stats->defense = conf->confs[conf_defense];
+    stats->inventory = NULL;
+    return stats;
+}
+
+player_t *set_up_player(char *path, config_t *conf)
 {
     player_t *player = malloc(sizeof(player_t));
 
@@ -50,5 +63,6 @@ player_t *set_up_player(char *path)
     player->nbr_map = 0;
     player->money = 0;
     player->ruby = 0;
+    player->stats = set_up_stats(conf);
     return player;
 }

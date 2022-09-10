@@ -9,13 +9,13 @@
 #include "sprites.h"
 #include "player.h"
 
-global_t *set_up_global(int lives)
+global_t *set_up_global(config_t *conf)
 {
     global_t *global = malloc(sizeof(global_t));
 
-    global->lives = lives;
     global->map = create_map(MAP_PATHS[OUT_HOUSE]);
-    global->player = set_up_player(PLAYER_MAP_PATHS[OUT_HOUSE]);
+    global->player = set_up_player(PLAYER_MAP_PATHS[OUT_HOUSE],
+    conf);
     global->ennemi = set_up_ennemi();
     return global;
 }
@@ -49,7 +49,7 @@ void main_game_loop(int *error)
     config_t *config = set_up_config();
     sfRenderWindow *window = config != NULL ? create_window(config) : NULL;
     states game_state = gm_over;
-    global_t *global = set_up_global(config->confs[conf_lives]);
+    global_t *global = set_up_global(config);
 
     if (window == NULL) {
         *error = EXIT_ERR_EPI;

@@ -9,6 +9,8 @@
     #define PLAYER_H_
 
     #include "sprites.h"
+    #include "conf.h"
+
     #define MAX_Y 16
     #define MAX_X 30
     #define PLAYER_TEXTURE_NB 10
@@ -52,8 +54,16 @@ typedef struct player {
     int ruby;
     player_stats_t *stats;
 } player_t;
-
-player_t *set_up_player(char *path);
+////////////////////////////////////////////////////////////
+/// \brief Create a player object
+///
+/// \param path       path to the map file
+/// \param conf       the confguration of the game for lives and stuff
+///
+/// \return returns the player object
+///
+///////////////////////////////////////////////////////////
+player_t *set_up_player(char *path, config_t *conf);
 char *get_map(const char *path);
 void draw_player(sfRenderWindow *window, player_t *player);
 int is_aroud_player(player_t *player, int y, int x, char item);
