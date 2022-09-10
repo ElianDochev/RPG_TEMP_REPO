@@ -79,25 +79,25 @@ global_t *global, config_t *conf)
         sfRenderWindow_clear(window, sfBlack);
         en->time = sfClock_getElapsedTime(en->clock);
         en->millisec = sfTime_asMilliseconds(en->time);
-        which_map(global->player, global->map);
         ev_loop_running(window, game_state, global);
+        which_map(global->player, global->map);
         draw_map(window, global->map);
         anim_flowers(global->map, fl);
         if (global->player->move == 1 && global->player->attack != 1)
             anim_player(global->player, pl);
         if (global->player->bomb == 1)
             bomb(global->player, bom, window);
+        if (move_player(global->player, mo) == 1)
+            sfClock_restart(mo->clock);
         if (global->player->attack == 1 && global->player->move != 1)
             attack(global->player, hit, window);
         else
             draw_player(window, global->player);
-        if (move_player(global->player, mo) == 1)
-            sfClock_restart(mo->clock);
         if (en->millisec > 400) {
-            move_ennemies(global->player, global->ennemi);
+            //move_ennemies(global->player, global->ennemi);
             sfClock_restart(en->clock);
         }
-        draw_ennemi(window, global);
+        //draw_ennemi(window, global);
         player_cuting_bush(global->player, global->map);
         if (global->player->ruby == 1)
             anim_ruby(global->player, ru, window);
