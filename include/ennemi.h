@@ -28,4 +28,5 @@ typedef struct ennemi {
     int move;
 } ennemi_t;
 
+void move_ennemies(player_t *player, player_t *enemy);
 #endif
