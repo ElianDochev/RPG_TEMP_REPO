@@ -7,7 +7,7 @@
 
 #include "start_menu.h"
 
-void exit_option(void *running)
+void exit_option(void *running, int a)
 {
     *(int *) running = 0;
 }
@@ -54,12 +54,13 @@ void display_help(void *element)
 {
     start_menu_elements_t *ele = (start_menu_elements_t *)  element;
     char *buff = fopen_file("how_to_play.txt", "help file not found");
-    void (*fptr[1])(void *) = {&exit_option};
+    void (*fptr[1])(void *, int) = {&exit_option};
     void *color[3] = {&sfWhite, &sfBlack, &sfYellow};
+    const char *txt[] = {"Go back", NULL};
     button_text_t **menu =
     set_up_menu_bntext(ele->main_font,init_button_text_info(con_vu_to_vf
     (get_center_xy_pcn(ele->window, -0.05f, 0.1f)), color,
-    (sfVector2f) {0, 0}, 40), (char *[]) {"Go back", NULL}, fptr);
+    (sfVector2f) {0, 0}, 40), txt, fptr);
     text_t *text = NULL;
     time_mana_t *clock = get_clock();
 

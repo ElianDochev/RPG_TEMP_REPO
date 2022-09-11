@@ -7,6 +7,7 @@
 
 #include "main.h"
 #include <stdio.h>
+#include <unistd.h>
 
 static int choose_map(player_t *player, int y, int x)
 {

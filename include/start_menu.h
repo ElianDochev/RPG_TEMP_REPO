@@ -17,7 +17,8 @@
 #############################################################################*/
 typedef sprite_t cursor_t;
 typedef struct start_menu_elements start_menu_elements_t;
-static char *options_msg[] = {"START", "HOW TO PLAY", "OPTION", "QUIT", NULL};
+static const char *options_msg[] = {"START", "HOW TO PLAY", "OPTION", "QUIT",
+NULL};
     #define FONT_STMENU "./resources/fonts/orange juice 2.0.ttf"
     #define TITLE_COLOR sfGreen
 //draws the menu on the screen
@@ -58,7 +59,7 @@ config_t *conf);
 #######################BEGINING OF HELP SEGMENT##############################
 #############################################################################*/
 //colors used for sliders in option menu in start menu
-static const void *option_colors[] = {&sfWhite, &sfBlue, NULL, &sfBlack};
+static void *option_colors[] = {&sfWhite, &sfBlue, NULL, &sfBlack};
 //the thinness of outline of the sliders in option menu in start menu
 // bar =0 , circle = 2
 static const sfVector2f option_thinkness = {0, 2};

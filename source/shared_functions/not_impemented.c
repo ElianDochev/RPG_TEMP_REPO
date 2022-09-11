@@ -60,9 +60,9 @@ void not_imp(void *ptr)
     sfText_setFillColor(title->text, sfRed);
     while (sfRenderWindow_isOpen(window) && running) {
         local_ev_loop(window);
-        display_things(window, title, menu, cursor);
+        display_things(window, title, menu, &running);
     }
-    destroy_things(title, menu, font, &running);
+    destroy_things(title, menu, font, cursor);
     set_cursor_to_mouse(cursor, window);
     sfRenderWindow_display(window);
 }

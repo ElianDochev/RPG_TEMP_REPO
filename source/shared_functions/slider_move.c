@@ -7,6 +7,7 @@
 
 #include "buttons.h"
 #include "main.h"
+#include <stdio.h>
 
 
 void draw_slider(sfRenderWindow *window, slider_t *slider, void *arg)

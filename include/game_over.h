@@ -14,7 +14,7 @@
 
 typedef sprite_t cursor_t;
 static char *gm_over_msg = "GAME OVER\n";
-static char *gm_over_menu[] = {"START OVER", "QUIT", NULL};
+static const char *gm_over_menu[] = {"START OVER", "QUIT", NULL};
     #define GM_OVER_COLOR sfColor_fromRGB(0x43, 0x72, 0x9c)
 //event loop for game over state
 void ev_loop_gm_over(sfRenderWindow *window, states *state);

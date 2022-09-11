@@ -6,6 +6,7 @@
 */
 
 #include "game_paused.h"
+#include <math.h>
 
 void change_volume_p(void *arg, float percent)
 {

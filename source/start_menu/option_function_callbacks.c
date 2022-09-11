@@ -6,6 +6,7 @@
 */
 
 #include "start_menu.h"
+#include <math.h>
 
 void change_volume(void *arg, float percent)
 {

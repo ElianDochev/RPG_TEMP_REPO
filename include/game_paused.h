@@ -18,7 +18,7 @@ typedef struct game_paused_elements game_paused_elements_t;
 static const char *option_menu[] = {"Resume", "Invenroty", "Options", "Quit",
 NULL};
 // the colors for the silder option menu
-static const void *option_colors[] = {&sfWhite, &sfGreen, &sfBlack, &sfWhite};
+static void *option_colors[] = {&sfWhite, &sfGreen, &sfBlack, &sfWhite};
 // the thickness of the slider option menu
 static const sfVector2f option_thinkness = {2, 2};
 //changes the volume of the music
