@@ -11,6 +11,18 @@
 #include <unistd.h>
 #include <math.h>
 
+static int is_coo_right(coo_t *coo, char *map, char symbol, int i)
+{
+    for (int j = 0; map[j] != '\0'; ++j) {
+        if (map[j] == symbol) {
+            coo->i = i;
+            coo->j = j;
+            return 1;
+        }
+    }
+    return 0;
+}
+
 static coo_t find_coo(char **map, char symbol)
 {
     coo_t coo;
@@ -18,32 +30,28 @@ static coo_t find_coo(char **map, char symbol)
     coo.j = -1;
 
     for (int i = 0; map[i] != NULL; ++i) {
-        for (int j = 0; map[i][j] != '\0'; ++j) {
-            if (map[i][j] == symbol) {
-                coo.i = i;
-                coo.j = j;
-                return coo;
-            }
-        }
+        if (is_coo_right(&coo, map[i], symbol, i))
+            return coo;
     }
     return coo;
 }
 
-void change_pos_ennemies(player_t *player, ennemi_t *ennemi, coo_t coo_e, int direction)
+void change_pos_ennemies(player_t *player, ennemi_t *ennemi,
+coo_t coo_e, int direction)
 {
     if (direction == EWDOWN) {
-        if (player->map[coo_e.i + 1][coo_e.j] == 'B')
+        if (player->map[coo_e.i + 1][coo_e.j] == 'B') {
             player->life--;
-        else {
+        } else {
             ennemi->direction = 3;
             player->map[coo_e.i][coo_e.j] = ' ';
             player->map[coo_e.i + 1][coo_e.j] = 'E';
         }
     }
     if (direction == EWUP) {
-        if (player->map[coo_e.i - 1][coo_e.j] == 'B')
+        if (player->map[coo_e.i - 1][coo_e.j] == 'B') {
             player->life--;
-        else {
+        } else {
             ennemi->direction = 2;
             player->map[coo_e.i][coo_e.j] = ' ';
             player->map[coo_e.i - 1][coo_e.j] = 'E';
@@ -51,21 +59,22 @@ void change_pos_ennemies(player_t *player, ennemi_t *ennemi, coo_t coo_e, int di
     }
 }
 
-void change_pos_ennemies_bis(player_t *player, ennemi_t *ennemi, coo_t coo_e, int direction)
+void change_pos_ennemies_bis(player_t *player, ennemi_t *ennemi,
+coo_t coo_e, int direction)
 {
     if (direction == EWRIGHT) {
-        if (player->map[coo_e.i][coo_e.j + 1] == 'B')
+        if (player->map[coo_e.i][coo_e.j + 1] == 'B') {
             player->life--;
-        else {
+        } else {
             ennemi->direction = 1;
             player->map[coo_e.i][coo_e.j] = ' ';
             player->map[coo_e.i][coo_e.j + 1] = 'E';
         }
     }
     if (direction == EWLEFT) {
-        if (player->map[coo_e.i][coo_e.j - 1] == 'B')
+        if (player->map[coo_e.i][coo_e.j - 1] == 'B') {
             player->life--;
-        else {
+        } else {
             ennemi->direction = 0;
             player->map[coo_e.i][coo_e.j] = ' ';
             player->map[coo_e.i][coo_e.j - 1] = 'E';
