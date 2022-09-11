@@ -67,8 +67,12 @@ static void put_player_map(player_t *player, int intmap)
         player->map[7][1] = 'B';
     }
     if (intmap == OUT_SHOP && player->nbr_map == SHOP_INTERIOR_MAP) {
-        player->map[10][28] = ' ';
-        player->map[6][14] = 'B';
+        player->map[7][28] = ' ';
+        player->map[5][4] = 'B';
+    }
+    if (intmap == DUNGEON_ENTRY_MAP && player->nbr_map == MAZE) {
+        player->map[11][14] = ' ';
+        player->map[7][8] = 'B';
     }
 }
 
