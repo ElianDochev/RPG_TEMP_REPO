@@ -76,8 +76,6 @@ void destroy_player(player_t *player)
     sfMusic_destroy(player->music);
     for (int i = 0; i < MAX_Y; ++i)
         free(player->map[i]);
-    for (int i = 0; i < PLAYER_TEXTURE_NB; ++i) {
-        free(player->textures[i]);
+    for (int i = 0; i < PLAYER_TEXTURE_NB; ++i)
         free(player->sprites[i]);
-    }
 }

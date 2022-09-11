@@ -60,5 +60,6 @@ void main_game_loop(int *error)
         check_game_state(window, &game_state, global, config);
     }
     xfree((void **) &config);
+    destroy_global(global);
     sfRenderWindow_destroy(window);
 }
