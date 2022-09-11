@@ -74,6 +74,17 @@ void ennemies(player_t *player, ennemi_t *ennemi, time_mana_t *en)
     }
 }
 
+void destroy_player(player_t *player)
+{
+    sfMusic_destroy(player->music);
+    for (int i = 0; i < MAX_Y; ++i)
+        free(player->map[i]);
+    for (int i = 0; i < PLAYER_TEXTURE_NB; ++i) {
+        free(player->textures[i]);
+        free(player->sprites[i]);
+    }
+}
+
 void game_running(sfRenderWindow *window, states *game_state,
 global_t *global, config_t *conf)
 {
@@ -85,6 +96,7 @@ global_t *global, config_t *conf)
     time_mana_t *ru = get_clock();
     time_mana_t *en = get_clock();
 
+    sfMusic_play(global->player->music);
     while (sfRenderWindow_isOpen(window) && *game_state == running) {
         sfRenderWindow_clear(window, sfBlack);
         ev_loop_running(window, game_state, global);
@@ -108,4 +120,5 @@ global_t *global, config_t *conf)
             anim_ruby(global->player, ru, window);
         sfRenderWindow_display(window);
     }
+    sfMusic_stop(global->player->music);
 }

@@ -54,7 +54,6 @@ static sfMusic *init_music(config_t *conf)
         return (NULL);
     sfMusic_setLoop(music, sfTrue);
     sfMusic_setVolume(music, (float) conf->confs[music_vol_cf]);
-    sfMusic_play(music);
     return (music);
 }
 
