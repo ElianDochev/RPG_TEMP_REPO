@@ -27,9 +27,9 @@ void draw_menu(text_t **menu , sfRenderWindow *window);
 void ev_loop_start(states *state,
 start_menu_elements_t *elements);
 //the display help button function
-void display_help(void *element);
+void display_help(void *element, int a);
 //the options button function
-void option(void *element);
+void option(void *element, int a);
 //functions for start menu
 static const void (*action_start_menu[])(void *, int) =
 {&start, &display_help, &option, &quit};

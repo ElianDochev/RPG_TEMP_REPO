@@ -63,7 +63,7 @@ start_menu_elements_t *element)
     return (slider_arr);
 }
 
-void option(void *elements)
+void option(void *elements, int a)
 {
     start_menu_elements_t *element = (start_menu_elements_t *) elements;
     sfRenderWindow *window = element->window;

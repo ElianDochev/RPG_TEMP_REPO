@@ -21,7 +21,7 @@ static void local_ev_loop(sfRenderWindow *window)
     }
 }
 
-static void go_back(void *ptr)
+static void go_back(void *ptr, int a)
 {
     *(int *)ptr = 0;
 }

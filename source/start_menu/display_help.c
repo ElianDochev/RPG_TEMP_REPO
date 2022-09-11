@@ -50,7 +50,7 @@ button_text_t **menu, text_t *text, time_mana_t *clock)
     sfClock_destroy(clock->clock);
 }
 
-void display_help(void *element)
+void display_help(void *element, int a)
 {
     start_menu_elements_t *ele = (start_menu_elements_t *)  element;
     char *buff = fopen_file("how_to_play.txt", "help file not found");

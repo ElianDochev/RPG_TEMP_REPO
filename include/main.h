@@ -21,12 +21,12 @@
 //this are the main game states
 typedef enum {not_started, paused, running, gm_over, gm_quit} states;
 //sets the state to gm_quit (takes the state obj as void *)
-void quit(void *state);
+void quit(void *state, int a);
 //sets the state to gm_running (takes the state obj as void *)
-void start(void *state);
+void start(void *state, int a);
 //sets the state to not_starded which resets the game
 //(takes the state obj as void *)
-void start_over(void *state);
+void start_over(void *state, int a);
 //sets the state to paused which pauses
 //(takes the state obj as void *)
 void pause_game(void *state);

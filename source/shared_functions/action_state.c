@@ -7,17 +7,17 @@
 
 #include "main.h"
 
-void quit(void *state)
+void quit(void *state, int a)
 {
     *((states *)state) = gm_quit;
 }
 
-void start(void *state)
+void start(void *state, int a)
 {
     *((states *)state) = running;
 }
 
-void start_over(void *state)
+void start_over(void *state, int a)
 {
     *((states *)state) = not_started;
 }
