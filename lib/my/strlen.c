@@ -38,9 +38,8 @@ void str_copy(char *dest, char *scr)
 
 void empty_buffer(char *str, int size)
 {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
         str[i] = '\0';
-    }
 }
 
 int two_d_arr_len(char **arr)

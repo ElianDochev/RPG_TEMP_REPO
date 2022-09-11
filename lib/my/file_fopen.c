@@ -26,7 +26,6 @@ char *fopen_file(char *path, char *err_msg)
     return buff;
 }
 
-
 int split_endl(char ch)
 {
     if (ch == '\n')

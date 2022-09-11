@@ -10,6 +10,6 @@
 
 void xfree(void **ptr)
 {
-        free(*ptr);
-        *ptr = NULL;
+    free(*ptr);
+    *ptr = NULL;
 }

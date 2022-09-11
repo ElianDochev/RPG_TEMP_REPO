@@ -54,12 +54,10 @@ static char **make_array(char const *str, int (*sep)(char))
     int num_words = count_words(str, sep);
     char **words = (char **) malloc((num_words + 1) * sizeof(char *));
 
-    for (int i = 0; i < num_words; ++i) {
+    for (int i = 0; i < num_words; ++i)
         words[i] = (char *) malloc(count_char(str, sep) + 1);
-    }
     words[num_words] = NULL;
     return words;
-
 }
 
 char **split_str(char *scr, int (*sep)(char))

@@ -70,4 +70,3 @@ int str_in_word_arr(char *dest, char **word_arr, const char *sub_arr)
     }
     return 1;
 }
-
