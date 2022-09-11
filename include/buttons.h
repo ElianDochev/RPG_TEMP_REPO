@@ -60,7 +60,7 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window);
 ///
 ///////////////////////////////////////////////////////////
 button_text_t *init_button_text(button_text_info_t *info, void(*ptr)(void *,
-int), sfFont *font, char *msg);
+int), sfFont *font, const char *msg);
 //destroys a text button
 void destroy_button_text(button_text_t *button, int mask);
 //changes the color of a text botton
@@ -79,7 +79,7 @@ void change_bntxt_color(button_text_t *button, button_state state);
 ///
 ///////////////////////////////////////////////////////////
 button_text_info_t *init_button_text_info(sfVector2f location,
-void const  **color, sfVector2f offset, int font_size);
+void **color, sfVector2f offset, int font_size);
 ////////////////////////////////////////////////////////////
 /// \brief Makes an array of buttons pixels appart each
 ///
@@ -92,7 +92,7 @@ void const  **color, sfVector2f offset, int font_size);
 ///
 ///////////////////////////////////////////////////////////
 button_text_t **set_up_menu_bntext(sfFont *font, button_text_info_t *info,
-char **msg_arr, void (*ptr[])(void *, int));
+const char **msg_arr, void (*ptr[])(void *, int));
 ////////////////////////////////////////////////////////////
 /// \brief draws the menu of text buttons with a specified offset from
 /// eachohter

@@ -43,4 +43,8 @@ struct game_paused_elements {
     sfRectangleShape *square_container;
     global_t *global;
 };
+game_paused_elements_t *init_paused_elements(sfRenderWindow *window,
+config_t *conf, global_t *global);
+void ev_loop_paused(sfRenderWindow *window, states *state);
+void draw_ennemi(sfRenderWindow *window, global_t *global);
 #endif

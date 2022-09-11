@@ -8,8 +8,7 @@
 #include "main.h"
 #include "buttons.h"
 
-static void local_ev_loop(sfRenderWindow *window,
-int *running)
+static void local_ev_loop(sfRenderWindow *window)
 {
     sfEvent event;
 
@@ -60,7 +59,7 @@ void not_imp(void *ptr)
 
     sfText_setFillColor(title->text, sfRed);
     while (sfRenderWindow_isOpen(window) && running) {
-        local_ev_loop(window, menu);
+        local_ev_loop(window);
         display_things(window, title, menu, cursor);
     }
     destroy_things(title, menu, font, &running);

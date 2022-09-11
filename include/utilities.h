@@ -22,7 +22,7 @@
 //returns the smallest value
     #define MIN(x, y) (x < y ? x : y)
 //displays an error msg
-void error (char *str);
+void error(const char *str);
 //retuns the lenght of a str
 int my_strlen(char const *str);
 //copies one string to another
@@ -71,14 +71,14 @@ int two_d_arr_len(char **arr);
 char **split_str(char *scr, int (*sep)(char));
 //finds if the string is in a word_array return 0 on success
 //and then gives the rest until it reaches the end returns 1 on falier
-int str_in_word_arr(char *dest, char **word_arr, char *sub_arr);
+int str_in_word_arr(char *dest, char **word_arr, const char *sub_arr);
 //gives a buffer with size BUFF_SIZE from file,
 //displays the err msg to sdterr on failaire
 char *fopen_file(char *path, char *err_msg);
 //compares two strings up to a given length or untill the end of one
 int str_ncmp(char const *str_one, char const *str_two, int length);
 //gets the length of a null termiated 2d string
-int get_len_two_d(char **w_arr);
+int get_len_two_d(const char **w_arr);
 //this returns 1 if the ch == '\n' otherwise retuns 0
 int split_endl(char ch);
 //nulls a static buffer

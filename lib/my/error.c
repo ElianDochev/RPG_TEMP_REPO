@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "utilities.h"
 
-void error (char *str)
+void error(char const *str)
 {
     write(2, str, my_strlen(str));
 }

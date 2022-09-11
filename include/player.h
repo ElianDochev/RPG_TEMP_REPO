@@ -68,7 +68,7 @@ typedef struct player {
 /// \return returns the player object
 ///
 ///////////////////////////////////////////////////////////
-player_t *set_up_player(char *path, config_t *conf);
+player_t *set_up_player(const char *path, config_t *conf);
 char *get_map(const char *path);
 void draw_player(sfRenderWindow *window, player_t *player);
 
