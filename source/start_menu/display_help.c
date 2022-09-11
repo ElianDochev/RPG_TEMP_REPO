@@ -63,7 +63,6 @@ void display_help(void *element, int a)
     (sfVector2f) {0, 0}, 40), txt, fptr);
     text_t *text = NULL;
     time_mana_t *clock = get_clock();
-
     if (buff == NULL)
         return;
     text = init_text(buff,sfFont_createFromFile
