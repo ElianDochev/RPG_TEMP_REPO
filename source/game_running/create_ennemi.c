@@ -63,7 +63,8 @@ void draw_ennemi(sfRenderWindow *window, global_t *global)
 
     for (int y = 0; y < MAX_Y; y++) {
         for (int x = 0; x < MAX_X; x++) {
-            draw_sprite_ennemi(global->ennemi, global->player->map[y][x], &pos, window);
+            draw_sprite_ennemi(global->ennemi, global->player->map[y][x],
+            &pos, window);
             pos.x += 64;
         }
         pos.x = 0;

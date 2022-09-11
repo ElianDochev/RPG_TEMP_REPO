@@ -8,6 +8,16 @@
 #include "main.h"
 #include <stdio.h>
 
+static void init_ruby(player_t *player, sfIntRect *rect, time_mana_t *ru)
+{
+    ru->time = sfClock_getElapsedTime(ru->clock);
+    ru->millisec = sfTime_asMilliseconds(ru->time);
+    player->textures[RRUBY] = sfTexture_createFromFile(PLAYER_PATHS_NAME[RRUBY],
+    NULL);
+    player->sprites[RRUBY] = set_sprite(player->textures[RRUBY],
+    NULL, rect, get_sfvector2f(1.5, 1.5));
+}
+
 void anim_ruby(player_t *player, time_mana_t *ru, sfRenderWindow *window)
 {
     static int i = 0;
@@ -19,12 +29,7 @@ void anim_ruby(player_t *player, time_mana_t *ru, sfRenderWindow *window)
         pos = sfSprite_getPosition(player->sprites[player->direction]->sprite);
     else
         pos = sfSprite_getPosition(player->sprites[RRUBY]->sprite);
-    ru->time = sfClock_getElapsedTime(ru->clock);
-    ru->millisec = sfTime_asMilliseconds(ru->time);
-    player->textures[RRUBY] = sfTexture_createFromFile(PLAYER_PATHS_NAME[RRUBY],
-    NULL);
-    player->sprites[RRUBY] = set_sprite(player->textures[RRUBY],
-    NULL, rect, get_sfvector2f(1.5, 1.5));
+    init_ruby(player, rect, ru);
     sfSprite_setPosition(player->sprites[RRUBY]->sprite, pos);
     sfRenderWindow_drawSprite(window, player->sprites[RRUBY]->sprite, NULL);
     if (ru->millisec >= 50) {

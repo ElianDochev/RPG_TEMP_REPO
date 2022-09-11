@@ -51,6 +51,8 @@ SRC	=	lib/my/convert_vectors.c						\
 		source/game_running/animation.c 				\
 		source/ennemies/ennemies_movement.c 			\
 		source/game_loop/init_entities.c 				\
+		source/game_running/cut_the_bush.c 				\
+		source/game_running/put_player.c 				\
 
 CPPFLAGS = -I./include -I./m_lib/my -g3
 

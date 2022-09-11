@@ -150,6 +150,8 @@ char **my_str_to_word_array(char *buffer);
 void free_board(char **board);
 void attack_anim(player_t *p, time_mana_t *hit, sfRenderWindow *w);
 void bomb(player_t *p, time_mana_t *bom, sfRenderWindow *window);
+void cut_the_bush(player_t *player, map_t *map, int y, int x);
+void put_player_map(player_t *player, int intmap);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/
