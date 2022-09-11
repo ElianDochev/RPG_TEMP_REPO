@@ -16,8 +16,7 @@ char *my_revstr(char *str)
 
     if (rev == NULL)
         return NULL;
-    for (int i = 0; i <= j; i++) {
+    for (int i = 0; i <= j; i++)
         rev[i] = str[j - i];
-    }
     return rev;
 }

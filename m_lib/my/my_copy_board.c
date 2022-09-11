@@ -12,6 +12,8 @@ char **copy_board(char **board)
 {
     char **new_board = malloc(sizeof(char *) * (my_boardlen(board) + 2));
 
+    if (new_board == NULL)
+        return NULL;
     for (int i = 0; board[i] != NULL; i++){
         new_board[i] = board[i];
         new_board[i + 1] = NULL;

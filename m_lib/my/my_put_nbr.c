@@ -13,8 +13,7 @@ void my_put_nbr(int n)
         my_putchar('-');
         n = -n;
     }
-    if (n > 9) {
+    if (n > 9)
         my_put_nbr(n / 10);
-    }
     my_putchar((n % 10) + '0');
 }
