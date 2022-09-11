@@ -9,7 +9,7 @@
 #include "main.h"
 
 button_text_info_t *init_button_text_info(sfVector2f location,
-void const  **color, sfVector2f offset, int font_size)
+void **color, sfVector2f offset, int font_size)
 {
     button_text_info_t *info = malloc(sizeof(button_text_info_t));
 
@@ -23,7 +23,7 @@ void const  **color, sfVector2f offset, int font_size)
 }
 
 button_text_t **set_up_menu_bntext(sfFont *font, button_text_info_t *info,
-char **msg_arr, void (*ptr[])(void *, int))
+const char **msg_arr, void (*ptr[])(void *, int))
 {
     int len = get_len_two_d(msg_arr);
     button_text_t **menu = malloc(sizeof(button_text_t *) * (len + 1));

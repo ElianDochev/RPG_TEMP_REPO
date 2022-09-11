@@ -39,7 +39,7 @@ int str_ncmp(char const *str_one, char const *str_two, int length)
     return res;
 }
 
-int get_len_two_d(char **w_arr)
+int get_len_two_d(const char **w_arr)
 {
     int count = 0;
 
@@ -58,7 +58,7 @@ static void stage_two(char *scr, int length, char *dest)
         dest[i] = scr[i + length];
 }
 
-int str_in_word_arr(char *dest, char **word_arr, char *sub_arr)
+int str_in_word_arr(char *dest, char **word_arr, const char *sub_arr)
 {
     int length_sub = my_strlen(sub_arr);
 

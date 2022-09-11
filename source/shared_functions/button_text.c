@@ -27,7 +27,7 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window)
 }
 
 button_text_t *init_button_text(button_text_info_t *info, void(*ptr)(void *,
-int), sfFont *font, char *msg)
+int), sfFont *font, const char *msg)
 {
     button_text_t *button = malloc(sizeof(button_text_t));
 

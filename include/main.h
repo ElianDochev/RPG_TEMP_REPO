@@ -139,6 +139,13 @@ void anim_ruby(player_t *player, time_mana_t *ru, sfRenderWindow *window);
 void move_ennemies(player_t *player, ennemi_t *enemy);
 int is_around_player(player_t *player, int y, int x, char item);
 int is_around_ennemi(player_t *player, ennemi_t *ennemi, int y, int x, char item);
+void main_game_loop(int *error);
+ennemi_t *set_up_ennemi(void);
+void destroy_player(player_t *player);
+int str_to_int(char *str);
+void ev_loop_running(sfRenderWindow *window, states *state, global_t *global);
+void anim_player(player_t *player, time_mana_t *pl);
+void draw_ennemi(sfRenderWindow *window, global_t *global);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/

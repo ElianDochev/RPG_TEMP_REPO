@@ -57,7 +57,7 @@ static sfMusic *init_music(config_t *conf)
     return (music);
 }
 
-player_t *set_up_player(char *path, config_t *conf)
+player_t *set_up_player(const char *path, config_t *conf)
 {
     player_t *player = malloc(sizeof(player_t));
 
