@@ -57,6 +57,7 @@ typedef struct player {
     int ruby;
     int life;
     player_stats_t *stats;
+    sfMusic *music;
 } player_t;
 ////////////////////////////////////////////////////////////
 /// \brief Create a player object

@@ -47,6 +47,17 @@ static player_stats_t *set_up_stats(config_t *conf)
     return stats;
 }
 
+static sfMusic *init_music(config_t *conf)
+{
+    sfMusic *music = sfMusic_createFromFile(conf->paths[game_paused_music]);
+    if (!music)
+        return (NULL);
+    sfMusic_setLoop(music, sfTrue);
+    sfMusic_setVolume(music, (float) conf->confs[music_vol_cf]);
+    sfMusic_play(music);
+    return (music);
+}
+
 player_t *set_up_player(char *path, config_t *conf)
 {
     player_t *player = malloc(sizeof(player_t));
@@ -65,5 +76,6 @@ player_t *set_up_player(char *path, config_t *conf)
     player->ruby = 0;
     player->life = 10;
     player->stats = set_up_stats(conf);
+    player->music = init_music(conf);
     return player;
 }
