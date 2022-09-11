@@ -53,5 +53,3 @@ config_t *conf)
     sfText_setFillColor(elements->msg->text, GM_OVER_COLOR);
     return elements;
 }
-
-
