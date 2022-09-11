@@ -8,8 +8,7 @@
 
 NAME		=	my_rpg
 
-SRC	=	source/tests/button.c							\
-		lib/my/convert_vectors.c						\
+SRC	=	lib/my/convert_vectors.c						\
 		source/main.c									\
 		source/game_loop/main_game_loop.c				\
 		source/game_loop/config.c						\

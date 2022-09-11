@@ -44,11 +44,11 @@ sfRenderWindow *window, int index)
 {
     int state = is_mouse_on_btext(botton, window);
 
-    if (state == 0) {
+    if (state == 0)
         change_bntxt_color(botton, idle_bn);
-    } else if (state == 1) {
+    if (state == 1)
         change_bntxt_color(botton, on_hover);
-    } else if (state == 2) {
+    if (state == 2) {
         change_bntxt_color(botton, on_click);
         botton->ptr(element, index);
     }

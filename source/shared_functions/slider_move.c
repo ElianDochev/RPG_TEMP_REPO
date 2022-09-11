@@ -19,13 +19,14 @@ void draw_slider(sfRenderWindow *window, slider_t *slider, void *arg)
     sfMouse_getPositionRenderWindow(window).y)) {
         if (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
             sfCircleShape_setPosition(slider->knob,
-            (sfVector2f){
+            (sfVector2f) {
             sfMouse_getPositionRenderWindow(window).x,
             sfCircleShape_getPosition(slider->knob).y});
             percent = (sfMouse_getPositionRenderWindow(window).x -
             slider->hitbox.left) / slider->hitbox.width;
             slider->func_ptr(arg, percent);
-            printf("how %p is the font pointer\n" , ((*((config_t **)arg)) + sizeof(void *)));
+            printf("how %p is the font pointer\n",
+            ((*((config_t **)arg)) + sizeof(void *)));
         }
     }
     sfRenderWindow_drawRectangleShape(window, slider->slider, NULL);

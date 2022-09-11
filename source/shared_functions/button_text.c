@@ -17,11 +17,10 @@ int is_mouse_on_btext(button_text_t *button, sfRenderWindow *window)
 
     button->hitbox = sfText_getGlobalBounds(button->text->text);
     if (sfFloatRect_contains(&button->hitbox, click_pos.x, click_pos.y)) {
-        if (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
+        if (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue)
             return 2;
-        }  else {
+        else
             return 1;
-        }
     }
     return 0;
 }
