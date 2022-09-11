@@ -23,28 +23,26 @@ static void local_event_loop(sfRenderWindow *window, int *running)
     }
 }
 
-static void second_part(game_paused_elements_t *element,
+static void second_part(game_paused_elements_t *elem,
 button_text_t **button, slider_t **slider, time_mana_t *clock)
 {
     int running = 1;
-    config_t *config = element->conf;
-    sfRenderWindow *window = element->window;
-
-    while (sfRenderWindow_isOpen(window) && running) {
-        local_event_loop(window, &running);
+    config_t *config = elem->conf;
+    sfRenderWindow *w = elem->window;
+    while (sfRenderWindow_isOpen(w) && running) {
+        local_event_loop(w, &running);
         clock->time = sfClock_getElapsedTime(clock->clock);
         clock->millisec = clock->time.microseconds;
         if (clock->millisec > config->confs[refresh_rate_ov_st]) {
-            draw_map(window, element->global->map);
-            draw_player(window, element->global->player);
-            draw_ennemi(window, element->global);
-            sfRenderWindow_drawRectangleShape(window,
-            element->square_container, NULL);
-            draw_slider(window, slider[0], (void *) element);
-            draw_slider(window, slider[1], (void *) element);
-            draw_menu_bntext(button, window, &running, NULL);
-            set_cursor_to_mouse(element->cursor, window);
-            sfRenderWindow_display(window);
+            draw_map(w, elem->global->map);
+            draw_player(w, elem->global->player);
+            draw_ennemi(w, elem->global);
+            sfRenderWindow_drawRectangleShape(w, elem->square_container, NULL);
+            draw_slider(w, slider[0], (void *) elem);
+            draw_slider(w, slider[1], (void *) elem);
+            draw_menu_bntext(button, w, &running, NULL);
+            set_cursor_to_mouse(elem->cursor, w);
+            sfRenderWindow_display(w);
             sfClock_restart(clock->clock);
         }
     }

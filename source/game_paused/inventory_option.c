@@ -26,24 +26,22 @@ static void local_event_loop(sfRenderWindow *window, int *running)
 void open_inventory(void *arg, int index)
 {
     game_paused_elements_t *elements = (game_paused_elements_t *) arg;
-    sfRectangleShape *container = sfRectangleShape_create();
+    sfRectangleShape *cont = sfRectangleShape_create();
     int running = 1;
 
-    sfRectangleShape_setPosition(container, (sfVector2f){50, 50});
-    sfRectangleShape_setSize(container, create_fvector(
+    sfRectangleShape_setPosition(cont, (sfVector2f){50, 50});
+    sfRectangleShape_setSize(cont, create_fvector(
     (sfRenderWindow_getSize(elements->window).x - 100),
     (sfRenderWindow_getSize(elements->window).y - 100)));
-    sfRectangleShape_setFillColor(container, sfBlue);
-    sfRectangleShape_setOutlineColor(container,
-    sfColor_fromRGB(0xff, 0xaf, 0x7a));
-    sfRectangleShape_setOutlineThickness(container, 5);
-
+    sfRectangleShape_setFillColor(cont, sfBlue);
+    sfRectangleShape_setOutlineColor(cont, sfColor_fromRGB(0xff, 0xaf, 0x7a));
+    sfRectangleShape_setOutlineThickness(cont, 5);
     while (running && sfRenderWindow_isOpen(elements->window)) {
         local_event_loop(elements->window, &running);
         draw_map(elements->window, elements->global->map);
         draw_player(elements->window, elements->global->player);
         draw_ennemi(elements->window, elements->global);
-        sfRenderWindow_drawRectangleShape(elements->window, container, NULL);
+        sfRenderWindow_drawRectangleShape(elements->window, cont, NULL);
         set_cursor_to_mouse(elements->cursor, elements->window);
         sfRenderWindow_display(elements->window);
     }
