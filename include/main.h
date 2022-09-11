@@ -148,6 +148,8 @@ void anim_player(player_t *player, time_mana_t *pl);
 void draw_ennemi(sfRenderWindow *window, global_t *global);
 char **my_str_to_word_array(char *buffer);
 void free_board(char **board);
+void attack_anim(player_t *p, time_mana_t *hit, sfRenderWindow *w);
+void bomb(player_t *p, time_mana_t *bom, sfRenderWindow *window);
 /*###########################################################################
 #######################END OF NOT IMP SEGEMENT###############################
 -----------------------------------------------------------------------------*/

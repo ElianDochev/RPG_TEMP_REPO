@@ -51,6 +51,7 @@ SRC	=	source/tests/button.c							\
 		source/game_running/player_action.c				\
 		source/game_running/animation.c 				\
 		source/ennemies/ennemies_movement.c 			\
+		source/game_loop/init_entities.c 				\
 
 CPPFLAGS = -I./include -I./m_lib/my -g3
 

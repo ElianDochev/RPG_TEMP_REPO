@@ -48,7 +48,7 @@ void main_game_loop(int *error)
 {
     config_t *config = set_up_config();
     sfRenderWindow *window = config != NULL ? create_window(config) : NULL;
-    states game_state = gm_over;
+    states game_state = not_started;
     global_t *global = set_up_global(config);
 
     if (window == NULL) {
@@ -60,6 +60,5 @@ void main_game_loop(int *error)
         check_game_state(window, &game_state, global, config);
     }
     xfree((void **) &config);
-    destroy_global(global);
     sfRenderWindow_destroy(window);
 }

@@ -32,20 +32,16 @@ static int check_config(char **word_array)
     char tmp[64];
 
     empty_buffer(tmp, 64);
-    for (int i = 0; word_array[i]; ++i) {
-        if (check_line(word_array[i])) {
+    for (int i = 0; word_array[i]; ++i)
+        if (check_line(word_array[i]))
             return 1;
-        }
-    }
-    for (int i = 0; needed_unsigned[i]; ++i) {
+    for (int i = 0; needed_unsigned[i]; ++i)
         if (str_in_word_arr(tmp, word_array, needed_unsigned[i]))
             return 2;
-    }
     empty_buffer(tmp, 64);
-    for (int i = 0; needed_paths[i]; ++i) {
+    for (int i = 0; needed_paths[i]; ++i)
         if (str_in_word_arr(tmp, word_array, needed_paths[i]))
             return 2;
-    }
     return 0;
 }
 
@@ -69,9 +65,8 @@ static void init_config(config_t **config, char **word_array)
 static void clean_up(void **buff, void **word_arr)
 {
     xfree(buff);
-    for (int i = 0; word_arr[i]; ++i) {
+    for (int i = 0; word_arr[i]; ++i)
         xfree((word_arr[i]));
-    }
     xfree(word_arr);
 }
 
