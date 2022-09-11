@@ -12,8 +12,8 @@ global_t *set_up_global(config_t *conf)
 {
     global_t *global = malloc(sizeof(global_t));
 
-    global->map = create_map(MAP_PATHS[OUT_HOUSE]);
-    global->player = set_up_player(PLAYER_MAP_PATHS[OUT_HOUSE],
+    global->map = create_map(MAP_PATHS[MAZE]);
+    global->player = set_up_player(PLAYER_MAP_PATHS[MAZE],
     conf);
     global->ennemi = set_up_ennemi();
     return global;
