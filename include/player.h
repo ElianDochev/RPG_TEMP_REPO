@@ -39,7 +39,7 @@ static const int PLAYER_RECT[][5] = {{0, 48, 48, 0}, {0, 48, 48, 0},
 
 typedef struct {
     int live;
-    int attack;
+    int attack_value;
     int defense;
     node_t *inventory;
 } player_stats_t;

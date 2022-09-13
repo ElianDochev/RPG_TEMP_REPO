@@ -19,7 +19,9 @@ SRC			=	create_sf_int_rect.c		\
 				custom_sys_calls.c			\
 				file_fopen.c				\
 				str_to_int.c				\
-				str_to_word_array.c
+				str_to_word_array.c			\
+				remove_seps.c				\
+				w_arr.c
 
 OBJ			=	$(SRC:.c=.o)
 

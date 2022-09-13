@@ -22,7 +22,8 @@ void set_cursor_to_mouse(cursor_t *cursor, sfRenderWindow *window)
     sfVector2f mouse_pos =
     con_vi_to_vf(sfMouse_getPositionRenderWindow(window));
 
-    sfSprite_setPosition(cursor->sprite, mouse_pos);
+    sfSprite_setPosition(cursor->sprite, create_fvector(mouse_pos.x - 10,
+    mouse_pos.y));
     sfRenderWindow_drawSprite(window, cursor->sprite, NULL);
 }
 

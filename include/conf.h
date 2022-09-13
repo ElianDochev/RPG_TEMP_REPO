@@ -38,7 +38,8 @@ conf_lives, conf_attack, conf_defense, confs_count} confs;
 typedef enum {cursor_path, start_font, start_background, start_music,
 gm_over_font, gm_over_bg, gm_over_music,
 game_paused_font, game_paused_music, path_count} path_enum;
-//read from file contains all the window and clock params;
+//config file data sroted he confs contains the unsigned int and paths contains
+// the strings for paths or otherwize
 typedef struct {
     unsigned int confs[confs_count];
     char *paths[path_count];

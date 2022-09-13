@@ -28,6 +28,7 @@ SRC			=	lib/my/convert_vectors.c						\
 				source/shared_functions/not_impemented.c		\
 				source/shared_functions/slider.c				\
 				source/shared_functions/slider_move.c			\
+				source/shared_functions/items.c 				\
 				source/start_menu/support_func.c				\
 				source/start_menu/event_loop.c					\
 				source/start_menu/display_help.c				\

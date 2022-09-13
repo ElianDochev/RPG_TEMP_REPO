@@ -29,20 +29,21 @@ void open_inventory(void *arg, int index)
     sfRectangleShape *cont = sfRectangleShape_create();
     int running = 1;
 
-    sfRectangleShape_setPosition(cont, (sfVector2f){50, 50});
-    sfRectangleShape_setSize(cont, create_fvector(
-    (sfRenderWindow_getSize(elements->window).x - 100),
-    (sfRenderWindow_getSize(elements->window).y - 100)));
-    sfRectangleShape_setFillColor(cont, sfBlue);
-    sfRectangleShape_setOutlineColor(cont, sfColor_fromRGB(0xff, 0xaf, 0x7a));
-    sfRectangleShape_setOutlineThickness(cont, 5);
-    while (running && sfRenderWindow_isOpen(elements->window)) {
-        local_event_loop(elements->window, &running);
-        draw_map(elements->window, elements->global->map);
-        draw_player(elements->window, elements->global->player);
-        draw_ennemi(elements->window, elements->global);
-        sfRenderWindow_drawRectangleShape(elements->window, cont, NULL);
-        set_cursor_to_mouse(elements->cursor, elements->window);
-        sfRenderWindow_display(elements->window);
-    }
+    not_imp(elements->window);
+    // sfRectangleShape_setPosition(cont, (sfVector2f){50, 50});
+    // sfRectangleShape_setSize(cont, create_fvector(
+    // (sfRenderWindow_getSize(elements->window).x - 100),
+    // (sfRenderWindow_getSize(elements->window).y - 100)));
+    // sfRectangleShape_setFillColor(cont, sfBlue);
+    // sfRectangleShape_setOutlineColor(cont, sfColor_fromRGB(0xff, 0xaf, 0x7a));
+    // sfRectangleShape_setOutlineThickness(cont, 5);
+    // while (running && sfRenderWindow_isOpen(elements->window)) {
+    //     local_event_loop(elements->window, &running);
+    //     draw_map(elements->window, elements->global->map);
+    //     draw_player(elements->window, elements->global->player);
+    //     draw_ennemi(elements->window, elements->global);
+    //     sfRenderWindow_drawRectangleShape(elements->window, cont, NULL);
+    //     set_cursor_to_mouse(elements->cursor, elements->window);
+    //     sfRenderWindow_display(elements->window);
+    // }
 }

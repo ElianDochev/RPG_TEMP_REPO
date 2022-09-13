@@ -13,6 +13,7 @@
     #include "map.h"
     #include "player.h"
     #include "conf.h"
+    #include "items.h"
     #include "ennemi.h"
 
 /*###########################################################################
@@ -48,6 +49,7 @@ typedef struct {
     player_t *player;
     ennemi_t *ennemi;
     time_mana_t clock;
+    item_t **in_game_items; //array of items end with NULL
 } global_t;
 // inits the global variable
 global_t *set_up_global(config_t *conf);

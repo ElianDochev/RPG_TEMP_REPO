@@ -5,7 +5,7 @@
 ** sets_up_config and deletes it
 */
 
-#include "main.h"
+#include "conf.h"
 #include <stdlib.h>
 #include <stdio.h>
 

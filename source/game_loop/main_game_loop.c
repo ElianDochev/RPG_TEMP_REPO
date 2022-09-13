@@ -8,6 +8,7 @@
 #include "main.h"
 #include "sprites.h"
 
+//global->in_game_items = load_items();
 global_t *set_up_global(config_t *conf)
 {
     global_t *global = malloc(sizeof(global_t));

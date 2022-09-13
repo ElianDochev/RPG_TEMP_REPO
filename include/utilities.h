@@ -75,10 +75,36 @@ int str_in_word_arr(char *dest, char **word_arr, const char *sub_arr);
 //gives a buffer with size BUFF_SIZE from file,
 //displays the err msg to sdterr on failaire
 char *fopen_file(char *path, char *err_msg);
+////////////////////////////////////////////////////////////
+/// \brief parses a string and returns the rest of the string
+///
+/// \param scr       the string to parse
+/// \param sub_arr   the string to look for
+/// \param param3     explanation
+/// \param param4     explanation
+///
+/// \return returns the rest of the string or NULL if it does not match
+///
+///////////////////////////////////////////////////////////
+char *parce(char *scr, char *sub_arr);
+////////////////////////////////////////////////////////////
+/// \brief removes the sep from the back and front of the string
+///
+/// \param str             the string to parse
+/// \param sep             Callback to check if it is a sep
+/// \param is_malloced     if the string is malloced or not
+///
+///
+///////////////////////////////////////////////////////////
+void remove_sep(char **str, int (*sep)(char), int is_malloced);
 //compares two strings up to a given length or untill the end of one
 int str_ncmp(char const *str_one, char const *str_two, int length);
 //gets the length of a null termiated 2d string
 int get_len_two_d(const char **w_arr);
+//this returns 1 if the ch == '\' otherwise retuns 0
+int split_backslash(char c);
+//this returns 1 if the ch == ' ' OR ch == '\t' otherwise retuns 0
+int delim_space_tab(char c);
 //this returns 1 if the ch == '\n' otherwise retuns 0
 int split_endl(char ch);
 //nulls a static buffer

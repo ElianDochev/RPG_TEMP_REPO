@@ -61,8 +61,8 @@ void not_imp(void *ptr)
     while (sfRenderWindow_isOpen(window) && running) {
         local_ev_loop(window);
         display_things(window, title, menu, &running);
+        set_cursor_to_mouse(cursor, window);
+        sfRenderWindow_display(window);
     }
     destroy_things(title, menu, font, cursor);
-    set_cursor_to_mouse(cursor, window);
-    sfRenderWindow_display(window);
 }

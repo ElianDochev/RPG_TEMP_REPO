@@ -26,6 +26,34 @@ char *fopen_file(char *path, char *err_msg)
     return buff;
 }
 
+int delim_space_tab(char c)
+{
+    if (c == ' ' || c == '\t')
+        return 1;
+    return 0;
+}
+
+char *parce(char *scr, char *sub_arr)
+{
+    int len = my_strlen(sub_arr);
+
+    if (scr == NULL || sub_arr == NULL)
+        return NULL;
+    remove_sep(&scr, delim_space_tab, 0);
+    if (str_ncmp(scr, sub_arr, len) != 0)
+        return NULL;
+    scr += len;
+    remove_sep(&scr, delim_space_tab, 0);
+    return scr;
+}
+
+int split_backslash(char c)
+{
+    if (c == '/')
+        return 1;
+    return 0;
+}
+
 int split_endl(char ch)
 {
     if (ch == '\n')

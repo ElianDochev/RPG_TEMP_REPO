@@ -41,7 +41,7 @@ static player_stats_t *set_up_stats(config_t *conf)
     player_stats_t *stats = malloc(sizeof(player_stats_t));
 
     stats->live = conf->confs[conf_lives];
-    stats->attack = conf->confs[conf_attack];
+    stats->attack_value = conf->confs[conf_attack];
     stats->defense = conf->confs[conf_defense];
     stats->inventory = NULL;
     return stats;
